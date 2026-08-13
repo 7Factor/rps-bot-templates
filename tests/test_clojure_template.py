@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -51,6 +52,31 @@ class ClojureTeamTemplateTests(unittest.TestCase):
         )
         self.assertEqual(completed.returncode, 0, completed.stderr)
         self.assertIn("Clojure starter tests passed", completed.stdout)
+
+    @unittest.skipUnless(
+        os.environ.get("RPS_RUN_DOCKER_INTEGRATION") == "1",
+        "set RPS_RUN_DOCKER_INTEGRATION=1 to run pinned Docker integration",
+    )
+    def test_pinned_docker_toolchain_runs_the_complete_clojure_suite(self) -> None:
+        environment = os.environ.copy()
+        environment["RPS_CORE_PATH"] = str(self.core)
+        completed = subprocess.run(
+            [
+                str(ROOT / "check-team-template"),
+                "--template",
+                "clojure",
+                "--mode",
+                "docker",
+            ],
+            cwd=ROOT,
+            env=environment,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertIn("Clojure starter tests passed", completed.stdout)
+        self.assertIn("Team Template check passed: clojure (docker)", completed.stdout)
 
     def test_guidance_documents_boundaries_and_authority(self) -> None:
         guidance = (ROOT / "templates/clojure/TEAM_GUIDE.md").read_text()
