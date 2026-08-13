@@ -35,7 +35,8 @@ The collection includes independently released
 [Rust](templates/rust/team_source/strategy.rs), and
 [Ruby](templates/ruby/team_source/strategy.rb), and
 [Clojure](templates/clojure/team_source/strategy.clj), and
-[JavaScript](templates/javascript/team_source/strategy.js) starters.
+[JavaScript](templates/javascript/team_source/strategy.js), and
+[Kotlin](templates/kotlin/team_source/Strategy.kt) starters.
 Teams may add `team-submission.json` and change only the Team Source path named
 by its resolved descriptor;
 the catalog and its build, wrapper, workflow, and protocol assets remain
@@ -46,8 +47,9 @@ organizer-owned. See the [Python Team guide](templates/python/TEAM_GUIDE.md),
 [C# Team guide](templates/csharp/TEAM_GUIDE.md),
 [Rust Team guide](templates/rust/TEAM_GUIDE.md),
 [Ruby Team guide](templates/ruby/TEAM_GUIDE.md), and
-[Clojure Team guide](templates/clojure/TEAM_GUIDE.md), and
-[JavaScript Team guide](templates/javascript/TEAM_GUIDE.md)
+[Clojure Team guide](templates/clojure/TEAM_GUIDE.md),
+[JavaScript Team guide](templates/javascript/TEAM_GUIDE.md), and
+[Kotlin Team guide](templates/kotlin/TEAM_GUIDE.md)
 for the strategy contract, approved file types and limits, branch convention,
 and shared-repository honor policy.
 
@@ -108,6 +110,7 @@ Use `ruby` and `ruby-template-v1` for the independent Ruby Template Release.
 Use `clojure` and `clojure-template-v1` for the independent Clojure Template Release.
 Use `javascript` and `javascript-template-v1` for the independent JavaScript
 Template Release.
+Use `kotlin` and `kotlin-template-v1` for the independent Kotlin Template Release.
 
 ## Immutable compatibility contract
 

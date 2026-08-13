@@ -50,6 +50,10 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/javascript/team_source/strategy.js",
             "templates/javascript/TEAM_GUIDE.md",
             "templates/javascript/build-and-test",
+            "templates/kotlin/team-template.json",
+            "templates/kotlin/team_source/Strategy.kt",
+            "templates/kotlin/TEAM_GUIDE.md",
+            "templates/kotlin/build-and-test",
             "templates/python/team-template.json",
             "templates/python/team_source/strategy.py",
             "templates/python/TEAM_GUIDE.md",
@@ -83,6 +87,7 @@ class TemplateCollectionTests(unittest.TestCase):
                         "language": "javascript",
                         "contract_only": False,
                     },
+                    "kotlin": {"language": "kotlin", "contract_only": False},
                 }
             },
         )
@@ -106,7 +111,7 @@ class TemplateCollectionTests(unittest.TestCase):
         self.assertEqual(
             collection.language_ids,
             (
-                "clojure", "csharp", "go", "java", "javascript", "python",
+                "clojure", "csharp", "go", "java", "javascript", "kotlin", "python",
                 "ruby", "rust", "typescript",
             ),
         )
@@ -159,10 +164,10 @@ class TemplateCollectionTests(unittest.TestCase):
             load_collection(self.root, self.catalog)
 
         descriptor["team_source_path"] = "templates/python/team_source"
-        descriptor["language_environment"] = "kotlin"
+        descriptor["language_environment"] = "swift"
         self.write_json("templates/python/team-template.json", descriptor)
         with self.assertRaisesRegex(
-            CollectionError, "Language Environment 'kotlin'.*pinned Catalog Release"
+            CollectionError, "Language Environment 'swift'.*pinned Catalog Release"
         ):
             load_collection(self.root, self.catalog)
 
@@ -192,13 +197,13 @@ class TemplateCollectionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             CollectionError,
-            "selection is ambiguous.*clojure, csharp, go, java, javascript, python, ruby, rust, typescript",
+            "selection is ambiguous.*clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
         ):
             collection.select()
         with self.assertRaisesRegex(
-            CollectionError, "available: clojure, csharp, go, java, javascript, python, ruby, rust, typescript"
+            CollectionError, "available: clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript"
         ):
-            collection.select("kotlin")
+            collection.select("swift")
 
     def test_maintainer_guide_preserves_the_runner_ownership_boundary(self) -> None:
         guide = (PROJECT_ROOT / "TEAM_TEMPLATE_COLLECTION.md").read_text()

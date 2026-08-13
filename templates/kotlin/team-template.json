@@ -1,0 +1,12 @@
+{
+  "format_version": "rps-team-template-descriptor-v1",
+  "language_id": "kotlin",
+  "language_environment": "kotlin",
+  "team_source_path": "templates/kotlin/team_source",
+  "participant_guidance_path": "templates/kotlin/TEAM_GUIDE.md",
+  "build_and_test_entrypoint": "templates/kotlin/build-and-test",
+  "version": "kotlin-team-template-v1",
+  "expected_source_digest": "sha256:bcd877bcaa724553412bc0a86583da310105f8da55846df3d2406c142f38ae2e",
+  "release_tag": "kotlin-template-v1",
+  "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
+}

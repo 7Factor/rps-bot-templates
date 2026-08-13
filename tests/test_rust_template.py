@@ -163,13 +163,14 @@ class RustTeamTemplateTests(unittest.TestCase):
         )
         self.assertEqual(completed.returncode, 0, completed.stderr)
         manifest = json.loads(completed.stdout)
+        lock = json.loads((PROJECT_ROOT / "core-tool.lock.json").read_text())
         self.assertEqual(
             manifest["team_template"]["expected_source_digest"],
             "sha256:f55486d39ac9dca3333b10f1667099e1488d5b937d5baa0e3786f6ca19b11884",
         )
         self.assertEqual(
             manifest["catalog_compatibility"]["runner"]["commit"],
-            "87296899a88f1e1a091fc08454be45a7354a73cb",
+            lock["runner"]["commit"],
         )
 
     def test_shared_checker_has_no_rust_language_switch(self) -> None:

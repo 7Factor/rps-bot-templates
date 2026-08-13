@@ -24,7 +24,8 @@ The [Python descriptor](templates/python/team-template.json) and
 [Rust descriptor](templates/rust/team-template.json), and
 [Ruby descriptor](templates/ruby/team-template.json), and
 [Clojure descriptor](templates/clojure/team-template.json), and
-[JavaScript descriptor](templates/javascript/team-template.json) are independent instances
+[JavaScript descriptor](templates/javascript/team-template.json), and
+[Kotlin descriptor](templates/kotlin/team-template.json) are independent instances
 of this layout.
 
 Collection loading rejects duplicate language IDs, missing descriptors or bound
@@ -77,6 +78,8 @@ Ruby uses `--template ruby` and the independent `ruby-template-v1` release tag.
 Clojure uses `--template clojure` and the independent `clojure-template-v1` release tag.
 JavaScript uses `--template javascript` and the independent
 `javascript-template-v1` release tag.
+Kotlin uses `--template kotlin` and the independent `kotlin-template-v1`
+release tag.
 
 ## Checklist for adding a Team Template
 

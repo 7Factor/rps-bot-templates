@@ -1,6 +1,6 @@
 {
   "catalog_release": {
-    "declared_catalog_path_count": 82,
+    "declared_catalog_path_count": 90,
     "manifest": {
       "catalog": {
         "assets": {
@@ -81,6 +81,17 @@
           "javascript.recipe": "javascript-build-recipe-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
           "javascript.workflow": "source-validation-workflow-v1@sha256:2e6a0218646133f63b56bff1076c31e9d074310f4e9f64e294ac54672f5c79f1",
           "javascript.wrapper": "javascript-wrapper-v1@sha256:0cdbbc0f99c43d8c24b249670364c4ef47d70e2cb3455f244e2833ee5d1b221e",
+          "kotlin.base_runtime": "kotlin-runtime-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+          "kotlin.build_target": "kotlin-build-target-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+          "kotlin.build_toolchain": "kotlin-build-toolchain-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+          "kotlin.conformance": "kotlin-conformance-v1@sha256:f530c8e3e6719a48a0305afd7b33981c38e8a0cbf2d2aae305f1ca4606034af8",
+          "kotlin.dependency_definition": "kotlin-compiler-distribution-v1@sha256:473dd66c7a3ef4b182065b3da670466c1bf2773a9dbb0ed8b33a39fe9d4f876d",
+          "kotlin.entrypoint": "kotlin-entrypoint-v1@sha256:b08b86256a2452f6d783485576e59f77ab39df0cdd93e7197a07670507822042",
+          "kotlin.platform": "kotlin-oci-platforms-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+          "kotlin.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "kotlin.recipe": "kotlin-build-recipe-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+          "kotlin.workflow": "source-validation-workflow-v1@sha256:cb26c88a5a2d0300c37194aadcadd5e244604176d9a8efe406e90419d73f0d41",
+          "kotlin.wrapper": "kotlin-wrapper-v1@sha256:0b9816bd10ad1509563e938e89925b6103052fb0ada983022826c7a50832b810",
           "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
           "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
           "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
@@ -126,7 +137,7 @@
           "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
           "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
         },
-        "identity": "rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
+        "identity": "rps-language-environment-catalog-v1@sha256:47ce9003164c1fe9dfb4f1fd7c711e2fd11d45f041de1f5cb37fd7fad06f8c2d",
         "path": "language_environments/catalog-v1/catalog.json",
         "version": "rps-language-environment-catalog-v1"
       },
@@ -137,6 +148,7 @@
         "internal-shell": "internal-shell-artifact-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
         "java": "java-artifact-conformance-v1@sha256:f29543b7644c0a65dc46ed3c88e5215b5177a2434f156f27130e81c613d4aa3f",
         "javascript": "javascript-artifact-conformance-v1@sha256:7c8de8485a6d643f0e93112f3bd319df03a6d93cd4472da7a9bfc3652941c91c",
+        "kotlin": "kotlin-artifact-conformance-v1@sha256:f530c8e3e6719a48a0305afd7b33981c38e8a0cbf2d2aae305f1ca4606034af8",
         "python": "python-artifact-conformance-v1@sha256:0541ac0e19bedc42241e65ffb462d894833c6c30d268fa054162bdff8615c057",
         "ruby": "ruby-artifact-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
         "rust": "rust-artifact-conformance-v1@sha256:b39ff8f5359aad15abefb7c6f4b592d95f1e0fac7eca69a2ff3ac7f8f163ef79",
@@ -222,6 +234,17 @@
             "javascript.recipe": "javascript-build-recipe-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
             "javascript.workflow": "source-validation-workflow-v1@sha256:2e6a0218646133f63b56bff1076c31e9d074310f4e9f64e294ac54672f5c79f1",
             "javascript.wrapper": "javascript-wrapper-v1@sha256:0cdbbc0f99c43d8c24b249670364c4ef47d70e2cb3455f244e2833ee5d1b221e",
+            "kotlin.base_runtime": "kotlin-runtime-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+            "kotlin.build_target": "kotlin-build-target-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+            "kotlin.build_toolchain": "kotlin-build-toolchain-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+            "kotlin.conformance": "kotlin-conformance-v1@sha256:f530c8e3e6719a48a0305afd7b33981c38e8a0cbf2d2aae305f1ca4606034af8",
+            "kotlin.dependency_definition": "kotlin-compiler-distribution-v1@sha256:473dd66c7a3ef4b182065b3da670466c1bf2773a9dbb0ed8b33a39fe9d4f876d",
+            "kotlin.entrypoint": "kotlin-entrypoint-v1@sha256:b08b86256a2452f6d783485576e59f77ab39df0cdd93e7197a07670507822042",
+            "kotlin.platform": "kotlin-oci-platforms-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+            "kotlin.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "kotlin.recipe": "kotlin-build-recipe-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+            "kotlin.workflow": "source-validation-workflow-v1@sha256:cb26c88a5a2d0300c37194aadcadd5e244604176d9a8efe406e90419d73f0d41",
+            "kotlin.wrapper": "kotlin-wrapper-v1@sha256:0b9816bd10ad1509563e938e89925b6103052fb0ada983022826c7a50832b810",
             "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
             "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
             "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
@@ -267,15 +290,15 @@
             "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
             "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
           },
-          "identity": "rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
+          "identity": "rps-language-environment-catalog-v1@sha256:47ce9003164c1fe9dfb4f1fd7c711e2fd11d45f041de1f5cb37fd7fad06f8c2d",
           "path": "language_environments/catalog-v1/catalog.json"
         },
         "format_version": "rps-catalog-compatibility-v1",
         "offline_bundle": {
-          "identity": "rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9"
+          "identity": "rps-runner-offline-bundle-v1@sha256:035977c663d8c2e9613e26a75252799a802ab50e94d8a5c41cdb4c6cdfd34331"
         },
         "runner": {
-          "commit": "87296899a88f1e1a091fc08454be45a7354a73cb",
+          "commit": "0ce3603722b04be9a617563a1f36f52c8cb7f465",
           "package_version": "0.1.0"
         }
       },
@@ -284,7 +307,7 @@
         "version": "docker-execution-v1"
       },
       "offline_bundle": {
-        "identity": "rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9"
+        "identity": "rps-runner-offline-bundle-v1@sha256:035977c663d8c2e9613e26a75252799a802ab50e94d8a5c41cdb4c6cdfd34331"
       },
       "platform_runtimes": {
         "clojure": {
@@ -471,6 +494,44 @@
             "upstream_release": "https://nodejs.org/en/download/archive/v24"
           }
         },
+        "kotlin": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:78e1c29a95bd36513e7d67eb730b699c6e6f46ef975e35e937c66eb726539609",
+                "reference": "docker.io/library/eclipse-temurin@sha256:78e1c29a95bd36513e7d67eb730b699c6e6f46ef975e35e937c66eb726539609",
+                "version": "linux-amd64-java-25.0.3+9-kotlin-2.4.10-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "reference": "docker.io/library/eclipse-temurin@sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "version": "linux-amd64-java-25.0.3+9-kotlin-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:9d41aef0f1b800791a4c1e3e2ae52fc36a5b154a9edd08f0ab382b1999401e83",
+                "reference": "docker.io/library/eclipse-temurin@sha256:9d41aef0f1b800791a4c1e3e2ae52fc36a5b154a9edd08f0ab382b1999401e83",
+                "version": "linux-arm64-java-25.0.3+9-kotlin-2.4.10-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "reference": "docker.io/library/eclipse-temurin@sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "version": "linux-arm64-java-25.0.3+9-kotlin-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "java_lts_release": "25",
+            "java_version": "25.0.3+9",
+            "kotlin_version": "2.4.10",
+            "policy": "latest-upstream-supported-stable-with-compatible-java-lts",
+            "rationale": "Kotlin 2.4.10 is the latest stable bug-fix release on the upstream-supported 2.4 line; Java 25 is the latest upstream-designated LTS line and Temurin 25.0.3+9 is the matching pinned runtime.",
+            "selected_on": "2026-08-13",
+            "upstream_java_release": "https://adoptium.net/temurin/releases/?version=25",
+            "upstream_kotlin_release": "https://github.com/JetBrains/kotlin/releases/tag/v2.4.10"
+          }
+        },
         "python": {
           "platforms": {
             "linux/amd64": {
@@ -617,14 +678,14 @@
       },
       "release_format_version": "catalog-release-v1",
       "repository": {
-        "tag": "catalog-v16"
+        "tag": "catalog-v18"
       },
       "runner": {
-        "commit": "87296899a88f1e1a091fc08454be45a7354a73cb",
+        "commit": "0ce3603722b04be9a617563a1f36f52c8cb7f465",
         "package_version": "0.1.0"
       }
     },
-    "offline_bundle_current_path_count": 273,
+    "offline_bundle_current_path_count": 284,
     "participant_template_asset_paths": [],
     "participant_template_digest_fields": [],
     "participant_template_paths": [],
@@ -710,6 +771,17 @@
         "javascript.recipe": "javascript-build-recipe-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
         "javascript.workflow": "source-validation-workflow-v1@sha256:2e6a0218646133f63b56bff1076c31e9d074310f4e9f64e294ac54672f5c79f1",
         "javascript.wrapper": "javascript-wrapper-v1@sha256:0cdbbc0f99c43d8c24b249670364c4ef47d70e2cb3455f244e2833ee5d1b221e",
+        "kotlin.base_runtime": "kotlin-runtime-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+        "kotlin.build_target": "kotlin-build-target-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+        "kotlin.build_toolchain": "kotlin-build-toolchain-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+        "kotlin.conformance": "kotlin-conformance-v1@sha256:f530c8e3e6719a48a0305afd7b33981c38e8a0cbf2d2aae305f1ca4606034af8",
+        "kotlin.dependency_definition": "kotlin-compiler-distribution-v1@sha256:473dd66c7a3ef4b182065b3da670466c1bf2773a9dbb0ed8b33a39fe9d4f876d",
+        "kotlin.entrypoint": "kotlin-entrypoint-v1@sha256:b08b86256a2452f6d783485576e59f77ab39df0cdd93e7197a07670507822042",
+        "kotlin.platform": "kotlin-oci-platforms-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+        "kotlin.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "kotlin.recipe": "kotlin-build-recipe-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+        "kotlin.workflow": "source-validation-workflow-v1@sha256:cb26c88a5a2d0300c37194aadcadd5e244604176d9a8efe406e90419d73f0d41",
+        "kotlin.wrapper": "kotlin-wrapper-v1@sha256:0b9816bd10ad1509563e938e89925b6103052fb0ada983022826c7a50832b810",
         "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
         "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
         "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
@@ -755,15 +827,15 @@
         "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
         "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
       },
-      "identity": "rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
+      "identity": "rps-language-environment-catalog-v1@sha256:47ce9003164c1fe9dfb4f1fd7c711e2fd11d45f041de1f5cb37fd7fad06f8c2d",
       "path": "language_environments/catalog-v1/catalog.json"
     },
     "format_version": "rps-catalog-compatibility-v1",
     "offline_bundle": {
-      "identity": "rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9"
+      "identity": "rps-runner-offline-bundle-v1@sha256:035977c663d8c2e9613e26a75252799a802ab50e94d8a5c41cdb4c6cdfd34331"
     },
     "runner": {
-      "commit": "87296899a88f1e1a091fc08454be45a7354a73cb",
+      "commit": "0ce3603722b04be9a617563a1f36f52c8cb7f465",
       "package_version": "0.1.0"
     }
   },
@@ -789,6 +861,7 @@
       "tests/test_csharp_language_environment.py",
       "tests/test_java_language_environment.py",
       "tests/test_javascript_language_environment.py",
+      "tests/test_kotlin_language_environment.py",
       "tests/test_rust_language_environment.py",
       "tests/test_ruby_language_environment.py",
       "tests/test_typescript_language_environment.py",
@@ -809,7 +882,7 @@
       "network"
     ],
     "dependency_matches": [],
-    "dependency_surface_count": 185,
+    "dependency_surface_count": 192,
     "dependency_surfaces": [
       ".github/workflows/catalog-release-contract.yml",
       ".github/workflows/native-amd64-portability.yml",
@@ -856,6 +929,12 @@
       "language_environments/catalog-v1/javascript/readiness.json",
       "language_environments/catalog-v1/javascript/runtimes.json",
       "language_environments/catalog-v1/javascript/workflow.yml",
+      "language_environments/catalog-v1/kotlin/Dockerfile",
+      "language_environments/catalog-v1/kotlin/conformance.json",
+      "language_environments/catalog-v1/kotlin/entrypoint.json",
+      "language_environments/catalog-v1/kotlin/readiness.json",
+      "language_environments/catalog-v1/kotlin/runtimes.json",
+      "language_environments/catalog-v1/kotlin/workflow.yml",
       "language_environments/catalog-v1/python/Dockerfile",
       "language_environments/catalog-v1/python/conformance.json",
       "language_environments/catalog-v1/python/entrypoint.json",
@@ -972,6 +1051,7 @@
       "tests/test_go_language_environment.py",
       "tests/test_java_language_environment.py",
       "tests/test_javascript_language_environment.py",
+      "tests/test_kotlin_language_environment.py",
       "tests/test_match_bot_sessions.py",
       "tests/test_match_seed_boundary.py",
       "tests/test_multi_language_environment.py",
@@ -998,7 +1078,7 @@
       "tests/test_typescript_language_environment.py"
     ],
     "participant_template_paths": [],
-    "tracked_path_count": 273
+    "tracked_path_count": 284
   },
   "status": "passed"
 }

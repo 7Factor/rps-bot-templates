@@ -110,9 +110,10 @@ class JavaScriptTeamTemplateTests(unittest.TestCase):
         os.environ.get("RPS_RUN_DOCKER_INTEGRATION") == "1",
         "set RPS_RUN_DOCKER_INTEGRATION=1 to run Advisory Validation",
     )
-    def test_catalog_v16_passes_participant_local_advisory_validation(self) -> None:
+    def test_current_catalog_passes_participant_local_advisory_validation(self) -> None:
         environment = os.environ.copy()
         environment["RPS_CORE_PATH"] = str(self.core)
+        lock = json.loads((PROJECT_ROOT / "core-tool.lock.json").read_text())
         completed = subprocess.run(
             [str(PROJECT_ROOT / "validate-team"), "--template", "javascript"],
             cwd=PROJECT_ROOT,
@@ -124,11 +125,7 @@ class JavaScriptTeamTemplateTests(unittest.TestCase):
 
         self.assertEqual(completed.returncode, 0, completed.stderr)
         self.assertIn("Participant-local Advisory Validation passed", completed.stdout)
-        self.assertIn(
-            "rps-language-environment-catalog-v1@sha256:"
-            "c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
-            completed.stdout,
-        )
+        self.assertIn(lock["catalog"]["identity"], completed.stdout)
         self.assertIn(
             "javascript-artifact-conformance-v1@sha256:"
             "7c8de8485a6d643f0e93112f3bd319df03a6d93cd4472da7a9bfc3652941c91c",

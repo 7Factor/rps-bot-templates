@@ -36,6 +36,10 @@
     {
       "language_id": "javascript",
       "descriptor": "templates/javascript/team-template.json"
+    },
+    {
+      "language_id": "kotlin",
+      "descriptor": "templates/kotlin/team-template.json"
     }
   ]
 }

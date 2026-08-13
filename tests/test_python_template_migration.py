@@ -74,12 +74,12 @@ class PythonTemplateMigrationTests(unittest.TestCase):
         )
 
     def test_root_command_reports_available_language_ids_for_a_bad_selection(self) -> None:
-        completed = self.run_command("--template", "kotlin", "--mode", "native")
+        completed = self.run_command("--template", "swift", "--mode", "native")
 
         self.assertEqual(completed.returncode, 2)
-        self.assertIn("unknown Team Template 'kotlin'", completed.stderr)
+        self.assertIn("unknown Team Template 'swift'", completed.stderr)
         self.assertIn(
-            "available: clojure, csharp, go, java, javascript, python, ruby, rust, typescript",
+            "available: clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
             completed.stderr,
         )
 

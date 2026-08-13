@@ -78,6 +78,17 @@
       "javascript.recipe": "javascript-build-recipe-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
       "javascript.workflow": "source-validation-workflow-v1@sha256:2e6a0218646133f63b56bff1076c31e9d074310f4e9f64e294ac54672f5c79f1",
       "javascript.wrapper": "javascript-wrapper-v1@sha256:0cdbbc0f99c43d8c24b249670364c4ef47d70e2cb3455f244e2833ee5d1b221e",
+      "kotlin.base_runtime": "kotlin-runtime-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+      "kotlin.build_target": "kotlin-build-target-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+      "kotlin.build_toolchain": "kotlin-build-toolchain-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+      "kotlin.conformance": "kotlin-conformance-v1@sha256:f530c8e3e6719a48a0305afd7b33981c38e8a0cbf2d2aae305f1ca4606034af8",
+      "kotlin.dependency_definition": "kotlin-compiler-distribution-v1@sha256:473dd66c7a3ef4b182065b3da670466c1bf2773a9dbb0ed8b33a39fe9d4f876d",
+      "kotlin.entrypoint": "kotlin-entrypoint-v1@sha256:b08b86256a2452f6d783485576e59f77ab39df0cdd93e7197a07670507822042",
+      "kotlin.platform": "kotlin-oci-platforms-v1@sha256:4cf7adc6035eb851373633677ca6d9ec34e9126e8176779e29e14b66e01f2741",
+      "kotlin.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+      "kotlin.recipe": "kotlin-build-recipe-v1@sha256:8e8add48e7c7e5f61322f900bc6f54a2a9f4197127ebba1b71ac6507cdd7ab60",
+      "kotlin.workflow": "source-validation-workflow-v1@sha256:cb26c88a5a2d0300c37194aadcadd5e244604176d9a8efe406e90419d73f0d41",
+      "kotlin.wrapper": "kotlin-wrapper-v1@sha256:0b9816bd10ad1509563e938e89925b6103052fb0ada983022826c7a50832b810",
       "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
       "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
       "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
@@ -123,15 +134,15 @@
       "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
       "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
     },
-    "identity": "rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
+    "identity": "rps-language-environment-catalog-v1@sha256:47ce9003164c1fe9dfb4f1fd7c711e2fd11d45f041de1f5cb37fd7fad06f8c2d",
     "path": "language_environments/catalog-v1/catalog.json"
   },
   "format_version": "rps-catalog-compatibility-v1",
   "offline_bundle": {
-    "identity": "rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9"
+    "identity": "rps-runner-offline-bundle-v1@sha256:035977c663d8c2e9613e26a75252799a802ab50e94d8a5c41cdb4c6cdfd34331"
   },
   "runner": {
-    "commit": "87296899a88f1e1a091fc08454be45a7354a73cb",
+    "commit": "0ce3603722b04be9a617563a1f36f52c8cb7f465",
     "package_version": "0.1.0"
   }
 }
