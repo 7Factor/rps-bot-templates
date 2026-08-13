@@ -59,6 +59,7 @@ jobs:
             RPS_CORE_PATH=.core/rps-tournament \
               ./check-team-template --template "$template_id" --mode docker
           done < .team-templates.tsv
+          rm -f .team-templates.tsv
           python3 -m unittest discover -s tests -v
       - name: Verify the published annotated Template Release tag
         if: startsWith(github.ref, 'refs/tags/')

@@ -85,7 +85,7 @@ Candidate. A practice Match proves compatibility, but its score or winner is
 not an acceptance condition. GitHub results remain advisory and insufficient
 for official Tournament entry.
 
-Create Team branches from the dereferenced `python-template-v2^{}` annotated
+Create Team branches from the dereferenced `python-template-v3^{}` annotated
 Template Release. A published release is immutable; compatibility updates use a
 new Python Template Release identity. Use the assigned `team/<team-slug>` name
 and keep one branch per Team. Shared branch visibility does not provide

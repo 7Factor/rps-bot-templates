@@ -28,8 +28,8 @@ class RubyTeamTemplateTests(unittest.TestCase):
     def test_collection_exposes_independent_ruby_template(self) -> None:
         template = load_collection(ROOT, self.catalog).select("ruby")
         self.assertEqual(template.language_environment, "ruby")
-        self.assertEqual(template.version, "ruby-team-template-v1")
-        self.assertEqual(template.release_tag, "ruby-template-v1")
+        self.assertEqual(template.version, "ruby-team-template-v2")
+        self.assertEqual(template.release_tag, "ruby-template-v2")
 
     @unittest.skipUnless(shutil.which("ruby") and subprocess.run([shutil.which("ruby"), "-e", "exit RUBY_VERSION.split('.').first.to_i >= 4 ? 0 : 1"]).returncode == 0, "Ruby 4 or newer is required")
     def test_native_entrypoint_builds_and_tests_seeded_behavior(self) -> None:

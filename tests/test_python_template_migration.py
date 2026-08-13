@@ -203,8 +203,8 @@ class PythonTemplateMigrationTests(unittest.TestCase):
             DESCRIPTOR["expected_source_digest"],
             "sha256:e2890c1587c6c98acb62121e5524d8f75a53925ed738f333f63beee81e60fd1a",
         )
-        self.assertEqual(DESCRIPTOR["version"], "python-team-template-v2")
-        self.assertEqual(DESCRIPTOR["release_tag"], "python-template-v2")
+        self.assertEqual(DESCRIPTOR["version"], "python-team-template-v3")
+        self.assertEqual(DESCRIPTOR["release_tag"], "python-template-v3")
         self.assertEqual(
             DESCRIPTOR["team_source_path"], "templates/python/team_source"
         )

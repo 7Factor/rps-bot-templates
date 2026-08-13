@@ -79,7 +79,7 @@ class TeamSubmissionTests(unittest.TestCase):
         self.assertEqual(resolved["language_id"], "python")
         self.assertEqual(resolved["language_environment"], "python")
         self.assertEqual(resolved["team_source_path"], "templates/python/team_source")
-        self.assertEqual(resolved["template_release"], "python-template-v2")
+        self.assertEqual(resolved["template_release"], "python-template-v3")
 
     def test_existing_selection_is_not_silently_replaced(self) -> None:
         first = self.run_command("python")

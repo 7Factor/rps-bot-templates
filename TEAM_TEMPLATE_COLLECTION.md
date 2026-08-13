@@ -75,7 +75,7 @@ TypeScript uses `--template typescript` and the independent
 C# uses `--template csharp` and the independent `csharp-template-v2` release
 tag.
 Rust uses `--template rust` and the independent `rust-template-v1` release tag.
-Ruby uses `--template ruby` and the independent `ruby-template-v1` release tag.
+Ruby uses `--template ruby` and the independent `ruby-template-v2` release tag.
 Clojure uses `--template clojure` and the independent `clojure-template-v1` release tag.
 JavaScript uses `--template javascript` and the independent
 `javascript-template-v1` release tag.
@@ -104,7 +104,7 @@ Brainf-ck uses `--template brainf-ck` and the independent
 ## Migration from the singular shape
 
 The Python Team Template moved to `templates/python/` and was replaced by
-`python-team-template-v2` / `python-template-v2`. The former root-level
+`python-team-template-v3` / `python-template-v3`. The former root-level
 `team-template.json` and `team_source/`, the root participant guide, the
 `template-v1` Template Release path, and their no-selection fallback behavior were
 removed after the collection path passed Docker checks and complete Advisory

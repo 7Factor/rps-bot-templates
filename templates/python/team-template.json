@@ -5,8 +5,8 @@
   "team_source_path": "templates/python/team_source",
   "participant_guidance_path": "templates/python/TEAM_GUIDE.md",
   "build_and_test_entrypoint": "templates/python/build-and-test",
-  "version": "python-team-template-v2",
+  "version": "python-team-template-v3",
   "expected_source_digest": "sha256:e2890c1587c6c98acb62121e5524d8f75a53925ed738f333f63beee81e60fd1a",
-  "release_tag": "python-template-v2",
+  "release_tag": "python-template-v3",
   "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
 }

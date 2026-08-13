@@ -134,8 +134,8 @@ class TemplateCollectionTests(unittest.TestCase):
         self.assertEqual(
             template.build_and_test_entrypoint, Path("templates/python/build-and-test")
         )
-        self.assertEqual(template.version, "python-team-template-v2")
-        self.assertEqual(template.release_tag, "python-template-v2")
+        self.assertEqual(template.version, "python-team-template-v3")
+        self.assertEqual(template.release_tag, "python-template-v3")
         self.assertRegex(template.expected_source_digest, r"^sha256:[0-9a-f]{64}$")
 
     def test_rejects_duplicate_ids_missing_descriptors_and_unsafe_paths(self) -> None:

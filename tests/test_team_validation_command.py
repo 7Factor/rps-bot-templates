@@ -275,8 +275,8 @@ class TeamValidationCommandTests(unittest.TestCase):
         )
 
         for label in (
-            "Template Release: python-template-v2",
-            "Supported Team Template: python-team-template-v2",
+            "Template Release: python-template-v3",
+            "Supported Team Template: python-team-template-v3",
             "Team Source digest:",
             "Catalog:",
             "Core tool:",

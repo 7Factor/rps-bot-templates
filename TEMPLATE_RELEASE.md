@@ -22,9 +22,9 @@ git status --short
 For Python, the independently addressable Template Release is prepared with:
 
 ```text
-./release-team-template --template python manifest python-template-v2
-./release-team-template --template python create python-template-v2
-./release-team-template --template python verify python-template-v2
+./release-team-template --template python manifest python-template-v3
+./release-team-template --template python create python-template-v3
+./release-team-template --template python verify python-template-v3
 ```
 
 Creation verifies the content-addressed Runner bundle, exact clean Runner

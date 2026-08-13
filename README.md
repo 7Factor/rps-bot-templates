@@ -108,7 +108,7 @@ Replace `go` with `java` and use `java-template-v1` for the independent Java
 Template Release.
 Use `csharp` and `csharp-template-v2` for the independent C# Template Release.
 Use `rust` and `rust-template-v1` for the independent Rust Template Release.
-Use `ruby` and `ruby-template-v1` for the independent Ruby Template Release.
+Use `ruby` and `ruby-template-v2` for the independent Ruby Template Release.
 Use `clojure` and `clojure-template-v1` for the independent Clojure Template Release.
 Use `javascript` and `javascript-template-v1` for the independent JavaScript
 Template Release.
