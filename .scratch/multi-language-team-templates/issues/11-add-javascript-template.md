@@ -1,6 +1,6 @@
 # Add the JavaScript Team Template
 
-Status: ready-for-agent
+Status: resolved
 
 Blocked by: 04; rps-tournament multi-language-environments 10
 
@@ -34,3 +34,33 @@ compatibility behavior.
   Validation.
 - [ ] JavaScript can be selected, checked, and released without changing another
   Team Template's descriptor or release identity.
+
+## Answer
+
+Added `javascript-team-template-v1` as an independently selectable Team
+Template and published the immutable `javascript-template-v1` Template Release
+at commit `8ce524d515ac504ae45b2239960e6e2e99cebdb8`. Its controlled Team Source
+implements the common `chooseMove` contract, returns only legal moves, and has
+deterministic same-seed behavior tests without copying the Runner-owned Seed
+Adapter or its golden vectors.
+
+The JavaScript-owned `build-and-test` entrypoint syntax-checks the complete
+starter and runs the same tests in native and Docker modes. The exact pinned
+Node.js 24.19.0 Linux/ARM64 toolchain ran that entrypoint with networking
+disabled. JavaScript remains standard-library-only, with package manifests,
+lock files, registry dependencies, and `node_modules` outside Team Source.
+
+The repository now consumes `catalog-v16` at Runner commit
+`87296899a88f1e1a091fc08454be45a7354a73cb`, Catalog identity
+`rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97`,
+and offline bundle identity
+`rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9`.
+Participant-local Advisory Validation passed the exact JavaScript conformance
+suite and Practice Match on Linux/ARM64. The Template Release records Team
+Source digest
+`sha256:86ab51869d8ed3ef8b33b6dfbb6092f1e89953f6c2b01d0a9149940955a179aa`
+and Team Template digest
+`sha256:70e52808df28430fec2ae69961077bce20e27308f36f5b3edd41c8e8300211d7`.
+The full repository suite passed 125 tests with 12 expected integration skips;
+the Docker build/test and Advisory Validation integration tests passed when
+enabled.
