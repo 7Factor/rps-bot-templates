@@ -7,7 +7,7 @@ export function chooseMove(
   rng: { nextInt(upperExclusive: number): number }
 ): string {
   var myLastMove = getLastMove(myHistory);
-  var oppLastMove = getLastMove(myHistory); 
+  var oppLastMove = getLastMove(opponentHistory);
 
   var didTie3Times = lastFiveMatch(opponentHistory, myHistory);
 
@@ -19,15 +19,12 @@ export function chooseMove(
   if(tie(oppLastMove, myLastMove)){
     return moves[myLastMove];
   }
- 
-  if(opponentHistory.length >= 2){
+
+  if(opponentHistory.length >= 3){
     var loseCount = 0;
     for (let i: number = 0; i < 3; i++) {
-      
-      if(lost(moves.indexOf(opponentHistory[opponentHistory.length - i]), moves.indexOf(myHistory[myHistory.length - i]))){
+      if(lost(moves.indexOf(opponentHistory[opponentHistory.length - 1 - i]), moves.indexOf(myHistory[myHistory.length - 1 - i]))){
         loseCount++
-        opponentHistory = opponentHistory.substring(0, opponentHistory.length - 1);
-        myHistory = myHistory.substring(0, myHistory.length - 1);
       }
     }
     if(loseCount == 3){
@@ -63,7 +60,7 @@ function lastFiveMatch(str1: string, str2: string): boolean {
 }
 
 function getLastMove(movesList: string) {
-  return movesList.indexOf(movesList[movesList.length])
+  return moves.indexOf(movesList[movesList.length - 1])
 }
 
 function getMoveIndex(move: string){
@@ -75,5 +72,5 @@ function tie(opponentLastMove: number, myLastMove: number) {
 }
 
 function lost(opponentLastMove: number, myLastMove: number) {
-  return opponentLastMove = ((myLastMove + 1) % 3);
+  return opponentLastMove == ((myLastMove + 1) % 3);
 }
