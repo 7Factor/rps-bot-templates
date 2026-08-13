@@ -112,7 +112,13 @@ find "$ROOT/$team_source" -maxdepth 1 -type f -print | LC_ALL=C sort | while IFS
 done
 printf 'Guide: %s\n\n' "$guide"
 printf 'Next steps:\n'
-printf '  git add team-submission.json\n'
-printf '  git commit -m "Select %s Team Template"\n' "$language"
-printf '  ./check-team-template --template %s --mode docker\n' "$language"
-printf '  ./validate-team --template %s\n' "$language"
+printf '  1. Edit the Team Source file listed above.\n'
+if [[ -x "$ROOT/_START_HERE/test-team-template.sh" ]]; then
+  printf '  2. Run ./_START_HERE/test-team-template.sh\n'
+  printf '  3. Read ./_START_HERE/README.md for commit and push instructions.\n'
+else
+  printf '  2. Run ./check-team-template --template %s --mode docker\n' "$language"
+  printf '  3. Run ./validate-team --allow-pull\n'
+  printf '  4. Commit team-submission.json and your Team Source, then run:\n'
+  printf '     git push -u origin %s\n' "$branch"
+fi
