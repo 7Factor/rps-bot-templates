@@ -80,7 +80,7 @@
           "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
           "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
           "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
-          "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+          "ruby.wrapper": "ruby-wrapper-v2@sha256:7ff95f3e6951ec1a699d60fea92783d69f31747aed9867b4f2c5296e571f6826",
           "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
           "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
           "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
@@ -104,7 +104,7 @@
           "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
           "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
         },
-        "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+        "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
         "path": "language_environments/catalog-v1/catalog.json",
         "version": "rps-language-environment-catalog-v1"
       },
@@ -197,7 +197,7 @@
             "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
             "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
             "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
-            "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+            "ruby.wrapper": "ruby-wrapper-v2@sha256:7ff95f3e6951ec1a699d60fea92783d69f31747aed9867b4f2c5296e571f6826",
             "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
             "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
             "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
@@ -221,15 +221,15 @@
             "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
             "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
           },
-          "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+          "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
           "path": "language_environments/catalog-v1/catalog.json"
         },
         "format_version": "rps-catalog-compatibility-v1",
         "offline_bundle": {
-          "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+          "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
         },
         "runner": {
-          "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+          "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
           "package_version": "0.1.0"
         }
       },
@@ -238,7 +238,7 @@
         "version": "docker-execution-v1"
       },
       "offline_bundle": {
-        "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+        "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
       },
       "platform_runtimes": {
         "csharp": {
@@ -496,10 +496,10 @@
       },
       "release_format_version": "catalog-release-v1",
       "repository": {
-        "tag": "catalog-v13"
+        "tag": "catalog-v14"
       },
       "runner": {
-        "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+        "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
         "package_version": "0.1.0"
       }
     },
@@ -588,7 +588,7 @@
         "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
         "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
         "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
-        "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+        "ruby.wrapper": "ruby-wrapper-v2@sha256:7ff95f3e6951ec1a699d60fea92783d69f31747aed9867b4f2c5296e571f6826",
         "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
         "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
         "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
@@ -612,15 +612,15 @@
         "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
         "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
       },
-      "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+      "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
       "path": "language_environments/catalog-v1/catalog.json"
     },
     "format_version": "rps-catalog-compatibility-v1",
     "offline_bundle": {
-      "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+      "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
     },
     "runner": {
-      "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+      "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
       "package_version": "0.1.0"
     }
   },
