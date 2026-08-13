@@ -106,6 +106,37 @@ class JavaScriptTeamTemplateTests(unittest.TestCase):
             "Team Template check passed: javascript (docker)", completed.stdout
         )
 
+    @unittest.skipUnless(
+        os.environ.get("RPS_RUN_DOCKER_INTEGRATION") == "1",
+        "set RPS_RUN_DOCKER_INTEGRATION=1 to run Advisory Validation",
+    )
+    def test_catalog_v16_passes_participant_local_advisory_validation(self) -> None:
+        environment = os.environ.copy()
+        environment["RPS_CORE_PATH"] = str(self.core)
+        completed = subprocess.run(
+            [str(PROJECT_ROOT / "validate-team"), "--template", "javascript"],
+            cwd=PROJECT_ROOT,
+            env=environment,
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertIn("Participant-local Advisory Validation passed", completed.stdout)
+        self.assertIn(
+            "rps-language-environment-catalog-v1@sha256:"
+            "c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
+            completed.stdout,
+        )
+        self.assertIn(
+            "javascript-artifact-conformance-v1@sha256:"
+            "7c8de8485a6d643f0e93112f3bd319df03a6d93cd4472da7a9bfc3652941c91c",
+            completed.stdout,
+        )
+        self.assertIn("Practice Match: passed", completed.stdout)
+        self.assertIn("Advisory Validation: passed", completed.stdout)
+
     def test_guidance_documents_boundaries_and_validation_authority(self) -> None:
         guidance = (PROJECT_ROOT / "templates/javascript/TEAM_GUIDE.md").read_text()
 
@@ -118,24 +149,24 @@ class JavaScriptTeamTemplateTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, guidance)
 
-    def test_template_seed_vectors_match_the_runner_owned_adapter(self) -> None:
-        test_source = (
-            PROJECT_ROOT / "templates/javascript/tests/strategy.test.js"
-        ).read_text()
+    def test_pinned_catalog_owns_the_javascript_seed_adapter(self) -> None:
         environment = json.loads(self.catalog.read_text())["environments"][
             "javascript"
         ]
         conformance_path = self.catalog.parent / environment["assets"][
             "conformance"
         ]["path"]
-        vectors = json.loads(conformance_path.read_text())["seed_adapter"][
-            "golden_vectors"
-        ]
+        seed_adapter = json.loads(conformance_path.read_text())["seed_adapter"]
 
-        for vector in vectors:
-            self.assertIn(vector["seed"], test_source)
-            for value in vector["first_uint64"]:
-                self.assertIn(value, test_source)
+        self.assertEqual(
+            seed_adapter["version"], "javascript-splitmix64-seed-adapter-v1"
+        )
+        self.assertFalse(seed_adapter["system_randomness"])
+        self.assertEqual(len(seed_adapter["golden_vectors"]), 4)
+        test_source = (
+            PROJECT_ROOT / "templates/javascript/tests/strategy.test.js"
+        ).read_text()
+        self.assertNotIn("first_uint64", test_source)
 
 
 if __name__ == "__main__":
