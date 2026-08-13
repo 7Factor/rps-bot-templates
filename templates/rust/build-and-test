@@ -1,0 +1,44 @@
+#!/bin/sh
+set -eu
+
+if ! command -v rustc >/dev/null 2>&1; then
+  printf '%s\n' \
+    'Native toolchain failure: Rust 1.85 or newer is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+rust_version=$(rustc --version 2>/dev/null || true)
+version_numbers=$(printf '%s\n' "$rust_version" | sed -n 's/^rustc \([0-9][0-9]*\)\.\([0-9][0-9]*\).*/\1 \2/p')
+set -- $version_numbers
+if [ "$#" -ne 2 ] || [ "$1" -lt 1 ] || { [ "$1" -eq 1 ] && [ "$2" -lt 85 ]; }; then
+  printf '%s\n' \
+    'Native toolchain failure: Rust 1.85 or newer is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+if [ -n "${RPS_DEPENDENCY_DEFINITION:-}" ]; then
+  if [ ! -f "$RPS_DEPENDENCY_DEFINITION" ]; then
+    printf '%s\n' 'Rust dependency policy failure: the Catalog dependency definition is unavailable.' >&2
+    exit 2
+  fi
+  if sed '/^[[:space:]]*#/d; /^[[:space:]]*$/d' "$RPS_DEPENDENCY_DEFINITION" | grep . >/dev/null; then
+    printf '%s\n' 'Rust dependency policy failure: external crates are not supported.' >&2
+    exit 2
+  fi
+fi
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+temporary=$(mktemp -d "${TMPDIR:-/tmp}/rps-rust-template.XXXXXX")
+trap 'rm -rf "$temporary"' EXIT HUP INT TERM
+
+mkdir -p "$temporary/project/team_source" "$temporary/project/tests"
+cp -R "$template_root/team_source/." "$temporary/project/team_source/"
+cp "$template_root/tests/strategy_tests.rs" "$temporary/project/tests/"
+
+rustc --edition=2024 --test \
+  "$temporary/project/tests/strategy_tests.rs" \
+  -o "$temporary/strategy-tests"
+printf '%s\n' 'Rust starter build passed'
+
+"$temporary/strategy-tests"
+printf '%s\n' 'Rust starter tests passed'

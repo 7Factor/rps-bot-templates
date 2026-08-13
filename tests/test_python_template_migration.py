@@ -74,11 +74,14 @@ class PythonTemplateMigrationTests(unittest.TestCase):
         )
 
     def test_root_command_reports_available_language_ids_for_a_bad_selection(self) -> None:
-        completed = self.run_command("--template", "rust", "--mode", "native")
+        completed = self.run_command("--template", "swift", "--mode", "native")
 
         self.assertEqual(completed.returncode, 2)
-        self.assertIn("unknown Team Template 'rust'", completed.stderr)
-        self.assertIn("available: go, java, python, typescript", completed.stderr)
+        self.assertIn("unknown Team Template 'swift'", completed.stderr)
+        self.assertIn(
+            "available: brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
+            completed.stderr,
+        )
 
     def test_docker_mode_runs_the_identical_entrypoint_in_the_pinned_toolchain(self) -> None:
         self.write_executable(
@@ -200,8 +203,8 @@ class PythonTemplateMigrationTests(unittest.TestCase):
             DESCRIPTOR["expected_source_digest"],
             "sha256:e2890c1587c6c98acb62121e5524d8f75a53925ed738f333f63beee81e60fd1a",
         )
-        self.assertEqual(DESCRIPTOR["version"], "python-team-template-v2")
-        self.assertEqual(DESCRIPTOR["release_tag"], "python-template-v2")
+        self.assertEqual(DESCRIPTOR["version"], "python-team-template-v3")
+        self.assertEqual(DESCRIPTOR["release_tag"], "python-template-v3")
         self.assertEqual(
             DESCRIPTOR["team_source_path"], "templates/python/team_source"
         )

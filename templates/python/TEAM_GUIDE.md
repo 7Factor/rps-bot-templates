@@ -6,6 +6,7 @@ Environment pinned by `core-tool.lock.json`.
 
 ## Your editing boundary
 
+Except for the fixed root `team-submission.json` declaration,
 `templates/python/team_source/` is the only Team-editable directory for this
 template. Start with
 [`team_source/strategy.py`](team_source/strategy.py). Keep all Python modules
@@ -66,7 +67,7 @@ After the starter check passes, run the complete container contract against the
 matching Python Language Environment from the exact pinned Catalog Release:
 
 ```sh
-./validate-team --template python
+./validate-team --allow-pull
 ```
 
 This freezes Team Source, builds a disposable confidence image, and exercises
@@ -84,7 +85,7 @@ Candidate. A practice Match proves compatibility, but its score or winner is
 not an acceptance condition. GitHub results remain advisory and insufficient
 for official Tournament entry.
 
-Create Team branches from the dereferenced `python-template-v2^{}` annotated
+Create Team branches from the dereferenced `python-template-v3^{}` annotated
 Template Release. A published release is immutable; compatibility updates use a
 new Python Template Release identity. Use the assigned `team/<team-slug>` name
 and keep one branch per Team. Shared branch visibility does not provide

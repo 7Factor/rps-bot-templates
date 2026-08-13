@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
@@ -12,6 +13,19 @@ from template_collection import load_collection
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def has_go_1_26() -> bool:
+    go = shutil.which("go")
+    if go is None:
+        return False
+    completed = subprocess.run([go, "env", "GOVERSION"], capture_output=True, text=True)
+    if completed.returncode != 0:
+        return False
+    match = re.fullmatch(r"go(\d+)\.(\d+).*", completed.stdout.strip())
+    if not match:
+        return False
+    return (int(match.group(1)), int(match.group(2))) >= (1, 26)
 
 
 class GoTeamTemplateTests(unittest.TestCase):
@@ -43,6 +57,7 @@ class GoTeamTemplateTests(unittest.TestCase):
         self.assertEqual(template.team_source_path.as_posix(), "templates/go/team_source")
         self.assertNotEqual(template.release_tag, collection.select("python").release_tag)
 
+    @unittest.skipUnless(has_go_1_26(), "Go 1.26 or newer is required for native mode")
     def test_native_entrypoint_builds_and_tests_seeded_behavior(self) -> None:
         completed = subprocess.run(
             [str(PROJECT_ROOT / "templates/go/build-and-test")],
@@ -55,6 +70,7 @@ class GoTeamTemplateTests(unittest.TestCase):
         self.assertIn("Go starter build passed", completed.stdout)
         self.assertIn("Go starter tests passed", completed.stdout)
 
+    @unittest.skipUnless(has_go_1_26(), "Go 1.26 or newer is required for native mode")
     def test_native_entrypoint_builds_the_complete_valid_team_source(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             template = Path(directory) / "go"

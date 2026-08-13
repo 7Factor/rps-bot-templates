@@ -130,13 +130,13 @@ class TemplateReleaseTests(unittest.TestCase):
         )
 
     def test_manifest_records_every_template_release_identity(self) -> None:
-        completed = self.run_command("manifest", "python-template-v2")
+        completed = self.run_command("manifest", "python-template-v3")
 
         self.assertEqual(completed.returncode, 0, completed.stderr)
         manifest = json.loads(completed.stdout)
         descriptor = json.loads(DESCRIPTOR.read_text())
         self.assertEqual(manifest["release_format_version"], "template-release-v1")
-        self.assertEqual(manifest["template_repository"]["tag"], "python-template-v2")
+        self.assertEqual(manifest["template_repository"]["tag"], "python-template-v3")
         self.assertRegex(
             manifest["template_repository"]["commit"], r"^[0-9a-f]{40}$"
         )
@@ -176,7 +176,7 @@ class TemplateReleaseTests(unittest.TestCase):
 
     def test_selected_template_manifest_derives_collection_identity(self) -> None:
         completed = self.run_command(
-            "--template", "python", "manifest", "python-template-v2"
+            "--template", "python", "manifest", "python-template-v3"
         )
 
         self.assertEqual(completed.returncode, 0, completed.stderr)
@@ -216,24 +216,24 @@ class TemplateReleaseTests(unittest.TestCase):
     def test_create_and_verify_use_the_expected_annotated_tag(self) -> None:
         repository = self.make_release_repository()
 
-        created = self.run_repository_command(repository, "create", "python-template-v2")
+        created = self.run_repository_command(repository, "create", "python-template-v3")
         self.assertEqual(created.returncode, 0, created.stderr)
         manifest = json.loads(created.stdout)
         self.assertEqual(
-            self.git(repository, "cat-file", "-t", "python-template-v2"), "tag"
+            self.git(repository, "cat-file", "-t", "python-template-v3"), "tag"
         )
         self.assertEqual(
-            self.git(repository, "rev-parse", "python-template-v2^{}"),
+            self.git(repository, "rev-parse", "python-template-v3^{}"),
             manifest["template_repository"]["commit"],
         )
 
-        verified = self.run_repository_command(repository, "verify", "python-template-v2")
+        verified = self.run_repository_command(repository, "verify", "python-template-v3")
         self.assertEqual(verified.returncode, 0, verified.stderr)
         self.assertEqual(json.loads(verified.stdout), manifest)
 
         self.git(repository, "commit", "--quiet", "--allow-empty", "-m", "next")
         wrong_target = self.run_repository_command(
-            repository, "verify", "python-template-v2"
+            repository, "verify", "python-template-v3"
         )
         self.assertNotEqual(wrong_target.returncode, 0)
         self.assertIn("wrong Template repository commit", wrong_target.stderr)
@@ -242,17 +242,32 @@ class TemplateReleaseTests(unittest.TestCase):
         repository = self.make_release_repository()
         (repository / "untracked.txt").write_text("dirty\n")
 
-        created = self.run_repository_command(repository, "create", "python-template-v2")
+        created = self.run_repository_command(repository, "create", "python-template-v3")
         self.assertNotEqual(created.returncode, 0)
         self.assertIn("repository must be clean", created.stderr)
 
         (repository / "untracked.txt").unlink()
-        created = self.run_repository_command(repository, "create", "python-template-v2")
+        created = self.run_repository_command(repository, "create", "python-template-v3")
         self.assertEqual(created.returncode, 0, created.stderr)
         (repository / "untracked.txt").write_text("dirty\n")
-        verified = self.run_repository_command(repository, "verify", "python-template-v2")
+        verified = self.run_repository_command(repository, "verify", "python-template-v3")
         self.assertNotEqual(verified.returncode, 0)
         self.assertIn("repository must be clean", verified.stderr)
+
+    def test_tag_verification_cleans_the_generated_template_inventory(self) -> None:
+        workflow = WORKFLOW.read_text()
+        contract = workflow.split("Verify the Template Release contract", 1)[1]
+        cleanup = "rm -f .team-templates.tsv"
+
+        self.assertIn(cleanup, contract)
+        self.assertLess(
+            contract.index("done < .team-templates.tsv"),
+            contract.index(cleanup),
+        )
+        self.assertLess(
+            contract.index(cleanup),
+            contract.index("python3 -m unittest discover -s tests -v"),
+        )
 
     def test_manifest_rejects_mutable_actions_and_a_mismatched_catalog_lock(self) -> None:
         action_repository = self.make_release_repository("-action")
@@ -266,7 +281,7 @@ class TemplateReleaseTests(unittest.TestCase):
         self.commit_all(action_repository, "use mutable action")
 
         mutable = self.run_repository_command(
-            action_repository, "manifest", "python-template-v2"
+            action_repository, "manifest", "python-template-v3"
         )
         self.assertNotEqual(mutable.returncode, 0)
         self.assertIn("mutable action ref", mutable.stderr)
@@ -281,30 +296,30 @@ class TemplateReleaseTests(unittest.TestCase):
         self.commit_all(lock_repository, "mismatch catalog lock")
 
         mismatched = self.run_repository_command(
-            lock_repository, "manifest", "python-template-v2"
+            lock_repository, "manifest", "python-template-v3"
         )
         self.assertNotEqual(mismatched.returncode, 0)
         self.assertIn("catalog identity mismatch", mismatched.stderr)
 
     def test_verify_rejects_a_changed_template_and_incorrect_tag(self) -> None:
         repository = self.make_release_repository()
-        created = self.run_repository_command(repository, "create", "python-template-v2")
+        created = self.run_repository_command(repository, "create", "python-template-v3")
         self.assertEqual(created.returncode, 0, created.stderr)
         annotation = json.dumps(json.loads(created.stdout), indent=2, sort_keys=True)
 
         strategy = repository / "templates/python/team_source/strategy.py"
         strategy.write_text(strategy.read_text() + "\n# changed starter\n")
         self.commit_all(repository, "change Team Template")
-        self.retag_with_annotation(repository, "python-template-v2", annotation)
+        self.retag_with_annotation(repository, "python-template-v3", annotation)
 
-        changed = self.run_repository_command(repository, "verify", "python-template-v2")
+        changed = self.run_repository_command(repository, "verify", "python-template-v3")
         self.assertNotEqual(changed.returncode, 0)
         self.assertIn("Team Template changed", changed.stderr)
 
-        self.git(repository, "tag", "--delete", "python-template-v2")
-        self.git(repository, "tag", "--no-sign", "python-template-v2")
+        self.git(repository, "tag", "--delete", "python-template-v3")
+        self.git(repository, "tag", "--no-sign", "python-template-v3")
         lightweight = self.run_repository_command(
-            repository, "verify", "python-template-v2"
+            repository, "verify", "python-template-v3"
         )
         self.assertNotEqual(lightweight.returncode, 0)
         self.assertIn("must be an annotated tag", lightweight.stderr)

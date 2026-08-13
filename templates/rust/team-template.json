@@ -1,0 +1,12 @@
+{
+  "format_version": "rps-team-template-descriptor-v1",
+  "language_id": "rust",
+  "language_environment": "rust",
+  "team_source_path": "templates/rust/team_source",
+  "participant_guidance_path": "templates/rust/TEAM_GUIDE.md",
+  "build_and_test_entrypoint": "templates/rust/build-and-test",
+  "version": "rust-team-template-v1",
+  "expected_source_digest": "sha256:f55486d39ac9dca3333b10f1667099e1488d5b937d5baa0e3786f6ca19b11884",
+  "release_tag": "rust-template-v1",
+  "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
+}

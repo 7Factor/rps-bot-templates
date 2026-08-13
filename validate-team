@@ -14,6 +14,7 @@ import tempfile
 from typing import Mapping, Sequence
 
 from template_collection import CollectionError, load_collection
+from team_submission import TeamSubmissionError, resolve_team_submission
 
 
 ROOT = Path(__file__).resolve().parent
@@ -132,6 +133,41 @@ def identity(identities: Mapping[str, object], name: str) -> str:
     return value
 
 
+def acquire_pinned_images(
+    core: Path, catalog_path: Path, environment_name: str, platform: str
+) -> None:
+    sys.path.insert(0, str(core))
+    from rps_runner.host_readiness import runtime_references
+    from rps_runner.language_environment import load_catalog
+
+    catalog = load_catalog(catalog_path)
+    for reference in runtime_references(catalog, platform, environment_name):
+        inspected = run(["docker", "image", "inspect", reference])
+        if inspected.returncode == 0:
+            continue
+        diagnostic = (inspected.stderr or inspected.stdout).lower()
+        if "no such image" not in diagnostic and "no such object" not in diagnostic:
+            raise ValueError(
+                "could not inspect pinned image "
+                + reference
+                + ": "
+                + diagnostic.strip()
+            )
+        pulled = run(
+            ["docker", "pull", "--platform", platform, reference], timeout=300
+        )
+        if pulled.returncode != 0:
+            raise ValueError(
+                "could not pull pinned image "
+                + reference
+                + ": "
+                + (pulled.stderr or pulled.stdout).strip()
+            )
+        verified = run(["docker", "image", "inspect", reference])
+        if verified.returncode != 0:
+            raise ValueError("pinned image remained unavailable after pull: " + reference)
+
+
 def make_writable(root: Path) -> None:
     if not root.exists():
         return
@@ -155,6 +191,11 @@ def main() -> int:
         metavar="LANGUAGE_ID",
         help="select a Team Template from team-templates.json",
     )
+    parser.add_argument(
+        "--allow-pull",
+        action="store_true",
+        help="pull missing digest-pinned language images before networkless validation",
+    )
     arguments = parser.parse_args()
     try:
         lock = read_object(ROOT / "core-tool.lock.json")
@@ -175,8 +216,9 @@ def main() -> int:
         return fail("Pinned core tool", materialized.stderr or materialized.stdout)
     catalog = core / str(lock["catalog"]["path"])
     try:
-        selected = load_collection(ROOT, catalog).select(arguments.template)
-    except CollectionError as error:
+        collection = load_collection(ROOT, catalog)
+        selected = resolve_team_submission(ROOT, collection, arguments.template)
+    except (CollectionError, TeamSubmissionError) as error:
         return fail("Team Template selection", str(error))
     template_release = selected.release_tag
     template_version = selected.version
@@ -200,6 +242,11 @@ def main() -> int:
             host.stderr or "the Docker server did not report its native platform",
             github_hint=True,
         )
+    if arguments.allow_pull:
+        try:
+            acquire_pinned_images(core, catalog, language_environment, platform)
+        except (ImportError, OSError, ValueError, subprocess.TimeoutExpired) as error:
+            return fail("Pinned image acquisition", str(error))
 
     work = Path(tempfile.mkdtemp(prefix="rps-team-validation-"))
     bundle = work / "source-bundle"

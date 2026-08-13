@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""Record or inspect the Team Template selected by this Team branch."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+from template_collection import CollectionError, load_collection
+from team_submission import (
+    FILENAME,
+    TeamSubmissionError,
+    load_team_submission,
+    resolved_manifest,
+    write_team_submission,
+)
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Record the Team Template selected by this Team branch"
+    )
+    parser.add_argument("language_id", nargs="?", metavar="LANGUAGE_ID")
+    parser.add_argument(
+        "--show",
+        action="store_true",
+        help="resolve the committed selection without changing it",
+    )
+    parser.add_argument(
+        "--declaration",
+        type=Path,
+        help="read a preserved declaration while using this verified checkout",
+    )
+    arguments = parser.parse_args()
+    if arguments.show == (arguments.language_id is not None):
+        parser.error("provide either LANGUAGE_ID or --show")
+    if arguments.declaration is not None and not arguments.show:
+        parser.error("--declaration requires --show")
+
+    try:
+        lock = json.loads((ROOT / "core-tool.lock.json").read_text())
+        catalog_relative = lock["catalog"]["path"]
+        if not isinstance(catalog_relative, str):
+            raise ValueError("catalog path is not a string")
+        configured_core = os.environ.get("RPS_CORE_PATH")
+        core = (
+            Path(configured_core).resolve()
+            if configured_core
+            else ROOT / ".core" / "rps-tournament"
+        )
+        materialized = subprocess.run(
+            [str(ROOT / "materialize-core-tool"), str(core)],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        if materialized.returncode != 0:
+            detail = materialized.stderr.strip() or materialized.stdout.strip()
+            raise TeamSubmissionError("pinned core tool is unavailable: " + detail)
+        collection = load_collection(ROOT, core / catalog_relative)
+        if arguments.show:
+            declaration = (
+                arguments.declaration.resolve()
+                if arguments.declaration is not None
+                else ROOT / FILENAME
+            )
+            language_id = load_team_submission(declaration)
+            selected = collection.select(language_id)
+        else:
+            selected = collection.select(arguments.language_id)
+            write_team_submission(ROOT / FILENAME, selected.language_id)
+        print(json.dumps(resolved_manifest(selected), indent=2, sort_keys=True))
+        return 0
+    except (
+        CollectionError,
+        TeamSubmissionError,
+        OSError,
+        ValueError,
+        KeyError,
+        json.JSONDecodeError,
+    ) as error:
+        print("select-team-template: " + str(error), file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

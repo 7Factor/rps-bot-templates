@@ -19,7 +19,14 @@ Environment. Paths are repository-relative POSIX paths.
 The [Python descriptor](templates/python/team-template.json) and
 [Go descriptor](templates/go/team-template.json), and
 [Java descriptor](templates/java/team-template.json), and
-[TypeScript descriptor](templates/typescript/team-template.json) are independent instances
+[TypeScript descriptor](templates/typescript/team-template.json), and
+[C# descriptor](templates/csharp/team-template.json), and
+[Rust descriptor](templates/rust/team-template.json), and
+[Ruby descriptor](templates/ruby/team-template.json), and
+[Clojure descriptor](templates/clojure/team-template.json), and
+[JavaScript descriptor](templates/javascript/team-template.json), and
+[Kotlin descriptor](templates/kotlin/team-template.json), and
+[Brainf-ck descriptor](templates/brainf-ck/team-template.json) are independent instances
 of this layout.
 
 Collection loading rejects duplicate language IDs, missing descriptors or bound
@@ -42,6 +49,10 @@ Use the stable language ID at every shared entrypoint:
 ./release-team-template --template <language-id> verify <release-tag>
 ```
 
+Those explicit selectors are for collection maintenance. A Team branch records
+its selector once with `./select-team-template <language-id>` and subsequently
+runs `./validate-team`; validation and CI read `team-submission.json`.
+
 Docker and native checks execute the identical language-owned `build-and-test`
 file. Docker selects its immutable toolchain from the descriptor's matching
 Language Environment in the exact pinned Catalog Release. Advisory Validation
@@ -61,6 +72,17 @@ For the Java Template Release, use the same collection boundary with
 `--template java` and the independent `java-template-v1` release tag.
 TypeScript uses `--template typescript` and the independent
 `typescript-template-v1` release tag.
+C# uses `--template csharp` and the independent `csharp-template-v2` release
+tag.
+Rust uses `--template rust` and the independent `rust-template-v1` release tag.
+Ruby uses `--template ruby` and the independent `ruby-template-v2` release tag.
+Clojure uses `--template clojure` and the independent `clojure-template-v1` release tag.
+JavaScript uses `--template javascript` and the independent
+`javascript-template-v1` release tag.
+Kotlin uses `--template kotlin` and the independent `kotlin-template-v1`
+release tag.
+Brainf-ck uses `--template brainf-ck` and the independent
+`brainf-ck-template-v3` release tag.
 
 ## Checklist for adding a Team Template
 
@@ -82,7 +104,7 @@ TypeScript uses `--template typescript` and the independent
 ## Migration from the singular shape
 
 The Python Team Template moved to `templates/python/` and was replaced by
-`python-team-template-v2` / `python-template-v2`. The former root-level
+`python-team-template-v3` / `python-template-v3`. The former root-level
 `team-template.json` and `team_source/`, the root participant guide, the
 `template-v1` Template Release path, and their no-selection fallback behavior were
 removed after the collection path passed Docker checks and complete Advisory

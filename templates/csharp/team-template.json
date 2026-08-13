@@ -1,0 +1,12 @@
+{
+  "format_version": "rps-team-template-descriptor-v1",
+  "language_id": "csharp",
+  "language_environment": "csharp",
+  "team_source_path": "templates/csharp/team_source",
+  "participant_guidance_path": "templates/csharp/TEAM_GUIDE.md",
+  "build_and_test_entrypoint": "templates/csharp/build-and-test",
+  "version": "csharp-team-template-v2",
+  "expected_source_digest": "sha256:4efe20ec140665f117d87c19d04e35661d5a8fbaf46ed31cda63ecf521ab68ce",
+  "release_tag": "csharp-template-v2",
+  "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
+}

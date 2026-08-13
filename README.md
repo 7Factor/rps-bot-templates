@@ -15,17 +15,43 @@ exact Catalog Release; it does not redefine those assets.
 ## Team branches
 
 A fresh Team branch starts from one exact annotated Template Release of a
-selected Team Template. The collection includes independently released
+selected Team Template. The branch records that selection in the committed
+`team-submission.json`; Advisory Validation and organizer handoff resolve the
+language from that declaration rather than asking the Team or inferring it from
+file names. Create the declaration once with:
+
+```sh
+./select-team-template <language-id>
+git add team-submission.json
+git commit -m "Select Team Template"
+```
+
+The collection includes independently released
 [Python](templates/python/team_source/strategy.py) and
 [Go](templates/go/team_source/strategy.go), and
-[Java](templates/java/team_source/Strategy.java), and
-[TypeScript](templates/typescript/team_source/strategy.ts) starters.
-Teams must change only the Team Source path named by their selected descriptor;
+[Java](templates/java/team_source/Strategy.java),
+[TypeScript](templates/typescript/team_source/strategy.ts), and
+[C#](templates/csharp/team_source/Strategy.cs), and
+[Rust](templates/rust/team_source/strategy.rs), and
+[Ruby](templates/ruby/team_source/strategy.rb), and
+[Clojure](templates/clojure/team_source/strategy.clj), and
+[JavaScript](templates/javascript/team_source/strategy.js), and
+[Kotlin](templates/kotlin/team_source/Strategy.kt), and
+[Brainf-ck](templates/brainf-ck/team_source/strategy.bf) starters.
+Teams may add `team-submission.json` and change only the Team Source path named
+by its resolved descriptor;
 the catalog and its build, wrapper, workflow, and protocol assets remain
 organizer-owned. See the [Python Team guide](templates/python/TEAM_GUIDE.md),
-[Go Team guide](templates/go/TEAM_GUIDE.md), or
-[Java Team guide](templates/java/TEAM_GUIDE.md), or
-[TypeScript Team guide](templates/typescript/TEAM_GUIDE.md)
+[Go Team guide](templates/go/TEAM_GUIDE.md),
+[Java Team guide](templates/java/TEAM_GUIDE.md),
+[TypeScript Team guide](templates/typescript/TEAM_GUIDE.md),
+[C# Team guide](templates/csharp/TEAM_GUIDE.md),
+[Rust Team guide](templates/rust/TEAM_GUIDE.md),
+[Ruby Team guide](templates/ruby/TEAM_GUIDE.md), and
+[Clojure Team guide](templates/clojure/TEAM_GUIDE.md),
+[JavaScript Team guide](templates/javascript/TEAM_GUIDE.md), and
+[Kotlin Team guide](templates/kotlin/TEAM_GUIDE.md), and
+[Brainf-ck Team guide](templates/brainf-ck/TEAM_GUIDE.md)
 for the strategy contract, approved file types and limits, branch convention,
 and shared-repository honor policy.
 
@@ -33,10 +59,16 @@ Teams with a running Docker engine can exercise the entire Advisory Validation
 path with one command:
 
 ```sh
-./validate-team --template python
+./validate-team --allow-pull
 ```
 
-See the [Python Team guide](templates/python/TEAM_GUIDE.md#validate-your-team-source) for the pinned-core
+`--allow-pull` lets Docker acquire only missing toolchain and runtime images
+from the exact digest-pinned Catalog Release. Image acquisition happens before
+the build; Team Source builds and Bot Artifact execution remain networkless.
+
+See the
+[Python Team guide](templates/python/TEAM_GUIDE.md#validate-your-team-source)
+for the pinned-core
 checkout prerequisite, result identities, diagnostic categories, and the firm
 boundary between Advisory Validation and official Tournament entry.
 
@@ -68,11 +100,20 @@ and optional native check execute the same language-owned script. For Go:
 ```sh
 ./check-team-template --template go --mode docker
 ./check-team-template --template go --mode native
-./validate-team --template go
+./validate-team --template go --allow-pull
 ./release-team-template --template go manifest go-template-v1
 ```
 
 Replace `go` with `java` and use `java-template-v1` for the independent Java
+Template Release.
+Use `csharp` and `csharp-template-v2` for the independent C# Template Release.
+Use `rust` and `rust-template-v1` for the independent Rust Template Release.
+Use `ruby` and `ruby-template-v2` for the independent Ruby Template Release.
+Use `clojure` and `clojure-template-v1` for the independent Clojure Template Release.
+Use `javascript` and `javascript-template-v1` for the independent JavaScript
+Template Release.
+Use `kotlin` and `kotlin-template-v1` for the independent Kotlin Template Release.
+Use `brainf-ck` and `brainf-ck-template-v3` for the independent Brainf-ck
 Template Release.
 
 ## Immutable compatibility contract
@@ -98,14 +139,15 @@ The ownership boundary is deliberate:
   Team instructions, Advisory Validation entrypoints, and Template Releases.
 - `rps-tournament` owns every Language Environment and Catalog Release, including
   all organizer-controlled execution assets.
-- Teams edit only the `team_source/` directory bound by their selected
-  descriptor. Organizer-owned paths are never Team Source, and no catalog source
-  tree is maintained in this repository.
+- Teams add the fixed `team-submission.json` declaration and edit only the
+  `team_source/` directory bound by its resolved descriptor. Organizer-owned
+  paths are never Team Source, and no catalog source tree is maintained here.
 
 [`team-templates.json`](team-templates.json) is the collection-aware discovery
-index. Its Python, Go, and Java descriptors independently bind each starter's Team
-Source, guidance, build-and-test entrypoint, matching Language Environment, and
-language-specific Template Release identity.
+index. Its Python, Go, Java, TypeScript, C#, Rust, Ruby, Clojure, JavaScript,
+Kotlin, and Brainf-ck descriptors independently bind
+each starter's Team Source, guidance, build-and-test entrypoint, matching
+Language Environment, and language-specific Template Release identity.
 
 ## Verify a compatibility-lock change
 

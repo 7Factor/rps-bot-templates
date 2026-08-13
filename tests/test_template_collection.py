@@ -30,6 +30,34 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/typescript/team_source/strategy.ts",
             "templates/typescript/TEAM_GUIDE.md",
             "templates/typescript/build-and-test",
+            "templates/csharp/team-template.json",
+            "templates/csharp/team_source/Strategy.cs",
+            "templates/csharp/TEAM_GUIDE.md",
+            "templates/csharp/build-and-test",
+            "templates/rust/team-template.json",
+            "templates/rust/team_source/strategy.rs",
+            "templates/rust/TEAM_GUIDE.md",
+            "templates/rust/build-and-test",
+            "templates/ruby/team-template.json",
+            "templates/ruby/team_source/strategy.rb",
+            "templates/ruby/TEAM_GUIDE.md",
+            "templates/ruby/build-and-test",
+            "templates/clojure/team-template.json",
+            "templates/clojure/team_source/strategy.clj",
+            "templates/clojure/TEAM_GUIDE.md",
+            "templates/clojure/build-and-test",
+            "templates/javascript/team-template.json",
+            "templates/javascript/team_source/strategy.js",
+            "templates/javascript/TEAM_GUIDE.md",
+            "templates/javascript/build-and-test",
+            "templates/kotlin/team-template.json",
+            "templates/kotlin/team_source/Strategy.kt",
+            "templates/kotlin/TEAM_GUIDE.md",
+            "templates/kotlin/build-and-test",
+            "templates/brainf-ck/team-template.json",
+            "templates/brainf-ck/team_source/strategy.bf",
+            "templates/brainf-ck/TEAM_GUIDE.md",
+            "templates/brainf-ck/build-and-test",
             "templates/python/team-template.json",
             "templates/python/team_source/strategy.py",
             "templates/python/TEAM_GUIDE.md",
@@ -55,6 +83,19 @@ class TemplateCollectionTests(unittest.TestCase):
                         "language": "typescript",
                         "contract_only": False,
                     },
+                    "csharp": {"language": "csharp", "contract_only": False},
+                    "rust": {"language": "rust", "contract_only": False},
+                    "ruby": {"language": "ruby", "contract_only": False},
+                    "clojure": {"language": "clojure", "contract_only": False},
+                    "javascript": {
+                        "language": "javascript",
+                        "contract_only": False,
+                    },
+                    "kotlin": {"language": "kotlin", "contract_only": False},
+                    "brainf-ck": {
+                        "language": "brainf-ck",
+                        "contract_only": False,
+                    },
                 }
             },
         )
@@ -76,7 +117,11 @@ class TemplateCollectionTests(unittest.TestCase):
         template = collection.select("python")
 
         self.assertEqual(
-            collection.language_ids, ("go", "java", "python", "typescript")
+            collection.language_ids,
+            (
+                "brainf-ck", "clojure", "csharp", "go", "java", "javascript",
+                "kotlin", "python", "ruby", "rust", "typescript",
+            ),
         )
         self.assertEqual(template.language_id, "python")
         self.assertEqual(template.language_environment, "python")
@@ -89,8 +134,8 @@ class TemplateCollectionTests(unittest.TestCase):
         self.assertEqual(
             template.build_and_test_entrypoint, Path("templates/python/build-and-test")
         )
-        self.assertEqual(template.version, "python-team-template-v2")
-        self.assertEqual(template.release_tag, "python-template-v2")
+        self.assertEqual(template.version, "python-team-template-v3")
+        self.assertEqual(template.release_tag, "python-template-v3")
         self.assertRegex(template.expected_source_digest, r"^sha256:[0-9a-f]{64}$")
 
     def test_rejects_duplicate_ids_missing_descriptors_and_unsafe_paths(self) -> None:
@@ -127,10 +172,10 @@ class TemplateCollectionTests(unittest.TestCase):
             load_collection(self.root, self.catalog)
 
         descriptor["team_source_path"] = "templates/python/team_source"
-        descriptor["language_environment"] = "rust"
+        descriptor["language_environment"] = "swift"
         self.write_json("templates/python/team-template.json", descriptor)
         with self.assertRaisesRegex(
-            CollectionError, "Language Environment 'rust'.*pinned Catalog Release"
+            CollectionError, "Language Environment 'swift'.*pinned Catalog Release"
         ):
             load_collection(self.root, self.catalog)
 
@@ -159,13 +204,14 @@ class TemplateCollectionTests(unittest.TestCase):
         collection = load_collection(self.root, self.catalog)
 
         with self.assertRaisesRegex(
-            CollectionError, "selection is ambiguous.*go, java, python, typescript"
+            CollectionError,
+            "selection is ambiguous.*brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
         ):
             collection.select()
         with self.assertRaisesRegex(
-            CollectionError, "available: go, java, python, typescript"
+            CollectionError, "available: brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript"
         ):
-            collection.select("rust")
+            collection.select("swift")
 
     def test_maintainer_guide_preserves_the_runner_ownership_boundary(self) -> None:
         guide = (PROJECT_ROOT / "TEAM_TEMPLATE_COLLECTION.md").read_text()
@@ -177,10 +223,22 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/go/team-template.json",
             "templates/java/team-template.json",
             "templates/typescript/team-template.json",
+            "templates/csharp/team-template.json",
+            "templates/rust/team-template.json",
+            "templates/ruby/team-template.json",
+            "templates/clojure/team-template.json",
+            "templates/javascript/team-template.json",
+            "templates/brainf-ck/team-template.json",
             "./validate-team --template go",
             "./release-team-template --template go manifest go-template-v1",
             "--template java",
             "--template typescript",
+            "--template csharp",
+            "--template rust",
+            "--template ruby",
+            "--template clojure",
+            "--template javascript",
+            "--template brainf-ck",
             "Team Templates",
             "Runner-owned Language Environments",
             "exact pinned Catalog Release",

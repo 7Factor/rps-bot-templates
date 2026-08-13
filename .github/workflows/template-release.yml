@@ -43,22 +43,23 @@ jobs:
           while IFS=$'\t' read -r template_id language_environment release_tag; do
             ./release-team-template --template "$template_id" manifest "$release_tag"
             toolchain="$(TEAM_LANGUAGE_ENVIRONMENT="$language_environment" python3 - <<'PY'
-            import json
-            import os
-            from pathlib import Path
-            lock = json.loads(Path("core-tool.lock.json").read_text())
-            catalog_path = Path(".core/rps-tournament") / lock["catalog"]["path"]
-            catalog = json.loads(catalog_path.read_text())
-            environment = catalog["environments"][os.environ["TEAM_LANGUAGE_ENVIRONMENT"]]
-            asset = environment["assets"]["build_toolchain"]["path"]
-            runtimes = json.loads((catalog_path.parent / asset).read_text())
-            print(runtimes["platforms"]["linux/amd64"]["build_toolchain"]["image"])
-            PY
+          import json
+          import os
+          from pathlib import Path
+          lock = json.loads(Path("core-tool.lock.json").read_text())
+          catalog_path = Path(".core/rps-tournament") / lock["catalog"]["path"]
+          catalog = json.loads(catalog_path.read_text())
+          environment = catalog["environments"][os.environ["TEAM_LANGUAGE_ENVIRONMENT"]]
+          asset = environment["assets"]["build_toolchain"]["path"]
+          runtimes = json.loads((catalog_path.parent / asset).read_text())
+          print(runtimes["platforms"]["linux/amd64"]["build_toolchain"]["image"])
+          PY
             )"
             docker pull --platform linux/amd64 "$toolchain"
             RPS_CORE_PATH=.core/rps-tournament \
               ./check-team-template --template "$template_id" --mode docker
           done < .team-templates.tsv
+          rm -f .team-templates.tsv
           python3 -m unittest discover -s tests -v
       - name: Verify the published annotated Template Release tag
         if: startsWith(github.ref, 'refs/tags/')

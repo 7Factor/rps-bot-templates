@@ -1,0 +1,41 @@
+#!/bin/sh
+set -eu
+
+if ! command -v dotnet >/dev/null 2>&1; then
+  printf '%s\n' \
+    'Native toolchain failure: .NET SDK 10 is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+sdk_version=$(dotnet --version 2>/dev/null || true)
+sdk_major=${sdk_version%%.*}
+case "$sdk_major" in
+  ''|*[!0-9]*|[0-9])
+    printf '%s\n' \
+      'Native toolchain failure: .NET SDK 10 or newer is required; rerun check-team-template with --mode docker.' >&2
+    exit 2
+    ;;
+esac
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+temporary=$(mktemp -d "${TMPDIR:-/tmp}/rps-csharp-template.XXXXXX")
+trap 'rm -rf "$temporary"' EXIT HUP INT TERM
+
+mkdir -p "$temporary/project/team_source" "$temporary/project/tests" \
+  "$temporary/dotnet-home" "$temporary/packages" "$temporary/output"
+cp -R "$template_root/team_source/." "$temporary/project/team_source/"
+cp "$template_root/tests/StrategyTests.cs" "$temporary/project/tests/"
+cp "$template_root/tests/CSharpStarterTests.csproj" "$temporary/project/tests/"
+
+export DOTNET_CLI_HOME="$temporary/dotnet-home"
+export NUGET_PACKAGES="$temporary/packages"
+export DOTNET_NOLOGO=1
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+
+dotnet restore "$temporary/project/tests/CSharpStarterTests.csproj" \
+  --configfile "$template_root/NuGet.Config" --packages "$temporary/packages"
+dotnet build "$temporary/project/tests/CSharpStarterTests.csproj" \
+  --no-restore --configuration Release --output "$temporary/output"
+printf '%s\n' 'C# starter build passed'
+
+dotnet "$temporary/output/CSharpStarterTests.dll"

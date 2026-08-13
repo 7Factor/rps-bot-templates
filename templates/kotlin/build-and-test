@@ -1,0 +1,61 @@
+#!/bin/sh
+set -eu
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+temporary=$(mktemp -d "${TMPDIR:-/tmp}/rps-kotlin-template.XXXXXX")
+trap 'rm -rf "$temporary"' EXIT HUP INT TERM
+
+if [ -n "${RPS_DEPENDENCY_DEFINITION:-}" ]; then
+  if [ ! -f "$RPS_DEPENDENCY_DEFINITION" ]; then
+    printf '%s\n' 'Kotlin dependency policy failure: the Catalog compiler distribution is unavailable.' >&2
+    exit 2
+  fi
+  expected=473dd66c7a3ef4b182065b3da670466c1bf2773a9dbb0ed8b33a39fe9d4f876d
+  if command -v sha256sum >/dev/null 2>&1; then
+    observed=$(sha256sum "$RPS_DEPENDENCY_DEFINITION" | awk '{print $1}')
+  else
+    observed=$(shasum -a 256 "$RPS_DEPENDENCY_DEFINITION" | awk '{print $1}')
+  fi
+  if [ "$observed" != "$expected" ]; then
+    printf '%s\n' 'Kotlin dependency policy failure: the Catalog compiler distribution does not match Kotlin 2.4.10.' >&2
+    exit 2
+  fi
+  mkdir -p "$temporary/compiler"
+  (cd "$temporary/compiler" && jar xf "$RPS_DEPENDENCY_DEFINITION")
+  chmod +x "$temporary/compiler/kotlinc/bin/kotlinc"
+  compiler="$temporary/compiler/kotlinc/bin/kotlinc"
+else
+  if ! command -v kotlinc >/dev/null 2>&1; then
+    printf '%s\n' 'Native toolchain failure: Kotlin 2.4.10 and Java 25 are required; rerun check-team-template with --mode docker.' >&2
+    exit 2
+  fi
+  compiler=$(command -v kotlinc)
+  kotlin_version=$($compiler -version 2>&1)
+  case "$kotlin_version" in
+    *2.4.10*) ;;
+    *)
+      printf '%s\n' 'Native toolchain failure: Kotlin 2.4.10 is required; rerun check-team-template with --mode docker.' >&2
+      exit 2
+      ;;
+  esac
+fi
+
+if ! command -v java >/dev/null 2>&1 || ! command -v jar >/dev/null 2>&1; then
+  printf '%s\n' 'Native toolchain failure: Java 25 JDK is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+java_version=$(java -version 2>&1 | sed -n '1s/.*version "\([0-9]*\).*/\1/p')
+if [ "$java_version" != "25" ]; then
+  printf '%s\n' 'Native toolchain failure: Java 25 is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+mkdir -p "$temporary/source"
+cp -R "$template_root/team_source/." "$temporary/source/"
+"$compiler" -jvm-target 25 -include-runtime \
+  "$temporary/source/"*.kt "$template_root/tests/StrategyTest.kt" \
+  -d "$temporary/kotlin-template-tests.jar"
+printf '%s\n' 'Kotlin starter build passed'
+
+java -jar "$temporary/kotlin-template-tests.jar"
+printf '%s\n' 'Kotlin starter tests passed'

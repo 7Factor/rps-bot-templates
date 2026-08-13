@@ -18,19 +18,28 @@ TEAM_SOURCE = PROJECT_ROOT / "templates/python/team_source"
 TEAM_GUIDE = PROJECT_ROOT / "templates/python/TEAM_GUIDE.md"
 CORE_PATH = Path(
     os.environ.get("RPS_CORE_PATH", PROJECT_ROOT / ".core" / "rps-tournament")
-)
+).resolve()
 LOCK = json.loads((PROJECT_ROOT / "core-tool.lock.json").read_text())
 CATALOG_PATH = CORE_PATH / LOCK["catalog"]["path"]
 
 
 def load_module(name: str, path: Path, *, register: bool = False):
+    # Loading straight from `path` would otherwise have CPython write a
+    # `.pyc` into a `__pycache__` sibling of the loaded file. For paths under
+    # `TEAM_SOURCE`, that leaves a stray file behind in the real Team Source
+    # directory, which a later source-validation test then rejects.
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"cannot load module at {path}")
     module = importlib.util.module_from_spec(spec)
     if register:
         sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
+    previous = sys.dont_write_bytecode
+    sys.dont_write_bytecode = True
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.dont_write_bytecode = previous
     return module
 
 

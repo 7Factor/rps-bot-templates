@@ -1,6 +1,7 @@
 # Java Team Template
 
-Edit files only under `templates/java/team_source/`. That directory is the
+Except for the fixed root `team-submission.json` declaration, edit files only
+under `templates/java/team_source/`. That directory is the
 controlled Java **Team Source** boundary accepted by the Runner-owned Java
 Language Environment. Keep `Strategy.java`, and implement its four-argument
 `chooseMove` method. Java Team Source is Java SE standard-library-only; build
@@ -24,8 +25,8 @@ Release toolchain with networking disabled:
 ./check-team-template --template java --mode docker
 ```
 
-`./validate-team --template java` performs participant-local **Advisory Validation**
-against the exact pinned Java Language Environment. It provides
+`./validate-team --allow-pull` performs participant-local
+**Advisory Validation** against the exact pinned Java Language Environment. It provides
 compatibility feedback, including a Practice Match, but cannot accept a Bot
 Artifact. Only organizer-controlled **Final Validation** on the official ARM64
 platform can authorize a Bot Artifact for a Tournament roster.

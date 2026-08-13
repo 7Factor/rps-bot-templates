@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+if ! command -v node >/dev/null 2>&1; then
+  printf '%s\n' \
+    'Native toolchain failure: Node.js 24 is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+node_major=$(node --version | sed 's/^v//' | cut -d. -f1)
+if [ "$node_major" -lt 24 ]; then
+  printf '%s\n' \
+    'Native toolchain failure: Node.js 24 or newer is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+temporary=$(mktemp -d "${TMPDIR:-/tmp}/rps-javascript-template.XXXXXX")
+trap 'rm -rf "$temporary"' EXIT HUP INT TERM
+
+mkdir -p "$temporary/team_source" "$temporary/tests"
+cp -R "$template_root/team_source/." "$temporary/team_source/"
+cp "$template_root/tests/strategy.test.js" "$temporary/tests/strategy.test.js"
+
+find "$temporary" -type f -name '*.js' -exec node --check '{}' ';'
+printf '%s\n' 'JavaScript starter build passed'
+node "$temporary/tests/strategy.test.js"
