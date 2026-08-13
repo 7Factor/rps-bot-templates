@@ -23,10 +23,10 @@ command -v python3 >/dev/null 2>&1 || \
 command -v docker >/dev/null 2>&1 || fail 'Docker is not installed or is not on PATH'
 docker version >/dev/null 2>&1 || fail 'Docker is installed, but its engine is not running'
 
-printf 'Checking the %s Team Template...\n' "$language"
-"$ROOT/check-team-template" --template "$language" --mode docker
-
-printf '\nValidating your Team Source...\n'
+printf 'Validating your %s Team Source and pulling missing pinned images...\n' "$language"
 "$ROOT/validate-team" --allow-pull
+
+printf '\nRunning the Team Template Docker check...\n'
+"$ROOT/check-team-template" --template "$language" --mode docker
 
 printf '\nLocal tests passed. Commit your changes and push your Team branch.\n'

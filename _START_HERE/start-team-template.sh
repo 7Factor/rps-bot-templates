@@ -117,8 +117,8 @@ if [[ -x "$ROOT/_START_HERE/test-team-template.sh" ]]; then
   printf '  2. Run ./_START_HERE/test-team-template.sh\n'
   printf '  3. Read ./_START_HERE/README.md for commit and push instructions.\n'
 else
-  printf '  2. Run ./check-team-template --template %s --mode docker\n' "$language"
-  printf '  3. Run ./validate-team --allow-pull\n'
+  printf '  2. Run ./validate-team --allow-pull\n'
+  printf '  3. Run ./check-team-template --template %s --mode docker\n' "$language"
   printf '  4. Commit team-submission.json and your Team Source, then run:\n'
   printf '     git push -u origin %s\n' "$branch"
 fi
