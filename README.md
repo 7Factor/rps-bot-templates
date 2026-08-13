@@ -113,7 +113,7 @@ Use `clojure` and `clojure-template-v1` for the independent Clojure Template Rel
 Use `javascript` and `javascript-template-v1` for the independent JavaScript
 Template Release.
 Use `kotlin` and `kotlin-template-v1` for the independent Kotlin Template Release.
-Use `brainf-ck` and `brainf-ck-template-v2` for the independent Brainf-ck
+Use `brainf-ck` and `brainf-ck-template-v3` for the independent Brainf-ck
 Template Release.
 
 ## Immutable compatibility contract

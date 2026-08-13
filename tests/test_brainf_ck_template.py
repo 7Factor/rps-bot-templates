@@ -38,8 +38,8 @@ class BrainfCkTeamTemplateTests(unittest.TestCase):
     def test_collection_exposes_independent_brainf_ck_template(self) -> None:
         template = load_collection(ROOT, self.catalog).select("brainf-ck")
         self.assertEqual(template.language_environment, "brainf-ck")
-        self.assertEqual(template.version, "brainf-ck-team-template-v2")
-        self.assertEqual(template.release_tag, "brainf-ck-template-v2")
+        self.assertEqual(template.version, "brainf-ck-team-template-v3")
+        self.assertEqual(template.release_tag, "brainf-ck-template-v3")
 
     def test_owned_script_uses_the_catalog_interpreter_for_seeded_moves(self) -> None:
         environment = os.environ.copy()
@@ -94,6 +94,9 @@ class BrainfCkTeamTemplateTests(unittest.TestCase):
             "50 ms",
             "one output byte",
             "64-bit LCG",
+            "6364136223846793005",
+            "1442695040888963407",
+            "turn modulo 3",
             "seed",
             "history",
             "--mode native",

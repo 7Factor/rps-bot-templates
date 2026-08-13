@@ -18,9 +18,13 @@ non-wrapping tape of 30,000 cells. Each turn permits at most 1,000,000 steps,
 Input is a binary Turn record in this order:
 
 1. seeded move byte (`R`, `P`, or `S`) from the Runner-owned deterministic
-   64-bit LCG stream
+   64-bit LCG stream: start with `state = seed`, repeat
+   `state = state * 6364136223846793005 + 1442695040888963407 modulo 2^64`
+   exactly `turn + 1` times, then select `R`, `P`, or `S` for
+   `state modulo 3` values `0`, `1`, or `2`
 2. opponent's last move, or `R` before any history exists
-3. turn-modulo move
+3. turn-modulo move: select `R`, `P`, or `S` for turn modulo 3 values `0`, `1`,
+   or `2`
 4. seed as an unsigned 8-byte little-endian integer
 5. turn as an unsigned 8-byte little-endian integer
 6. own history length as an unsigned 2-byte little-endian integer, then history
@@ -50,5 +54,5 @@ networking disabled; no host Brainf-ck implementation is required:
 `./validate-team --template brainf-ck --allow-pull` performs participant-local
 **Advisory Validation**, including the complete Catalog conformance suite and a
 Practice Match. It cannot accept a Bot Artifact. Only organizer-controlled
-**Final Validation** on the official ARM64 platform can authorize an artifact
+**Final Validation** on the official ARM64 platform can authorize a Bot Artifact
 for a Tournament roster.
