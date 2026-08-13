@@ -20,6 +20,9 @@ export function chooseMove(
   else if(sPerc > .5) {
     return "R"
   }
+  if (opponentHistory.slice(turn-4).match("/(.)\\1\\1/")) {
+    return opposite(opponentHistory.charAt(turn-1))
+  }
   return returnValue;
 }
 
