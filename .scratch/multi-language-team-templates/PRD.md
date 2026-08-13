@@ -23,10 +23,11 @@ script so that the two paths do not acquire different behavior.
 
 Reorganize the repository around a collection of independently identified Team
 Templates. Migrate Python through an expand-and-contract sequence before adding
-Go, Java, TypeScript, C#, Ruby, Clojure, JavaScript, and optionally Rust. Give
-every template one language-owned build-and-test entrypoint. A root command
-selects a Team Template and either invokes that entrypoint on the host or invokes
-the exact same file inside a development toolchain container.
+Go, Java, TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainfuck, and
+optionally Rust. Give every template one language-owned build-and-test
+entrypoint. A root command selects a Team Template and either invokes that
+entrypoint on the host or invokes the exact same file inside a development
+toolchain container.
 
 Docker is the required implementation and CI verification path. Native
 execution is a supported convenience for Teams with the selected toolchain
@@ -77,8 +78,9 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
 ## Implementation Decisions
 
 - The initial required Team Templates are Python, Go, Java, TypeScript, C#,
-  Ruby, Clojure, and JavaScript. Rust is an optional follow-on template and must
-  meet the same acceptance bar before being advertised as supported.
+  Ruby, Clojure, JavaScript, Kotlin, and Brainfuck. Rust is an optional follow-on
+  template and must meet the same acceptance bar before being advertised as
+  supported.
 - The repository will expose a stable collection layout keyed by language ID.
   Each entry will contain one Team Template descriptor, participant-facing
   starter and guidance, a controlled Team Source subtree, and its build-and-test
@@ -109,8 +111,11 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
   selected and then pinned exactly. If it has no LTS designation, the latest
   upstream-supported stable release is selected and pinned. TypeScript uses the
   latest supported Node.js LTS with an exactly pinned compatible TypeScript
-  compiler, while JavaScript uses the latest supported Node.js LTS. Updating a
-  pin requires a new Catalog Release compatibility claim and Template Release.
+  compiler, while JavaScript uses the latest supported Node.js LTS. Kotlin uses
+  the stable compiler and compatible Java LTS selected by its Language
+  Environment. Brainfuck uses the exact dialect and implementation contract
+  selected by its Language Environment. Updating a pin requires a new Catalog
+  Release compatibility claim and Template Release.
 - Template unit tests will cover the language-facing strategy contract,
   deterministic seeded behavior, legal moves, and starter behavior. Runner
   Advisory Validation remains the higher acceptance seam for Team Source,
@@ -161,22 +166,22 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
   contracts, entrypoints, conformance fixtures, or Final Validation into this
   repository.
 - Requiring maintainers or CI hosts to install Go, Java, Node.js/TypeScript,
-  .NET, Ruby, Clojure, or Rust locally.
+  .NET, Ruby, Clojure, Kotlin, a Brainfuck implementation, or Rust locally.
 - Claiming that an unexecuted host/toolchain combination has been independently
   certified. Native mode is supported through the Docker-exercised shared script
   but remains environment-dependent.
 - Automatically tracking mutable upstream `latest` tags.
 - Supporting languages beyond Python, Go, Java, TypeScript, C#, Ruby, Clojure,
-  JavaScript, and optional Rust in this effort.
+  JavaScript, Kotlin, Brainfuck, and optional Rust in this effort.
 
 ## Further Notes
 
 The first new language after the Python migration should be Go. It is the
 tracer bullet that proves the collection, release, local/Docker parity, and
 Runner compatibility seams work for more than the migrated template. Java,
-TypeScript, C#, Ruby, Clojure, JavaScript, and Rust remain blocked on that proof
-so discoveries are folded into the shared contract once rather than
-independently.
+TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainfuck, and Rust remain
+blocked on that proof so discoveries are folded into the shared contract once
+rather than independently.
 
 Language tickets also have an external dependency: a matching conforming
 Language Environment must be published by `rps-tournament` and included in the
