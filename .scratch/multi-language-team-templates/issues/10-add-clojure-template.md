@@ -39,7 +39,7 @@ compatibility behavior.
 
 The independently releasable `clojure-template-v1` starter implements the
 shared four-argument strategy contract and deterministic seeded behavior. Its
-Clojure-owned `build-and-test` entrypoint runs the same three-test, 201-assertion
+Clojure-owned `build-and-test` entrypoint runs the same two-test, 200-assertion
 suite natively or inside the catalog-pinned Clojure 1.12.5 / Java 25 Docker
 toolchain with networking disabled and the approved runtime jars hash-verified.
 
