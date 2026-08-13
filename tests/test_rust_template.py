@@ -169,7 +169,7 @@ class RustTeamTemplateTests(unittest.TestCase):
         )
         self.assertEqual(
             manifest["catalog_compatibility"]["runner"]["commit"],
-            "e31d9b88a43a0c58934b306b96015bd300b1685d",
+            "87296899a88f1e1a091fc08454be45a7354a73cb",
         )
 
     def test_shared_checker_has_no_rust_language_switch(self) -> None:

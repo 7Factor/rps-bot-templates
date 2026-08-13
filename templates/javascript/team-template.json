@@ -1,0 +1,12 @@
+{
+  "format_version": "rps-team-template-descriptor-v1",
+  "language_id": "javascript",
+  "language_environment": "javascript",
+  "team_source_path": "templates/javascript/team_source",
+  "participant_guidance_path": "templates/javascript/TEAM_GUIDE.md",
+  "build_and_test_entrypoint": "templates/javascript/build-and-test",
+  "version": "javascript-team-template-v1",
+  "expected_source_digest": "sha256:86ab51869d8ed3ef8b33b6dfbb6092f1e89953f6c2b01d0a9149940955a179aa",
+  "release_tag": "javascript-template-v1",
+  "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
+}

@@ -67,6 +67,17 @@
       "java.recipe": "java-build-recipe-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
       "java.workflow": "source-validation-workflow-v1@sha256:d9b654a9b96c4fa81836b4483c50fdbab175e4fb1154e0b21ee3569a5fd16788",
       "java.wrapper": "java-wrapper-v1@sha256:78b75d21d9b3b6bc5420fc9d927d1d2fbe1987ab4204bc226ba73d5d566b2d2f",
+      "javascript.base_runtime": "javascript-runtime-v1@sha256:ff706eb326ee1c8c6244c1379e3758fd8907a456bccce7dd66df1c86efb825ea",
+      "javascript.build_target": "javascript-build-target-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
+      "javascript.build_toolchain": "javascript-build-toolchain-v1@sha256:ff706eb326ee1c8c6244c1379e3758fd8907a456bccce7dd66df1c86efb825ea",
+      "javascript.conformance": "javascript-conformance-v1@sha256:7c8de8485a6d643f0e93112f3bd319df03a6d93cd4472da7a9bfc3652941c91c",
+      "javascript.dependency_definition": "javascript-dependencies-v1@sha256:62f1ed5c4e9778d9bb1bb14e8eb4748e8bd05093e6790d343b97a010c5cb5366",
+      "javascript.entrypoint": "javascript-entrypoint-v1@sha256:84afd4cc38ef395b24699494ac2856dc3abcc28c295f80a1b7d65e42b94b79dd",
+      "javascript.platform": "javascript-oci-platforms-v1@sha256:ff706eb326ee1c8c6244c1379e3758fd8907a456bccce7dd66df1c86efb825ea",
+      "javascript.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+      "javascript.recipe": "javascript-build-recipe-v1@sha256:e40b8a942ab784d72e417000a764b52961f893370b87b876483d9a29ce8334a3",
+      "javascript.workflow": "source-validation-workflow-v1@sha256:2e6a0218646133f63b56bff1076c31e9d074310f4e9f64e294ac54672f5c79f1",
+      "javascript.wrapper": "javascript-wrapper-v1@sha256:0cdbbc0f99c43d8c24b249670364c4ef47d70e2cb3455f244e2833ee5d1b221e",
       "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
       "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
       "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
@@ -112,15 +123,15 @@
       "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
       "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
     },
-    "identity": "rps-language-environment-catalog-v1@sha256:c1b2961447993653df86b8a58c4cb4662aa0bc6bfc8e2fe7ed388273968a9f53",
+    "identity": "rps-language-environment-catalog-v1@sha256:c70dac15b4c0220cb9315a92db7e3be696fd44a1f944a30a6f6c771864ebfb97",
     "path": "language_environments/catalog-v1/catalog.json"
   },
   "format_version": "rps-catalog-compatibility-v1",
   "offline_bundle": {
-    "identity": "rps-runner-offline-bundle-v1@sha256:7449be32e529d29d7387c5a8c537a3708fec1a481a4344557d033b358c6d0656"
+    "identity": "rps-runner-offline-bundle-v1@sha256:ec7db7d442a24a9bcc193ec42db1130e35bef8b2df255d5ce4828431f3ccb8b9"
   },
   "runner": {
-    "commit": "e31d9b88a43a0c58934b306b96015bd300b1685d",
+    "commit": "87296899a88f1e1a091fc08454be45a7354a73cb",
     "package_version": "0.1.0"
   }
 }

@@ -34,7 +34,8 @@ The collection includes independently released
 [C#](templates/csharp/team_source/Strategy.cs), and
 [Rust](templates/rust/team_source/strategy.rs), and
 [Ruby](templates/ruby/team_source/strategy.rb), and
-[Clojure](templates/clojure/team_source/strategy.clj) starters.
+[Clojure](templates/clojure/team_source/strategy.clj), and
+[JavaScript](templates/javascript/team_source/strategy.js) starters.
 Teams may add `team-submission.json` and change only the Team Source path named
 by its resolved descriptor;
 the catalog and its build, wrapper, workflow, and protocol assets remain
@@ -45,7 +46,8 @@ organizer-owned. See the [Python Team guide](templates/python/TEAM_GUIDE.md),
 [C# Team guide](templates/csharp/TEAM_GUIDE.md),
 [Rust Team guide](templates/rust/TEAM_GUIDE.md),
 [Ruby Team guide](templates/ruby/TEAM_GUIDE.md), and
-[Clojure Team guide](templates/clojure/TEAM_GUIDE.md)
+[Clojure Team guide](templates/clojure/TEAM_GUIDE.md), and
+[JavaScript Team guide](templates/javascript/TEAM_GUIDE.md)
 for the strategy contract, approved file types and limits, branch convention,
 and shared-repository honor policy.
 
@@ -60,7 +62,9 @@ path with one command:
 from the exact digest-pinned Catalog Release. Image acquisition happens before
 the build; Team Source builds and Bot Artifact execution remain networkless.
 
-See the [Python Team guide](templates/python/TEAM_GUIDE.md#validate-your-team-source) for the pinned-core
+See the
+[Python Team guide](templates/python/TEAM_GUIDE.md#validate-your-team-source)
+for the pinned-core
 checkout prerequisite, result identities, diagnostic categories, and the firm
 boundary between Advisory Validation and official Tournament entry.
 
@@ -102,6 +106,8 @@ Use `csharp` and `csharp-template-v2` for the independent C# Template Release.
 Use `rust` and `rust-template-v1` for the independent Rust Template Release.
 Use `ruby` and `ruby-template-v1` for the independent Ruby Template Release.
 Use `clojure` and `clojure-template-v1` for the independent Clojure Template Release.
+Use `javascript` and `javascript-template-v1` for the independent JavaScript
+Template Release.
 
 ## Immutable compatibility contract
 
@@ -131,7 +137,8 @@ The ownership boundary is deliberate:
   paths are never Team Source, and no catalog source tree is maintained here.
 
 [`team-templates.json`](team-templates.json) is the collection-aware discovery
-index. Its Python, Go, Java, TypeScript, C#, Rust, Ruby, and Clojure descriptors independently bind
+index. Its Python, Go, Java, TypeScript, C#, Rust, Ruby, Clojure, and JavaScript
+descriptors independently bind
 each starter's Team Source, guidance, build-and-test entrypoint, matching
 Language Environment, and language-specific Template Release identity.
 

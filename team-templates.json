@@ -32,6 +32,10 @@
     {
       "language_id": "clojure",
       "descriptor": "templates/clojure/team-template.json"
+    },
+    {
+      "language_id": "javascript",
+      "descriptor": "templates/javascript/team-template.json"
     }
   ]
 }
