@@ -5,6 +5,8 @@ export function chooseMove(
   rng: { nextInt(upperExclusive: number): number }
 ): string {
   const moves = ["R", "P", "S"];
+  if(turn <= 1)
+    return "P"
   //Naive cheating to start
   let returnValue = opposite(moves[rng.nextInt(moves.length)])
   const [rCount, pCount, sCount] = countOccurence(opponentHistory)
