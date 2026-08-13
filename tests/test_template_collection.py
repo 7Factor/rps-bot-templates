@@ -38,6 +38,10 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/rust/team_source/strategy.rs",
             "templates/rust/TEAM_GUIDE.md",
             "templates/rust/build-and-test",
+            "templates/ruby/team-template.json",
+            "templates/ruby/team_source/strategy.rb",
+            "templates/ruby/TEAM_GUIDE.md",
+            "templates/ruby/build-and-test",
             "templates/python/team-template.json",
             "templates/python/team_source/strategy.py",
             "templates/python/TEAM_GUIDE.md",
@@ -65,6 +69,7 @@ class TemplateCollectionTests(unittest.TestCase):
                     },
                     "csharp": {"language": "csharp", "contract_only": False},
                     "rust": {"language": "rust", "contract_only": False},
+                    "ruby": {"language": "ruby", "contract_only": False},
                 }
             },
         )
@@ -87,7 +92,7 @@ class TemplateCollectionTests(unittest.TestCase):
 
         self.assertEqual(
             collection.language_ids,
-            ("csharp", "go", "java", "python", "rust", "typescript"),
+            ("csharp", "go", "java", "python", "ruby", "rust", "typescript"),
         )
         self.assertEqual(template.language_id, "python")
         self.assertEqual(template.language_environment, "python")
@@ -138,10 +143,10 @@ class TemplateCollectionTests(unittest.TestCase):
             load_collection(self.root, self.catalog)
 
         descriptor["team_source_path"] = "templates/python/team_source"
-        descriptor["language_environment"] = "ruby"
+        descriptor["language_environment"] = "clojure"
         self.write_json("templates/python/team-template.json", descriptor)
         with self.assertRaisesRegex(
-            CollectionError, "Language Environment 'ruby'.*pinned Catalog Release"
+            CollectionError, "Language Environment 'clojure'.*pinned Catalog Release"
         ):
             load_collection(self.root, self.catalog)
 
@@ -171,13 +176,13 @@ class TemplateCollectionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             CollectionError,
-            "selection is ambiguous.*csharp, go, java, python, rust, typescript",
+            "selection is ambiguous.*csharp, go, java, python, ruby, rust, typescript",
         ):
             collection.select()
         with self.assertRaisesRegex(
-            CollectionError, "available: csharp, go, java, python, rust, typescript"
+            CollectionError, "available: csharp, go, java, python, ruby, rust, typescript"
         ):
-            collection.select("ruby")
+            collection.select("clojure")
 
     def test_maintainer_guide_preserves_the_runner_ownership_boundary(self) -> None:
         guide = (PROJECT_ROOT / "TEAM_TEMPLATE_COLLECTION.md").read_text()
@@ -191,12 +196,14 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/typescript/team-template.json",
             "templates/csharp/team-template.json",
             "templates/rust/team-template.json",
+            "templates/ruby/team-template.json",
             "./validate-team --template go",
             "./release-team-template --template go manifest go-template-v1",
             "--template java",
             "--template typescript",
             "--template csharp",
             "--template rust",
+            "--template ruby",
             "Team Templates",
             "Runner-owned Language Environments",
             "exact pinned Catalog Release",

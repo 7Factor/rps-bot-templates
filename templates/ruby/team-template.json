@@ -1,0 +1,12 @@
+{
+  "format_version":"rps-team-template-descriptor-v1",
+  "language_id":"ruby",
+  "language_environment":"ruby",
+  "team_source_path":"templates/ruby/team_source",
+  "participant_guidance_path":"templates/ruby/TEAM_GUIDE.md",
+  "build_and_test_entrypoint":"templates/ruby/build-and-test",
+  "version":"ruby-team-template-v1",
+  "expected_source_digest":"sha256:30d86b5407fad5073f98c7d075acbd1c28b7a1ba498d8cf9254b7dc50d44b9a7",
+  "release_tag":"ruby-template-v1",
+  "advisory_validation_workflow":".github/workflows/team-advisory-validation.yml"
+}

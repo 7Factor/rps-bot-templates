@@ -1,0 +1,843 @@
+{
+  "catalog_release": {
+    "declared_catalog_path_count": 66,
+    "manifest": {
+      "catalog": {
+        "assets": {
+          "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.conformance": "contract-conformance-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.dependency_definition": "contract-dependencies-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.entrypoint": "contract-entrypoint-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.platform": "oci-platforms-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.readiness": "wrapper-readiness-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.recipe": "contract-build-recipe-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.workflow": "source-validation-workflow-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "contract-fixture.wrapper": "contract-wrapper-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+          "csharp.base_runtime": "csharp-runtime-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+          "csharp.build_target": "csharp-build-target-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+          "csharp.build_toolchain": "csharp-build-toolchain-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+          "csharp.conformance": "csharp-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
+          "csharp.dependency_definition": "csharp-runtime-config-v1@sha256:6413e1e7988a6e9df20a9c8e6ee60b729892f37c0b83e009f80c15a67c63a139",
+          "csharp.entrypoint": "csharp-entrypoint-v1@sha256:48a41a172878403001e190b8d323d7e076514cec90da45cf8e082049693b55db",
+          "csharp.platform": "csharp-oci-platforms-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+          "csharp.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "csharp.recipe": "csharp-build-recipe-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+          "csharp.workflow": "source-validation-workflow-v1@sha256:78ccccf3ae3b478e895d88746988a090aac5909372c7ce61b79f3af42c54b6a9",
+          "csharp.wrapper": "csharp-wrapper-v1@sha256:4eff87ce1fb7a09f08da2cfca7c39ab13b7049fedb4b8cd3efc86124c8e70f8a",
+          "go.base_runtime": "go-runtime-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+          "go.build_target": "go-build-target-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+          "go.build_toolchain": "go-build-toolchain-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+          "go.conformance": "go-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
+          "go.dependency_definition": "go-dependencies-v1@sha256:8010915a36472885f580d28ff7d66a5a33383e7099276ace537dcece51c7abbf",
+          "go.entrypoint": "go-entrypoint-v1@sha256:512c1358a7d100a49c3852fa1971c556e1369271932a78ae8bab79a605c021b8",
+          "go.platform": "go-oci-platforms-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+          "go.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "go.recipe": "go-build-recipe-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+          "go.workflow": "source-validation-workflow-v1@sha256:990c9a504e5227f198a4d9730baac1c2d8787a2d6c5b9c6516c0f6658feb0143",
+          "go.wrapper": "go-wrapper-v1@sha256:5c1f6735da04c81a7b9eebc76132f4096ddf914a93a965469f1b22dbf83bc2ce",
+          "internal-shell.base_runtime": "internal-shell-runtime-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+          "internal-shell.build_target": "internal-shell-build-target-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+          "internal-shell.build_toolchain": "internal-shell-build-toolchain-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+          "internal-shell.conformance": "internal-shell-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
+          "internal-shell.dependency_definition": "internal-shell-dependencies-v1@sha256:86ba9f0599a0a04a165c364391c9cf136fd681a0cde46aab9edc92d05b56b437",
+          "internal-shell.entrypoint": "internal-shell-entrypoint-v1@sha256:8a54f98b7e6490dadf2922b830eaaa71ba3b4cc448482125e1c1fc7d808e52c2",
+          "internal-shell.platform": "oci-platforms-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+          "internal-shell.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "internal-shell.recipe": "internal-shell-build-recipe-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+          "internal-shell.workflow": "source-validation-workflow-v1@sha256:498a8c7c1ca85d84b9daea663cb2b0e952dcf634af3e756cd533cbed5913ed09",
+          "internal-shell.wrapper": "internal-shell-wrapper-v1@sha256:3afe842359987474c65d685afbdb8338f4fda13d7febe006f30e1d1c853ebd35",
+          "java.base_runtime": "java-runtime-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+          "java.build_target": "java-build-target-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+          "java.build_toolchain": "java-build-toolchain-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+          "java.conformance": "java-conformance-v1@sha256:f29543b7644c0a65dc46ed3c88e5215b5177a2434f156f27130e81c613d4aa3f",
+          "java.dependency_definition": "java-dependencies-v1@sha256:5e8da0523e1ed6dde808a559d5d09dc873b09904a653b0c2fcefec69040734b6",
+          "java.entrypoint": "java-entrypoint-v1@sha256:0d093fae2bbedb01bffb5ca82e66af9131a153f56338892be571b70b43104044",
+          "java.platform": "java-oci-platforms-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+          "java.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "java.recipe": "java-build-recipe-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+          "java.workflow": "source-validation-workflow-v1@sha256:d9b654a9b96c4fa81836b4483c50fdbab175e4fb1154e0b21ee3569a5fd16788",
+          "java.wrapper": "java-wrapper-v1@sha256:78b75d21d9b3b6bc5420fc9d927d1d2fbe1987ab4204bc226ba73d5d566b2d2f",
+          "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+          "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+          "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+          "python.conformance": "python-conformance-v1@sha256:0541ac0e19bedc42241e65ffb462d894833c6c30d268fa054162bdff8615c057",
+          "python.dependency_definition": "python-dependencies-v1@sha256:9f8c394be1f741a5351379bab966dec8e813ce017cb4e640d1f100e40e461f5f",
+          "python.entrypoint": "python-entrypoint-v1@sha256:e663e70bb05c143591a06d352e325cb181136c5910fe62717056b0ed3fcb1e08",
+          "python.platform": "python-oci-platforms-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+          "python.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "python.recipe": "python-build-recipe-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+          "python.workflow": "source-validation-workflow-v1@sha256:a66d958d1eaf7ed7b36ecc3aa0192dd28a67a172ef810d42575a8c73b14ce6f4",
+          "python.wrapper": "python-wrapper-v2@sha256:a82ae2481ad47d0697f318ccf09c5e8bd9597efbbca12f31366fc61d811baed7",
+          "ruby.base_runtime": "ruby-runtime-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+          "ruby.build_target": "ruby-build-target-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+          "ruby.build_toolchain": "ruby-build-toolchain-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+          "ruby.conformance": "ruby-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
+          "ruby.dependency_definition": "ruby-dependencies-v1@sha256:b1ac3df700d7f0fea53ec5982c5927acd3d8864d1a1d1db1c1bc803b4b6206a8",
+          "ruby.entrypoint": "ruby-entrypoint-v1@sha256:5a79f4de55c24a44c0e9257c6809205907056b75231439d133b86c83cf8b99ae",
+          "ruby.platform": "ruby-oci-platforms-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+          "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+          "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+          "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
+          "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+          "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+          "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+          "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+          "rust.conformance": "rust-conformance-v1@sha256:b39ff8f5359aad15abefb7c6f4b592d95f1e0fac7eca69a2ff3ac7f8f163ef79",
+          "rust.dependency_definition": "rust-dependencies-v1@sha256:059c097404299f00bf5a9b26bec0831f8aaad0b6867913255f6fda0d747300cc",
+          "rust.entrypoint": "rust-entrypoint-v1@sha256:20eea82924a1bb765e76ae621aa86fae717456d1194291cdb0f99982e4fdbbda",
+          "rust.platform": "rust-oci-platforms-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+          "rust.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "rust.recipe": "rust-build-recipe-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+          "rust.workflow": "source-validation-workflow-v1@sha256:1324de81cde7816814ddf1f2aa0f1c12e52b77d76a430baec09db0fca9169af8",
+          "rust.wrapper": "rust-wrapper-v1@sha256:ca713ed638f7ba6220cdf70da320aa45acd061e07746aadda4451b31d960b1ab",
+          "typescript.base_runtime": "typescript-runtime-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+          "typescript.build_target": "typescript-build-target-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+          "typescript.build_toolchain": "typescript-build-toolchain-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+          "typescript.conformance": "typescript-conformance-v1@sha256:dddd1c15d1d0f2bf87677f71bb4fc18b7f72965a213121ef0d226914efbeb9ed",
+          "typescript.dependency_definition": "typescript-compiler-package-v1@sha256:33cd0ee1beaa8c9e9d15a9da836c62ddea4c34a42d7c2d349dbc80d94165d22a",
+          "typescript.entrypoint": "typescript-entrypoint-v1@sha256:47d2bc6d6e9288f88defffc0a6d02bdf854cb1cafd6e823f1782170ae0f962ab",
+          "typescript.platform": "typescript-oci-platforms-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+          "typescript.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+          "typescript.recipe": "typescript-build-recipe-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+          "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
+          "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
+        },
+        "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+        "path": "language_environments/catalog-v1/catalog.json",
+        "version": "rps-language-environment-catalog-v1"
+      },
+      "certification_suites": {
+        "csharp": "csharp-artifact-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
+        "go": "go-artifact-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
+        "internal-shell": "internal-shell-artifact-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
+        "java": "java-artifact-conformance-v1@sha256:f29543b7644c0a65dc46ed3c88e5215b5177a2434f156f27130e81c613d4aa3f",
+        "python": "python-artifact-conformance-v1@sha256:0541ac0e19bedc42241e65ffb462d894833c6c30d268fa054162bdff8615c057",
+        "ruby": "ruby-artifact-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
+        "rust": "rust-artifact-conformance-v1@sha256:b39ff8f5359aad15abefb7c6f4b592d95f1e0fac7eca69a2ff3ac7f8f163ef79",
+        "typescript": "typescript-artifact-conformance-v1@sha256:dddd1c15d1d0f2bf87677f71bb4fc18b7f72965a213121ef0d226914efbeb9ed"
+      },
+      "compatibility_coordinates": {
+        "catalog": {
+          "assets": {
+            "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.conformance": "contract-conformance-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.dependency_definition": "contract-dependencies-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.entrypoint": "contract-entrypoint-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.platform": "oci-platforms-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.readiness": "wrapper-readiness-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.recipe": "contract-build-recipe-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.workflow": "source-validation-workflow-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "contract-fixture.wrapper": "contract-wrapper-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+            "csharp.base_runtime": "csharp-runtime-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+            "csharp.build_target": "csharp-build-target-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+            "csharp.build_toolchain": "csharp-build-toolchain-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+            "csharp.conformance": "csharp-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
+            "csharp.dependency_definition": "csharp-runtime-config-v1@sha256:6413e1e7988a6e9df20a9c8e6ee60b729892f37c0b83e009f80c15a67c63a139",
+            "csharp.entrypoint": "csharp-entrypoint-v1@sha256:48a41a172878403001e190b8d323d7e076514cec90da45cf8e082049693b55db",
+            "csharp.platform": "csharp-oci-platforms-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+            "csharp.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "csharp.recipe": "csharp-build-recipe-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+            "csharp.workflow": "source-validation-workflow-v1@sha256:78ccccf3ae3b478e895d88746988a090aac5909372c7ce61b79f3af42c54b6a9",
+            "csharp.wrapper": "csharp-wrapper-v1@sha256:4eff87ce1fb7a09f08da2cfca7c39ab13b7049fedb4b8cd3efc86124c8e70f8a",
+            "go.base_runtime": "go-runtime-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+            "go.build_target": "go-build-target-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+            "go.build_toolchain": "go-build-toolchain-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+            "go.conformance": "go-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
+            "go.dependency_definition": "go-dependencies-v1@sha256:8010915a36472885f580d28ff7d66a5a33383e7099276ace537dcece51c7abbf",
+            "go.entrypoint": "go-entrypoint-v1@sha256:512c1358a7d100a49c3852fa1971c556e1369271932a78ae8bab79a605c021b8",
+            "go.platform": "go-oci-platforms-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+            "go.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "go.recipe": "go-build-recipe-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+            "go.workflow": "source-validation-workflow-v1@sha256:990c9a504e5227f198a4d9730baac1c2d8787a2d6c5b9c6516c0f6658feb0143",
+            "go.wrapper": "go-wrapper-v1@sha256:5c1f6735da04c81a7b9eebc76132f4096ddf914a93a965469f1b22dbf83bc2ce",
+            "internal-shell.base_runtime": "internal-shell-runtime-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+            "internal-shell.build_target": "internal-shell-build-target-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+            "internal-shell.build_toolchain": "internal-shell-build-toolchain-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+            "internal-shell.conformance": "internal-shell-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
+            "internal-shell.dependency_definition": "internal-shell-dependencies-v1@sha256:86ba9f0599a0a04a165c364391c9cf136fd681a0cde46aab9edc92d05b56b437",
+            "internal-shell.entrypoint": "internal-shell-entrypoint-v1@sha256:8a54f98b7e6490dadf2922b830eaaa71ba3b4cc448482125e1c1fc7d808e52c2",
+            "internal-shell.platform": "oci-platforms-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+            "internal-shell.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "internal-shell.recipe": "internal-shell-build-recipe-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+            "internal-shell.workflow": "source-validation-workflow-v1@sha256:498a8c7c1ca85d84b9daea663cb2b0e952dcf634af3e756cd533cbed5913ed09",
+            "internal-shell.wrapper": "internal-shell-wrapper-v1@sha256:3afe842359987474c65d685afbdb8338f4fda13d7febe006f30e1d1c853ebd35",
+            "java.base_runtime": "java-runtime-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+            "java.build_target": "java-build-target-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+            "java.build_toolchain": "java-build-toolchain-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+            "java.conformance": "java-conformance-v1@sha256:f29543b7644c0a65dc46ed3c88e5215b5177a2434f156f27130e81c613d4aa3f",
+            "java.dependency_definition": "java-dependencies-v1@sha256:5e8da0523e1ed6dde808a559d5d09dc873b09904a653b0c2fcefec69040734b6",
+            "java.entrypoint": "java-entrypoint-v1@sha256:0d093fae2bbedb01bffb5ca82e66af9131a153f56338892be571b70b43104044",
+            "java.platform": "java-oci-platforms-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+            "java.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "java.recipe": "java-build-recipe-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+            "java.workflow": "source-validation-workflow-v1@sha256:d9b654a9b96c4fa81836b4483c50fdbab175e4fb1154e0b21ee3569a5fd16788",
+            "java.wrapper": "java-wrapper-v1@sha256:78b75d21d9b3b6bc5420fc9d927d1d2fbe1987ab4204bc226ba73d5d566b2d2f",
+            "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+            "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+            "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+            "python.conformance": "python-conformance-v1@sha256:0541ac0e19bedc42241e65ffb462d894833c6c30d268fa054162bdff8615c057",
+            "python.dependency_definition": "python-dependencies-v1@sha256:9f8c394be1f741a5351379bab966dec8e813ce017cb4e640d1f100e40e461f5f",
+            "python.entrypoint": "python-entrypoint-v1@sha256:e663e70bb05c143591a06d352e325cb181136c5910fe62717056b0ed3fcb1e08",
+            "python.platform": "python-oci-platforms-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+            "python.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "python.recipe": "python-build-recipe-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+            "python.workflow": "source-validation-workflow-v1@sha256:a66d958d1eaf7ed7b36ecc3aa0192dd28a67a172ef810d42575a8c73b14ce6f4",
+            "python.wrapper": "python-wrapper-v2@sha256:a82ae2481ad47d0697f318ccf09c5e8bd9597efbbca12f31366fc61d811baed7",
+            "ruby.base_runtime": "ruby-runtime-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+            "ruby.build_target": "ruby-build-target-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+            "ruby.build_toolchain": "ruby-build-toolchain-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+            "ruby.conformance": "ruby-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
+            "ruby.dependency_definition": "ruby-dependencies-v1@sha256:b1ac3df700d7f0fea53ec5982c5927acd3d8864d1a1d1db1c1bc803b4b6206a8",
+            "ruby.entrypoint": "ruby-entrypoint-v1@sha256:5a79f4de55c24a44c0e9257c6809205907056b75231439d133b86c83cf8b99ae",
+            "ruby.platform": "ruby-oci-platforms-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+            "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+            "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+            "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
+            "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+            "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+            "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+            "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+            "rust.conformance": "rust-conformance-v1@sha256:b39ff8f5359aad15abefb7c6f4b592d95f1e0fac7eca69a2ff3ac7f8f163ef79",
+            "rust.dependency_definition": "rust-dependencies-v1@sha256:059c097404299f00bf5a9b26bec0831f8aaad0b6867913255f6fda0d747300cc",
+            "rust.entrypoint": "rust-entrypoint-v1@sha256:20eea82924a1bb765e76ae621aa86fae717456d1194291cdb0f99982e4fdbbda",
+            "rust.platform": "rust-oci-platforms-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+            "rust.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "rust.recipe": "rust-build-recipe-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+            "rust.workflow": "source-validation-workflow-v1@sha256:1324de81cde7816814ddf1f2aa0f1c12e52b77d76a430baec09db0fca9169af8",
+            "rust.wrapper": "rust-wrapper-v1@sha256:ca713ed638f7ba6220cdf70da320aa45acd061e07746aadda4451b31d960b1ab",
+            "typescript.base_runtime": "typescript-runtime-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+            "typescript.build_target": "typescript-build-target-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+            "typescript.build_toolchain": "typescript-build-toolchain-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+            "typescript.conformance": "typescript-conformance-v1@sha256:dddd1c15d1d0f2bf87677f71bb4fc18b7f72965a213121ef0d226914efbeb9ed",
+            "typescript.dependency_definition": "typescript-compiler-package-v1@sha256:33cd0ee1beaa8c9e9d15a9da836c62ddea4c34a42d7c2d349dbc80d94165d22a",
+            "typescript.entrypoint": "typescript-entrypoint-v1@sha256:47d2bc6d6e9288f88defffc0a6d02bdf854cb1cafd6e823f1782170ae0f962ab",
+            "typescript.platform": "typescript-oci-platforms-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+            "typescript.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+            "typescript.recipe": "typescript-build-recipe-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+            "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
+            "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
+          },
+          "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+          "path": "language_environments/catalog-v1/catalog.json"
+        },
+        "format_version": "rps-catalog-compatibility-v1",
+        "offline_bundle": {
+          "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+        },
+        "runner": {
+          "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+          "package_version": "0.1.0"
+        }
+      },
+      "execution_profile": {
+        "identity": "docker-execution-v1@sha256:54b69b7eae0b15191a13b2b14fcc75c4537358b971b8f84a65731589b8ad3bb1",
+        "version": "docker-execution-v1"
+      },
+      "offline_bundle": {
+        "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+      },
+      "platform_runtimes": {
+        "csharp": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:7a91ccecc26d71bf7688c627a6b5eae2e27bb2cd1e37e8abe738348904245692",
+                "reference": "mcr.microsoft.com/dotnet/sdk@sha256:7a91ccecc26d71bf7688c627a6b5eae2e27bb2cd1e37e8abe738348904245692",
+                "version": "linux-amd64-dotnet-sdk-10.0.302-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:4d3f0fed221262600ace6384e809d7954a2d77266bc2f08193f763c5702bedce",
+                "reference": "mcr.microsoft.com/dotnet/runtime@sha256:4d3f0fed221262600ace6384e809d7954a2d77266bc2f08193f763c5702bedce",
+                "version": "linux-amd64-dotnet-runtime-10.0.10-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:683d16913974bf1311381ccd6d6aba55213f313501c39ef964b0458f44c0c4bc",
+                "reference": "mcr.microsoft.com/dotnet/sdk@sha256:683d16913974bf1311381ccd6d6aba55213f313501c39ef964b0458f44c0c4bc",
+                "version": "linux-arm64-dotnet-sdk-10.0.302-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:9c6a00c4c4f36b64f9d1bef6226fff9b219ceca3f75ede924d06649710a3ebba",
+                "reference": "mcr.microsoft.com/dotnet/runtime@sha256:9c6a00c4c4f36b64f9d1bef6226fff9b219ceca3f75ede924d06649710a3ebba",
+                "version": "linux-arm64-dotnet-runtime-10.0.10-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "csharp_version": "14",
+            "dotnet_release": "10",
+            "policy": "latest-upstream-supported-lts",
+            "rationale": ".NET 10 is the latest upstream-supported LTS line; SDK 10.0.302 and runtime 10.0.10 were the latest servicing releases available when selected.",
+            "runtime_version": "10.0.10",
+            "sdk_version": "10.0.302",
+            "selected_on": "2026-08-12",
+            "upstream_release": "https://dotnet.microsoft.com/download/dotnet/10.0"
+          }
+        },
+        "go": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:0d327c83532d3cdeeeebab56ce85962bf09cb89545355b10207c7771b0c3713f",
+                "reference": "docker.io/library/golang@sha256:0d327c83532d3cdeeeebab56ce85962bf09cb89545355b10207c7771b0c3713f",
+                "version": "linux-amd64-go-1.26.5-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:0d327c83532d3cdeeeebab56ce85962bf09cb89545355b10207c7771b0c3713f",
+                "reference": "docker.io/library/golang@sha256:0d327c83532d3cdeeeebab56ce85962bf09cb89545355b10207c7771b0c3713f",
+                "version": "linux-amd64-go-1.26.5-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:b1a0cc29a7e13e0595e21087eeb930dc494976b18ba68279bf52c665f3170aa0",
+                "reference": "docker.io/library/golang@sha256:b1a0cc29a7e13e0595e21087eeb930dc494976b18ba68279bf52c665f3170aa0",
+                "version": "linux-arm64-go-1.26.5-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:b1a0cc29a7e13e0595e21087eeb930dc494976b18ba68279bf52c665f3170aa0",
+                "reference": "docker.io/library/golang@sha256:b1a0cc29a7e13e0595e21087eeb930dc494976b18ba68279bf52c665f3170aa0",
+                "version": "linux-arm64-go-1.26.5-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "go_version": "1.26.5",
+            "policy": "latest-upstream-supported-stable",
+            "rationale": "Go does not designate an LTS release; 1.26.5 was the latest stable upstream release when selected.",
+            "selected_on": "2026-08-12",
+            "upstream_release": "https://go.dev/dl/#go1.26.5"
+          }
+        },
+        "java": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:78e1c29a95bd36513e7d67eb730b699c6e6f46ef975e35e937c66eb726539609",
+                "reference": "docker.io/library/eclipse-temurin@sha256:78e1c29a95bd36513e7d67eb730b699c6e6f46ef975e35e937c66eb726539609",
+                "version": "linux-amd64-java-25.0.3+9-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "reference": "docker.io/library/eclipse-temurin@sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "version": "linux-amd64-java-25.0.3+9-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:9d41aef0f1b800791a4c1e3e2ae52fc36a5b154a9edd08f0ab382b1999401e83",
+                "reference": "docker.io/library/eclipse-temurin@sha256:9d41aef0f1b800791a4c1e3e2ae52fc36a5b154a9edd08f0ab382b1999401e83",
+                "version": "linux-arm64-java-25.0.3+9-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "reference": "docker.io/library/eclipse-temurin@sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "version": "linux-arm64-java-25.0.3+9-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "java_version": "25.0.3+9",
+            "lts_release": "25",
+            "policy": "latest-upstream-supported-lts",
+            "rationale": "Java 25 is the latest upstream-designated LTS line; Temurin 25.0.3+9 was the latest matching official container build available when selected.",
+            "selected_on": "2026-08-12",
+            "upstream_release": "https://adoptium.net/temurin/releases/?version=25"
+          }
+        },
+        "python": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:ff83a535339812dd72e69c93b3c48ddf7c85a324d6330af5797c82a255dbeef4",
+                "reference": "docker.io/library/python@sha256:ff83a535339812dd72e69c93b3c48ddf7c85a324d6330af5797c82a255dbeef4",
+                "version": "linux-amd64-python-3.14.6-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:ff83a535339812dd72e69c93b3c48ddf7c85a324d6330af5797c82a255dbeef4",
+                "reference": "docker.io/library/python@sha256:ff83a535339812dd72e69c93b3c48ddf7c85a324d6330af5797c82a255dbeef4",
+                "version": "linux-amd64-python-3.14.6-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:1609c3e634a6ad5b4759f67e34c246640d41858fffde69876245fd26afd632b7",
+                "reference": "docker.io/library/python@sha256:1609c3e634a6ad5b4759f67e34c246640d41858fffde69876245fd26afd632b7",
+                "version": "linux-arm64-python-3.14.6-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:1609c3e634a6ad5b4759f67e34c246640d41858fffde69876245fd26afd632b7",
+                "reference": "docker.io/library/python@sha256:1609c3e634a6ad5b4759f67e34c246640d41858fffde69876245fd26afd632b7",
+                "version": "linux-arm64-python-3.14.6-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "policy": "latest-upstream-supported-stable",
+            "python_version": "3.14.6",
+            "rationale": "Python does not designate a general LTS release; 3.14.6 was the latest stable upstream release when selected.",
+            "selected_on": "2026-08-11",
+            "upstream_release": "https://www.python.org/downloads/release/python-3146/"
+          }
+        },
+        "ruby": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:5dff75e5286a89836c9fb34473809e4b6a756687a914898b7ecf5fd8d29e16a8",
+                "reference": "docker.io/library/ruby@sha256:5dff75e5286a89836c9fb34473809e4b6a756687a914898b7ecf5fd8d29e16a8",
+                "version": "linux-amd64-ruby-4.0.6-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:5dff75e5286a89836c9fb34473809e4b6a756687a914898b7ecf5fd8d29e16a8",
+                "reference": "docker.io/library/ruby@sha256:5dff75e5286a89836c9fb34473809e4b6a756687a914898b7ecf5fd8d29e16a8",
+                "version": "linux-amd64-ruby-4.0.6-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:cde120660ff22235429157098de77cf3f14291f220c8eea49564edecbd5a2516",
+                "reference": "docker.io/library/ruby@sha256:cde120660ff22235429157098de77cf3f14291f220c8eea49564edecbd5a2516",
+                "version": "linux-arm64-ruby-4.0.6-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:cde120660ff22235429157098de77cf3f14291f220c8eea49564edecbd5a2516",
+                "reference": "docker.io/library/ruby@sha256:cde120660ff22235429157098de77cf3f14291f220c8eea49564edecbd5a2516",
+                "version": "linux-arm64-ruby-4.0.6-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "policy": "latest-upstream-supported-stable",
+            "rationale": "Ruby does not designate an LTS release; 4.0.6 was the latest stable upstream release when selected.",
+            "ruby_version": "4.0.6",
+            "selected_on": "2026-08-13",
+            "upstream_release": "https://www.ruby-lang.org/en/news/2026/07/14/ruby-4-0-6-released/"
+          }
+        },
+        "rust": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:408fe88047cef61a2087653b0c5255fa51c0f2d6d94ddedd7a2562a9b91a46f6",
+                "reference": "docker.io/library/rust@sha256:408fe88047cef61a2087653b0c5255fa51c0f2d6d94ddedd7a2562a9b91a46f6",
+                "version": "linux-amd64-rust-1.97.1-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:408fe88047cef61a2087653b0c5255fa51c0f2d6d94ddedd7a2562a9b91a46f6",
+                "reference": "docker.io/library/rust@sha256:408fe88047cef61a2087653b0c5255fa51c0f2d6d94ddedd7a2562a9b91a46f6",
+                "version": "linux-amd64-rust-1.97.1-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:6e957ef098dcc77d33e310261e4ed5843bb108d5c3b5dc2b476cbc8b6caf53fa",
+                "reference": "docker.io/library/rust@sha256:6e957ef098dcc77d33e310261e4ed5843bb108d5c3b5dc2b476cbc8b6caf53fa",
+                "version": "linux-arm64-rust-1.97.1-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:6e957ef098dcc77d33e310261e4ed5843bb108d5c3b5dc2b476cbc8b6caf53fa",
+                "reference": "docker.io/library/rust@sha256:6e957ef098dcc77d33e310261e4ed5843bb108d5c3b5dc2b476cbc8b6caf53fa",
+                "version": "linux-arm64-rust-1.97.1-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "policy": "latest-upstream-supported-stable",
+            "rationale": "Rust does not designate an LTS release; 1.97.1 was the latest stable upstream release when selected.",
+            "rust_version": "1.97.1",
+            "selected_on": "2026-08-12",
+            "upstream_release": "https://blog.rust-lang.org/2026/07/16/Rust-1.97.1/"
+          }
+        },
+        "typescript": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:65932751ed4073ed02f5c04e494e4b2572a891b7dbea0568a863dc80341bf848",
+                "reference": "docker.io/library/node@sha256:65932751ed4073ed02f5c04e494e4b2572a891b7dbea0568a863dc80341bf848",
+                "version": "linux-amd64-node-24.19.0-typescript-6.0.3-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:65932751ed4073ed02f5c04e494e4b2572a891b7dbea0568a863dc80341bf848",
+                "reference": "docker.io/library/node@sha256:65932751ed4073ed02f5c04e494e4b2572a891b7dbea0568a863dc80341bf848",
+                "version": "linux-amd64-node-24.19.0-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:c133efe216ffb6e785ed9a8be55a29fcb86775e8008ae0a9f0ed6af4f175bb03",
+                "reference": "docker.io/library/node@sha256:c133efe216ffb6e785ed9a8be55a29fcb86775e8008ae0a9f0ed6af4f175bb03",
+                "version": "linux-arm64-node-24.19.0-typescript-6.0.3-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:c133efe216ffb6e785ed9a8be55a29fcb86775e8008ae0a9f0ed6af4f175bb03",
+                "reference": "docker.io/library/node@sha256:c133efe216ffb6e785ed9a8be55a29fcb86775e8008ae0a9f0ed6af4f175bb03",
+                "version": "linux-arm64-node-24.19.0-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "node_lts_release": "24",
+            "node_version": "24.19.0",
+            "policy": "latest-upstream-supported-lts",
+            "rationale": "Node.js 24.19.0 is the latest release on the newest upstream-supported LTS line; TypeScript 6.0.3 is the latest compatible stable compiler.",
+            "selected_on": "2026-08-12",
+            "typescript_version": "6.0.3",
+            "upstream_node_release": "https://nodejs.org/en/download/archive/v24",
+            "upstream_typescript_release": "https://github.com/microsoft/TypeScript/releases/tag/v6.0.3"
+          }
+        }
+      },
+      "release_format_version": "catalog-release-v1",
+      "repository": {
+        "tag": "catalog-v13"
+      },
+      "runner": {
+        "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+        "package_version": "0.1.0"
+      }
+    },
+    "offline_bundle_current_path_count": 255,
+    "participant_template_asset_paths": [],
+    "participant_template_digest_fields": [],
+    "participant_template_paths": [],
+    "unowned_catalog_paths": []
+  },
+  "compatibility_coordinates": {
+    "catalog": {
+      "assets": {
+        "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.conformance": "contract-conformance-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.dependency_definition": "contract-dependencies-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.entrypoint": "contract-entrypoint-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.platform": "oci-platforms-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.readiness": "wrapper-readiness-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.recipe": "contract-build-recipe-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.workflow": "source-validation-workflow-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "contract-fixture.wrapper": "contract-wrapper-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
+        "csharp.base_runtime": "csharp-runtime-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+        "csharp.build_target": "csharp-build-target-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+        "csharp.build_toolchain": "csharp-build-toolchain-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+        "csharp.conformance": "csharp-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
+        "csharp.dependency_definition": "csharp-runtime-config-v1@sha256:6413e1e7988a6e9df20a9c8e6ee60b729892f37c0b83e009f80c15a67c63a139",
+        "csharp.entrypoint": "csharp-entrypoint-v1@sha256:48a41a172878403001e190b8d323d7e076514cec90da45cf8e082049693b55db",
+        "csharp.platform": "csharp-oci-platforms-v1@sha256:ed45f9845c468ab0c121e11db2782700dbdb5b2cac3f88047caa1c7e5a09c79f",
+        "csharp.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "csharp.recipe": "csharp-build-recipe-v1@sha256:7654969a9e92c355e41a9710884a8a95ba8ce465d37792b312af26ddaa42f1ed",
+        "csharp.workflow": "source-validation-workflow-v1@sha256:78ccccf3ae3b478e895d88746988a090aac5909372c7ce61b79f3af42c54b6a9",
+        "csharp.wrapper": "csharp-wrapper-v1@sha256:4eff87ce1fb7a09f08da2cfca7c39ab13b7049fedb4b8cd3efc86124c8e70f8a",
+        "go.base_runtime": "go-runtime-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+        "go.build_target": "go-build-target-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+        "go.build_toolchain": "go-build-toolchain-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+        "go.conformance": "go-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
+        "go.dependency_definition": "go-dependencies-v1@sha256:8010915a36472885f580d28ff7d66a5a33383e7099276ace537dcece51c7abbf",
+        "go.entrypoint": "go-entrypoint-v1@sha256:512c1358a7d100a49c3852fa1971c556e1369271932a78ae8bab79a605c021b8",
+        "go.platform": "go-oci-platforms-v1@sha256:039edb9cbbb9a92f9b057a443fe9e41cc3b76e4517f8a0f8eabda9e4a3f7e02e",
+        "go.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "go.recipe": "go-build-recipe-v1@sha256:86890e1d64cbb93ac4dccd6c733079a89c75e6ef397ddb2b0f84a056f863f5fe",
+        "go.workflow": "source-validation-workflow-v1@sha256:990c9a504e5227f198a4d9730baac1c2d8787a2d6c5b9c6516c0f6658feb0143",
+        "go.wrapper": "go-wrapper-v1@sha256:5c1f6735da04c81a7b9eebc76132f4096ddf914a93a965469f1b22dbf83bc2ce",
+        "internal-shell.base_runtime": "internal-shell-runtime-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+        "internal-shell.build_target": "internal-shell-build-target-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+        "internal-shell.build_toolchain": "internal-shell-build-toolchain-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+        "internal-shell.conformance": "internal-shell-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
+        "internal-shell.dependency_definition": "internal-shell-dependencies-v1@sha256:86ba9f0599a0a04a165c364391c9cf136fd681a0cde46aab9edc92d05b56b437",
+        "internal-shell.entrypoint": "internal-shell-entrypoint-v1@sha256:8a54f98b7e6490dadf2922b830eaaa71ba3b4cc448482125e1c1fc7d808e52c2",
+        "internal-shell.platform": "oci-platforms-v1@sha256:c8c91b683287d06ecc407ef4f568c2c4db18223d91541e1f67343138e028b62c",
+        "internal-shell.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "internal-shell.recipe": "internal-shell-build-recipe-v1@sha256:3875f006a4f660e811a97358f4017eb98073078138154631d4bc171890a36b3b",
+        "internal-shell.workflow": "source-validation-workflow-v1@sha256:498a8c7c1ca85d84b9daea663cb2b0e952dcf634af3e756cd533cbed5913ed09",
+        "internal-shell.wrapper": "internal-shell-wrapper-v1@sha256:3afe842359987474c65d685afbdb8338f4fda13d7febe006f30e1d1c853ebd35",
+        "java.base_runtime": "java-runtime-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+        "java.build_target": "java-build-target-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+        "java.build_toolchain": "java-build-toolchain-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+        "java.conformance": "java-conformance-v1@sha256:f29543b7644c0a65dc46ed3c88e5215b5177a2434f156f27130e81c613d4aa3f",
+        "java.dependency_definition": "java-dependencies-v1@sha256:5e8da0523e1ed6dde808a559d5d09dc873b09904a653b0c2fcefec69040734b6",
+        "java.entrypoint": "java-entrypoint-v1@sha256:0d093fae2bbedb01bffb5ca82e66af9131a153f56338892be571b70b43104044",
+        "java.platform": "java-oci-platforms-v1@sha256:a1360c05b0c4586227b7c40c34e7df26579308956266639d47cfdfc6ec4121d2",
+        "java.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "java.recipe": "java-build-recipe-v1@sha256:eeb351cb275b7b1074a5eb94e859fe58e60a804817553a0c3c3ed0ae2c61b0ef",
+        "java.workflow": "source-validation-workflow-v1@sha256:d9b654a9b96c4fa81836b4483c50fdbab175e4fb1154e0b21ee3569a5fd16788",
+        "java.wrapper": "java-wrapper-v1@sha256:78b75d21d9b3b6bc5420fc9d927d1d2fbe1987ab4204bc226ba73d5d566b2d2f",
+        "python.base_runtime": "python-runtime-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+        "python.build_target": "python-build-target-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+        "python.build_toolchain": "python-build-toolchain-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+        "python.conformance": "python-conformance-v1@sha256:0541ac0e19bedc42241e65ffb462d894833c6c30d268fa054162bdff8615c057",
+        "python.dependency_definition": "python-dependencies-v1@sha256:9f8c394be1f741a5351379bab966dec8e813ce017cb4e640d1f100e40e461f5f",
+        "python.entrypoint": "python-entrypoint-v1@sha256:e663e70bb05c143591a06d352e325cb181136c5910fe62717056b0ed3fcb1e08",
+        "python.platform": "python-oci-platforms-v2@sha256:e2e019156dba04246ee8e2d15765dc32af21f6c710828f56f7bc6536d62312b9",
+        "python.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "python.recipe": "python-build-recipe-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
+        "python.workflow": "source-validation-workflow-v1@sha256:a66d958d1eaf7ed7b36ecc3aa0192dd28a67a172ef810d42575a8c73b14ce6f4",
+        "python.wrapper": "python-wrapper-v2@sha256:a82ae2481ad47d0697f318ccf09c5e8bd9597efbbca12f31366fc61d811baed7",
+        "ruby.base_runtime": "ruby-runtime-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+        "ruby.build_target": "ruby-build-target-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+        "ruby.build_toolchain": "ruby-build-toolchain-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+        "ruby.conformance": "ruby-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
+        "ruby.dependency_definition": "ruby-dependencies-v1@sha256:b1ac3df700d7f0fea53ec5982c5927acd3d8864d1a1d1db1c1bc803b4b6206a8",
+        "ruby.entrypoint": "ruby-entrypoint-v1@sha256:5a79f4de55c24a44c0e9257c6809205907056b75231439d133b86c83cf8b99ae",
+        "ruby.platform": "ruby-oci-platforms-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+        "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+        "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+        "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
+        "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
+        "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+        "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+        "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+        "rust.conformance": "rust-conformance-v1@sha256:b39ff8f5359aad15abefb7c6f4b592d95f1e0fac7eca69a2ff3ac7f8f163ef79",
+        "rust.dependency_definition": "rust-dependencies-v1@sha256:059c097404299f00bf5a9b26bec0831f8aaad0b6867913255f6fda0d747300cc",
+        "rust.entrypoint": "rust-entrypoint-v1@sha256:20eea82924a1bb765e76ae621aa86fae717456d1194291cdb0f99982e4fdbbda",
+        "rust.platform": "rust-oci-platforms-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
+        "rust.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "rust.recipe": "rust-build-recipe-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
+        "rust.workflow": "source-validation-workflow-v1@sha256:1324de81cde7816814ddf1f2aa0f1c12e52b77d76a430baec09db0fca9169af8",
+        "rust.wrapper": "rust-wrapper-v1@sha256:ca713ed638f7ba6220cdf70da320aa45acd061e07746aadda4451b31d960b1ab",
+        "typescript.base_runtime": "typescript-runtime-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+        "typescript.build_target": "typescript-build-target-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+        "typescript.build_toolchain": "typescript-build-toolchain-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+        "typescript.conformance": "typescript-conformance-v1@sha256:dddd1c15d1d0f2bf87677f71bb4fc18b7f72965a213121ef0d226914efbeb9ed",
+        "typescript.dependency_definition": "typescript-compiler-package-v1@sha256:33cd0ee1beaa8c9e9d15a9da836c62ddea4c34a42d7c2d349dbc80d94165d22a",
+        "typescript.entrypoint": "typescript-entrypoint-v1@sha256:47d2bc6d6e9288f88defffc0a6d02bdf854cb1cafd6e823f1782170ae0f962ab",
+        "typescript.platform": "typescript-oci-platforms-v1@sha256:e3eb05b29af82bbc272ccc7630c283e86fdfb0846deb0a3dccf7628a67912847",
+        "typescript.readiness": "wrapper-readiness-v1@sha256:d685b537ddbbd8bdca851284996c6441d264049fd2de006bfa5e6a77d8a0a458",
+        "typescript.recipe": "typescript-build-recipe-v1@sha256:233e3544f4db6d99c51dde9fa3970a6fcf865b87b679a7369356ee1801dc3bf4",
+        "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
+        "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
+      },
+      "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
+      "path": "language_environments/catalog-v1/catalog.json"
+    },
+    "format_version": "rps-catalog-compatibility-v1",
+    "offline_bundle": {
+      "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
+    },
+    "runner": {
+      "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
+      "package_version": "0.1.0"
+    }
+  },
+  "evidence_format_version": "runner-catalog-independence-v1",
+  "internal_practice_fixtures": {
+    "module": "rps_runner.certification_fixture",
+    "module_identity": "sha256:f1586f6e895cc8100ebf4bb82c1b48c35391d5367bb96b2e753988cac6f795b4",
+    "offline_module_identity": "sha256:f1586f6e895cc8100ebf4bb82c1b48c35391d5367bb96b2e753988cac6f795b4",
+    "offline_reproducible": true,
+    "participant_command_exposed": false,
+    "status": "passed"
+  },
+  "organizer_workflows": {
+    "checkout_source": "offline_bundle",
+    "status": "passed",
+    "test_files": [
+      "tests/test_prepare_cli.py",
+      "tests/test_source_validation_cli.py",
+      "tests/test_artifact_builder_cli.py",
+      "tests/test_artifact_certification_cli.py",
+      "tests/test_multi_language_environment.py",
+      "tests/test_csharp_language_environment.py",
+      "tests/test_java_language_environment.py",
+      "tests/test_rust_language_environment.py",
+      "tests/test_typescript_language_environment.py",
+      "tests/test_batch_plan_cli.py",
+      "tests/test_tournament_plan_cli.py",
+      "tests/test_tournament_cli.py",
+      "tests/test_rehearsal_cli.py",
+      "tests/test_presentation.py",
+      "tests/test_presentation_cli.py"
+    ]
+  },
+  "repository_scan": {
+    "companion_repository": "absent",
+    "dependency_checks": [
+      "checkout",
+      "import",
+      "path",
+      "network"
+    ],
+    "dependency_matches": [],
+    "dependency_surface_count": 170,
+    "dependency_surfaces": [
+      ".github/workflows/catalog-release-contract.yml",
+      ".github/workflows/native-amd64-portability.yml",
+      ".github/workflows/python-39-compatibility.yml",
+      "freeze-tournament-catalog",
+      "language_environments/catalog-v1/catalog.json",
+      "language_environments/catalog-v1/contract-fixture/assets.json",
+      "language_environments/catalog-v1/csharp/Dockerfile",
+      "language_environments/catalog-v1/csharp/RpsBot.runtimeconfig.json",
+      "language_environments/catalog-v1/csharp/conformance.json",
+      "language_environments/catalog-v1/csharp/entrypoint.json",
+      "language_environments/catalog-v1/csharp/readiness.json",
+      "language_environments/catalog-v1/csharp/runtimes.json",
+      "language_environments/catalog-v1/csharp/workflow.yml",
+      "language_environments/catalog-v1/go/Dockerfile",
+      "language_environments/catalog-v1/go/conformance.json",
+      "language_environments/catalog-v1/go/entrypoint.json",
+      "language_environments/catalog-v1/go/readiness.json",
+      "language_environments/catalog-v1/go/runtimes.json",
+      "language_environments/catalog-v1/go/workflow.yml",
+      "language_environments/catalog-v1/internal-shell/Dockerfile",
+      "language_environments/catalog-v1/internal-shell/conformance.json",
+      "language_environments/catalog-v1/internal-shell/entrypoint.json",
+      "language_environments/catalog-v1/internal-shell/readiness.json",
+      "language_environments/catalog-v1/internal-shell/runtimes.json",
+      "language_environments/catalog-v1/internal-shell/workflow.yml",
+      "language_environments/catalog-v1/internal-shell/wrapper.sh",
+      "language_environments/catalog-v1/java/Dockerfile",
+      "language_environments/catalog-v1/java/conformance.json",
+      "language_environments/catalog-v1/java/entrypoint.json",
+      "language_environments/catalog-v1/java/readiness.json",
+      "language_environments/catalog-v1/java/runtimes.json",
+      "language_environments/catalog-v1/java/workflow.yml",
+      "language_environments/catalog-v1/python/Dockerfile",
+      "language_environments/catalog-v1/python/conformance.json",
+      "language_environments/catalog-v1/python/entrypoint.json",
+      "language_environments/catalog-v1/python/readiness.json",
+      "language_environments/catalog-v1/python/requirements.lock",
+      "language_environments/catalog-v1/python/runtimes.json",
+      "language_environments/catalog-v1/python/workflow.yml",
+      "language_environments/catalog-v1/python/wrapper.py",
+      "language_environments/catalog-v1/ruby/Dockerfile",
+      "language_environments/catalog-v1/ruby/conformance.json",
+      "language_environments/catalog-v1/ruby/entrypoint.json",
+      "language_environments/catalog-v1/ruby/readiness.json",
+      "language_environments/catalog-v1/ruby/runtimes.json",
+      "language_environments/catalog-v1/ruby/workflow.yml",
+      "language_environments/catalog-v1/rust/Dockerfile",
+      "language_environments/catalog-v1/rust/conformance.json",
+      "language_environments/catalog-v1/rust/entrypoint.json",
+      "language_environments/catalog-v1/rust/readiness.json",
+      "language_environments/catalog-v1/rust/runtimes.json",
+      "language_environments/catalog-v1/rust/workflow.yml",
+      "language_environments/catalog-v1/typescript/Dockerfile",
+      "language_environments/catalog-v1/typescript/conformance.json",
+      "language_environments/catalog-v1/typescript/entrypoint.json",
+      "language_environments/catalog-v1/typescript/readiness.json",
+      "language_environments/catalog-v1/typescript/runtimes.json",
+      "language_environments/catalog-v1/typescript/workflow.yml",
+      "package-lock.json",
+      "package.json",
+      "playwright.config.js",
+      "pyproject.toml",
+      "rps_runner/__init__.py",
+      "rps_runner/artifact_builder.py",
+      "rps_runner/artifact_certification.py",
+      "rps_runner/artifact_cli.py",
+      "rps_runner/artifact_store.py",
+      "rps_runner/batch_artifacts.py",
+      "rps_runner/batch_execution.py",
+      "rps_runner/batch_plan_cli.py",
+      "rps_runner/batch_projection.py",
+      "rps_runner/batch_repair.py",
+      "rps_runner/batch_team_sources.py",
+      "rps_runner/certification_cli.py",
+      "rps_runner/certification_fixture.py",
+      "rps_runner/cli.py",
+      "rps_runner/doctor_cli.py",
+      "rps_runner/engine/__init__.py",
+      "rps_runner/engine/bot_process.py",
+      "rps_runner/engine/bot_session.py",
+      "rps_runner/engine/container_session.py",
+      "rps_runner/engine/match.py",
+      "rps_runner/engine/models.py",
+      "rps_runner/engine/seccomp-docker-execution-v1.json",
+      "rps_runner/execution_profile.py",
+      "rps_runner/host_readiness.py",
+      "rps_runner/language_environment.py",
+      "rps_runner/prepare_cli.py",
+      "rps_runner/presentation/__init__.py",
+      "rps_runner/presentation/assets/app.js",
+      "rps_runner/presentation/contract.py",
+      "rps_runner/presentation/resources.py",
+      "rps_runner/presentation/server.py",
+      "rps_runner/profile_probe.py",
+      "rps_runner/rehearsal_cli.py",
+      "rps_runner/source_cli.py",
+      "rps_runner/team_role.py",
+      "rps_runner/tournament/__init__.py",
+      "rps_runner/tournament/capacity.py",
+      "rps_runner/tournament/competition.py",
+      "rps_runner/tournament/execution_inputs.py",
+      "rps_runner/tournament/immutable.py",
+      "rps_runner/tournament/locking.py",
+      "rps_runner/tournament/match_executor.py",
+      "rps_runner/tournament/plan.py",
+      "rps_runner/tournament/retained_artifacts.py",
+      "rps_runner/tournament/rules.py",
+      "rps_runner/tournament/runner.py",
+      "rps_runner/tournament/schedule.py",
+      "rps_runner/tournament/seeding.py",
+      "rps_runner/tournament/state.py",
+      "rps_runner/tournament/storage.py",
+      "rps_runner/tournament_cli.py",
+      "scripts/portable_strategy.py",
+      "scripts/ratify-native-platform.sh",
+      "setup.cfg",
+      "tests/browser/presentation.spec.js",
+      "tests/fixtures/bots/checks_protocol.py",
+      "tests/fixtures/bots/checks_requests.py",
+      "tests/fixtures/bots/commits_protocol_fault.py",
+      "tests/fixtures/bots/copies_opponent.py",
+      "tests/fixtures/bots/delays_first_response.py",
+      "tests/fixtures/bots/marks_when_terminated.py",
+      "tests/fixtures/bots/plays_moves.py",
+      "tests/fixtures/bots/plays_seeded_random.py",
+      "tests/fixtures/bots/responds_before_request.py",
+      "tests/fixtures/bots/responds_slowly.py",
+      "tests/fixtures/bots/stays_alive.py",
+      "tests/fixtures/bots/waits_for_peer.py",
+      "tests/fixtures/bots/waits_for_termination.py",
+      "tests/fixtures/bots/writes_excessive_stderr.py",
+      "tests/fixtures/cpu_exhaustion_strategy.py",
+      "tests/fixtures/fake_docker.py",
+      "tests/fixtures/isolation_strategy.py",
+      "tests/test_artifact_builder_cli.py",
+      "tests/test_artifact_certification_cli.py",
+      "tests/test_artifact_store.py",
+      "tests/test_batch_plan_cli.py",
+      "tests/test_catalog_release.py",
+      "tests/test_cli.py",
+      "tests/test_container_match_executor.py",
+      "tests/test_csharp_language_environment.py",
+      "tests/test_doctor_cli.py",
+      "tests/test_execution_profile.py",
+      "tests/test_go_language_environment.py",
+      "tests/test_java_language_environment.py",
+      "tests/test_match_bot_sessions.py",
+      "tests/test_match_seed_boundary.py",
+      "tests/test_multi_language_environment.py",
+      "tests/test_prepare_cli.py",
+      "tests/test_presentation.py",
+      "tests/test_presentation_cli.py",
+      "tests/test_python_compatibility.py",
+      "tests/test_python_wrapper_readiness.py",
+      "tests/test_rehearsal_cli.py",
+      "tests/test_ruby_language_environment.py",
+      "tests/test_rust_language_environment.py",
+      "tests/test_source_validation_cli.py",
+      "tests/test_tournament_capacity.py",
+      "tests/test_tournament_cli.py",
+      "tests/test_tournament_competition.py",
+      "tests/test_tournament_execution_inputs.py",
+      "tests/test_tournament_locking.py",
+      "tests/test_tournament_match_executor.py",
+      "tests/test_tournament_plan_cli.py",
+      "tests/test_tournament_runner.py",
+      "tests/test_tournament_seeding_schedule.py",
+      "tests/test_tournament_state.py",
+      "tests/test_tournament_storage.py",
+      "tests/test_typescript_language_environment.py"
+    ],
+    "participant_template_paths": [],
+    "tracked_path_count": 255
+  },
+  "status": "passed"
+}

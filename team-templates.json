@@ -24,6 +24,10 @@
     {
       "language_id": "rust",
       "descriptor": "templates/rust/team-template.json"
+    },
+    {
+      "language_id": "ruby",
+      "descriptor": "templates/ruby/team-template.json"
     }
   ]
 }

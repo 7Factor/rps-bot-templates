@@ -123,7 +123,7 @@ class RustTeamTemplateTests(unittest.TestCase):
         self.assertIn("Participant-local Advisory Validation passed", completed.stdout)
         self.assertIn(
             "rps-language-environment-catalog-v1@sha256:"
-            "67c9817d0e8b61b6d4a3844230fe4e316f0b2a18d4e88483f6c6be3a67a55ca7",
+            "be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
             completed.stdout,
         )
         self.assertIn("Practice Match: passed", completed.stdout)
@@ -169,7 +169,7 @@ class RustTeamTemplateTests(unittest.TestCase):
         )
         self.assertEqual(
             manifest["catalog_compatibility"]["runner"]["commit"],
-            "5e2dae30f5cc99393047ae91a59679825555e90e",
+            "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
         )
 
     def test_shared_checker_has_no_rust_language_switch(self) -> None:

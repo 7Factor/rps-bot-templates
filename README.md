@@ -32,7 +32,8 @@ The collection includes independently released
 [Java](templates/java/team_source/Strategy.java),
 [TypeScript](templates/typescript/team_source/strategy.ts), and
 [C#](templates/csharp/team_source/Strategy.cs), and
-[Rust](templates/rust/team_source/strategy.rs) starters.
+[Rust](templates/rust/team_source/strategy.rs), and
+[Ruby](templates/ruby/team_source/strategy.rb) starters.
 Teams may add `team-submission.json` and change only the Team Source path named
 by its resolved descriptor;
 the catalog and its build, wrapper, workflow, and protocol assets remain
@@ -42,6 +43,7 @@ organizer-owned. See the [Python Team guide](templates/python/TEAM_GUIDE.md),
 [TypeScript Team guide](templates/typescript/TEAM_GUIDE.md), or
 [C# Team guide](templates/csharp/TEAM_GUIDE.md), or
 [Rust Team guide](templates/rust/TEAM_GUIDE.md)
+and [Ruby Team guide](templates/ruby/TEAM_GUIDE.md)
 for the strategy contract, approved file types and limits, branch convention,
 and shared-repository honor policy.
 
@@ -96,6 +98,7 @@ Replace `go` with `java` and use `java-template-v1` for the independent Java
 Template Release.
 Use `csharp` and `csharp-template-v2` for the independent C# Template Release.
 Use `rust` and `rust-template-v1` for the independent Rust Template Release.
+Use `ruby` and `ruby-template-v1` for the independent Ruby Template Release.
 
 ## Immutable compatibility contract
 
@@ -125,7 +128,7 @@ The ownership boundary is deliberate:
   paths are never Team Source, and no catalog source tree is maintained here.
 
 [`team-templates.json`](team-templates.json) is the collection-aware discovery
-index. Its Python, Go, Java, TypeScript, C#, and Rust descriptors independently bind
+index. Its Python, Go, Java, TypeScript, C#, Rust, and Ruby descriptors independently bind
 each starter's Team Source, guidance, build-and-test entrypoint, matching
 Language Environment, and language-specific Template Release identity.
 

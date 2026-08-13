@@ -1,0 +1,31 @@
+#!/bin/sh
+set -eu
+
+if ! command -v ruby >/dev/null 2>&1; then
+  printf '%s\n' 'Native toolchain failure: Ruby 4.0 or newer is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+ruby_major=$(ruby -e 'print RUBY_VERSION.split(".").first' 2>/dev/null || true)
+if [ -z "$ruby_major" ] || [ "$ruby_major" -lt 4 ]; then
+  printf '%s\n' 'Native toolchain failure: Ruby 4.0 or newer is required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+if [ -n "${RPS_DEPENDENCY_DEFINITION:-}" ]; then
+  if [ ! -f "$RPS_DEPENDENCY_DEFINITION" ]; then
+    printf '%s\n' 'Ruby dependency policy failure: the Catalog dependency definition is unavailable.' >&2
+    exit 2
+  fi
+  if sed '/^[[:space:]]*#/d; /^[[:space:]]*$/d' "$RPS_DEPENDENCY_DEFINITION" | grep . >/dev/null; then
+    printf '%s\n' 'Ruby dependency policy failure: external gems are not supported.' >&2
+    exit 2
+  fi
+fi
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+ruby -c "$template_root/team_source/strategy.rb" >/dev/null
+ruby -c "$template_root/tests/strategy_test.rb" >/dev/null
+printf '%s\n' 'Ruby starter build passed'
+ruby -I "$template_root/team_source" "$template_root/tests/strategy_test.rb"
+printf '%s\n' 'Ruby starter tests passed'

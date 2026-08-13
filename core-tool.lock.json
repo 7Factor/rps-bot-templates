@@ -67,6 +67,17 @@
       "python.recipe": "python-build-recipe-v1@sha256:8b805ad8a1541971fce3322a25d67dfc6f6e758d0f85033ab50c8974baf69696",
       "python.workflow": "source-validation-workflow-v1@sha256:a66d958d1eaf7ed7b36ecc3aa0192dd28a67a172ef810d42575a8c73b14ce6f4",
       "python.wrapper": "python-wrapper-v2@sha256:a82ae2481ad47d0697f318ccf09c5e8bd9597efbbca12f31366fc61d811baed7",
+      "ruby.base_runtime": "ruby-runtime-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+      "ruby.build_target": "ruby-build-target-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+      "ruby.build_toolchain": "ruby-build-toolchain-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+      "ruby.conformance": "ruby-conformance-v1@sha256:747f47e66d8129edaef9a6589f639f73487e13b36aad6e62161cd3c802f04e91",
+      "ruby.dependency_definition": "ruby-dependencies-v1@sha256:b1ac3df700d7f0fea53ec5982c5927acd3d8864d1a1d1db1c1bc803b4b6206a8",
+      "ruby.entrypoint": "ruby-entrypoint-v1@sha256:5a79f4de55c24a44c0e9257c6809205907056b75231439d133b86c83cf8b99ae",
+      "ruby.platform": "ruby-oci-platforms-v1@sha256:f752e2638e85a7c982eb8ce39cce8d6064be19c49fdfb9649e5a408040afb88a",
+      "ruby.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+      "ruby.recipe": "ruby-build-recipe-v1@sha256:ac8e27e09225831e53190c276a24ba59a9c2a8cbdce3b52e8131e2063ab343d9",
+      "ruby.workflow": "source-validation-workflow-v1@sha256:a895067467d3d89ad5cc63ae9672417e3680645f6cd200221f159c8bdfc6a6a8",
+      "ruby.wrapper": "ruby-wrapper-v1@sha256:cc57a07a0053ed324564c4146c89c15885ce2c6bcec43dcb929909632560fc99",
       "rust.base_runtime": "rust-runtime-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
       "rust.build_target": "rust-build-target-v1@sha256:c76430e5837e2721476cd1c2e027cffcedbeaa0b13ece9da10050f4e84c7e402",
       "rust.build_toolchain": "rust-build-toolchain-v1@sha256:a9cdcf7a41d257072284e9de7d2ec2bb9a2c2b72d4bc2f91cc10e778e3c501d2",
@@ -90,15 +101,15 @@
       "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
       "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
     },
-    "identity": "rps-language-environment-catalog-v1@sha256:67c9817d0e8b61b6d4a3844230fe4e316f0b2a18d4e88483f6c6be3a67a55ca7",
+    "identity": "rps-language-environment-catalog-v1@sha256:be6776a9d9426e6c1a6902f89a9621dfb1790a94444d72bed5197ecc5923f4a2",
     "path": "language_environments/catalog-v1/catalog.json"
   },
   "format_version": "rps-catalog-compatibility-v1",
   "offline_bundle": {
-    "identity": "rps-runner-offline-bundle-v1@sha256:cd7b5f82ad9a3cf7033d2c64dccb100cef52859fce23d72c2b280aa536e31a77"
+    "identity": "rps-runner-offline-bundle-v1@sha256:2e92aba7038fed973008f025e1213e3f0d880628216687aafd9a8b8c5d82f3e7"
   },
   "runner": {
-    "commit": "5e2dae30f5cc99393047ae91a59679825555e90e",
+    "commit": "9952cf795b3f5ffb26b9d3de9c886c5669eb6464",
     "package_version": "0.1.0"
   }
 }
