@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""Bootstrap a Team branch from an indexed Team Template.
+
+Picks the Team Template's release tag when one has been published, falls
+back to the tip of the repository's default branch otherwise, creates the
+Team branch, and prints exactly which file(s) to edit next. It performs no
+build, validate, or catalog step; run ``check-team-template`` and
+``validate-team`` afterward.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+from typing import Mapping, Optional, Sequence
+
+
+ROOT = Path(__file__).resolve().parent
+INDEX_NAME = "team-templates.json"
+TEAM_SLUG = re.compile(r"^[a-z][a-z0-9-]*$")
+
+
+class StartError(ValueError):
+    """The Team branch cannot be started safely."""
+
+
+def read_object(path: Path, label: str) -> Mapping[str, object]:
+    try:
+        value = json.loads(path.read_text())
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise StartError(label + " is missing or unreadable: " + str(error)) from error
+    if not isinstance(value, dict):
+        raise StartError(label + " must be a JSON object")
+    return value
+
+
+def repository_path(raw: object, label: str) -> Path:
+    if not isinstance(raw, str) or not raw:
+        raise StartError(label + " must be a non-empty string")
+    candidate = (ROOT / raw).resolve()
+    try:
+        candidate.relative_to(ROOT.resolve())
+    except ValueError as error:
+        raise StartError(label + " must stay inside the repository") from error
+    return candidate
+
+
+def available_languages() -> Mapping[str, Path]:
+    index = read_object(ROOT / INDEX_NAME, "Team Template index")
+    entries = index.get("templates")
+    if not isinstance(entries, list) or not entries:
+        raise StartError("Team Template index must contain at least one entry")
+    languages: dict[str, Path] = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise StartError("Team Template index entry must be a JSON object")
+        language_id = entry.get("language_id")
+        if not isinstance(language_id, str) or not language_id:
+            raise StartError("Team Template index entry is missing language_id")
+        languages[language_id] = repository_path(entry.get("descriptor"), "descriptor path")
+    return languages
+
+
+def load_descriptor(language_id: str, path: Path) -> Mapping[str, object]:
+    descriptor = read_object(path, "Team Template descriptor for " + repr(language_id))
+    for field in ("team_source_path", "participant_guidance_path", "release_tag"):
+        if not isinstance(descriptor.get(field), str) or not descriptor[field]:
+            raise StartError("descriptor field " + repr(field) + " is missing or invalid")
+    return descriptor
+
+
+def run_git(arguments: Sequence[str]) -> subprocess.CompletedProcess[str]:
+    try:
+        return subprocess.run(
+            ("git",) + tuple(arguments), cwd=ROOT, capture_output=True, text=True
+        )
+    except OSError as error:
+        raise StartError("git is unavailable: " + str(error)) from error
+
+
+def tag_exists(tag: str) -> bool:
+    completed = run_git(("rev-parse", "-q", "--verify", "refs/tags/" + tag))
+    return completed.returncode == 0
+
+
+def default_branch() -> str:
+    completed = run_git(("symbolic-ref", "-q", "--short", "refs/remotes/origin/HEAD"))
+    if completed.returncode == 0 and completed.stdout.strip():
+        return completed.stdout.strip().removeprefix("origin/")
+    return "main"
+
+
+def require_clean_tree() -> None:
+    completed = run_git(("status", "--porcelain"))
+    if completed.returncode != 0:
+        raise StartError("not a git checkout of " + str(ROOT))
+    if completed.stdout.strip():
+        raise StartError(
+            "the working tree has uncommitted changes; commit or stash them first"
+        )
+
+
+def branch_exists(branch: str) -> bool:
+    completed = run_git(("rev-parse", "-q", "--verify", "refs/heads/" + branch))
+    return completed.returncode == 0
+
+
+def create_branch(branch: str, start_point: str) -> None:
+    completed = run_git(("checkout", "-b", branch, start_point))
+    if completed.returncode != 0:
+        raise StartError((completed.stderr or completed.stdout).strip())
+
+
+def team_source_files(team_source_path: Path) -> Sequence[Path]:
+    return sorted(p for p in team_source_path.iterdir() if p.is_file())
+
+
+def main(arguments: Optional[Sequence[str]] = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Create a Team branch from an indexed Team Template"
+    )
+    parser.add_argument("--language", metavar="LANGUAGE_ID")
+    parser.add_argument("--team", metavar="TEAM_SLUG")
+    parser.add_argument(
+        "--list", action="store_true", help="list available languages and exit"
+    )
+    options = parser.parse_args(arguments)
+
+    try:
+        languages = available_languages()
+        if options.list or not options.language:
+            print("Available languages: " + ", ".join(sorted(languages)))
+            if not options.language:
+                return 0 if options.list else 2
+
+        try:
+            descriptor_path = languages[options.language]
+        except KeyError as error:
+            raise StartError(
+                "unknown language "
+                + repr(options.language)
+                + "; available: "
+                + ", ".join(sorted(languages))
+            ) from error
+        descriptor = load_descriptor(options.language, descriptor_path)
+
+        if not options.team or not TEAM_SLUG.fullmatch(options.team):
+            raise StartError(
+                "--team is required and must be lowercase letters, digits, and "
+                "hyphens (e.g. red-rockets)"
+            )
+        branch = "team/" + options.team
+
+        require_clean_tree()
+        if branch_exists(branch):
+            raise StartError(
+                "branch " + repr(branch) + " already exists; check it out directly "
+                "with `git checkout " + branch + "`"
+            )
+
+        release_tag = descriptor["release_tag"]
+        if tag_exists(release_tag):
+            start_point = release_tag + "^{}"
+            start_label = "published Template Release " + release_tag
+        else:
+            start_point = default_branch()
+            start_label = (
+                "tip of "
+                + start_point
+                + " (no "
+                + release_tag
+                + " Template Release has been published yet)"
+            )
+
+        create_branch(branch, start_point)
+
+        team_source_path = repository_path(
+            descriptor["team_source_path"], "Team Source path"
+        )
+        guidance_path = repository_path(
+            descriptor["participant_guidance_path"], "participant guidance path"
+        )
+    except StartError as error:
+        print("Team start failure: " + str(error), file=sys.stderr)
+        return 2
+
+    print("Created branch " + branch + " from " + start_label + ".")
+    print("Edit your Team Source here:")
+    for path in team_source_files(team_source_path):
+        print("  " + str(path.relative_to(ROOT)))
+    print("Guide: " + str(guidance_path.relative_to(ROOT)))
+    print()
+    print("Next steps:")
+    print("  ./check-team-template --template " + options.language + " --mode docker")
+    print("  ./validate-team --template " + options.language)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
