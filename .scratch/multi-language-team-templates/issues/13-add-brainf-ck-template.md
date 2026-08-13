@@ -41,9 +41,9 @@ compatibility behavior.
 
 ## Answer
 
-Added `brainf-ck-team-template-v2` as an independently selectable Team Template
-and published the review-corrected annotated `brainf-ck-template-v2` release at
-commit `2b4df83b868bf58994d420648a3a9bc2c4af3b52`. Its only Team Source file is
+Added `brainf-ck-team-template-v3` as an independently selectable Team Template
+and published the review-corrected annotated `brainf-ck-template-v3` release at
+commit `a9a2e14d838f89964858e73540928bb12406d493`. Its only Team Source file is
 `strategy.bf`; the `,.` starter returns the Runner-provided deterministic seeded
 move and does not copy the wrapper, Seed Adapter, or interpreter.
 
