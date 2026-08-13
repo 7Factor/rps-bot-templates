@@ -5,8 +5,8 @@
   "team_source_path": "templates/brainf-ck/team_source",
   "participant_guidance_path": "templates/brainf-ck/TEAM_GUIDE.md",
   "build_and_test_entrypoint": "templates/brainf-ck/build-and-test",
-  "version": "brainf-ck-team-template-v1",
+  "version": "brainf-ck-team-template-v2",
   "expected_source_digest": "sha256:bb421af61619384243b38c070cb688c4a7342c7f3ae6f135893e70dbef3a865a",
-  "release_tag": "brainf-ck-template-v1",
+  "release_tag": "brainf-ck-template-v2",
   "advisory_validation_workflow": ".github/workflows/team-advisory-validation.yml"
 }

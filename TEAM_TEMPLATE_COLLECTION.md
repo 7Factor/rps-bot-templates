@@ -82,7 +82,7 @@ JavaScript uses `--template javascript` and the independent
 Kotlin uses `--template kotlin` and the independent `kotlin-template-v1`
 release tag.
 Brainf-ck uses `--template brainf-ck` and the independent
-`brainf-ck-template-v1` release tag.
+`brainf-ck-template-v2` release tag.
 
 ## Checklist for adding a Team Template
 

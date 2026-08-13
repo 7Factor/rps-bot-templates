@@ -7,14 +7,14 @@
           "brainf-ck.base_runtime": "brainf-ck-runtime-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
           "brainf-ck.build_target": "brainf-ck-build-target-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
           "brainf-ck.build_toolchain": "brainf-ck-build-toolchain-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
-          "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:4458ace4b58846542152c1eb334ded52ac102f85f57ad3514db4f32913ad3ecb",
+          "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:5a46b3e6010736ddc36e91d198d40a551c1f593d0408d684bd268155b8aa0074",
           "brainf-ck.dependency_definition": "catalog-brainf-ck-interpreter-v1@sha256:86d8652f905b9836171b74ebd0be063df740b457d5d343f27af35312cb9d0432",
           "brainf-ck.entrypoint": "brainf-ck-entrypoint-v1@sha256:f27199a23c5f64008963fe3edb85e99c80f471ffb3f3020580324fff653bee54",
           "brainf-ck.platform": "brainf-ck-oci-platforms-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
           "brainf-ck.readiness": "wrapper-readiness-v1@sha256:35a0c73a1d3f529f1b6621a526e5fd0de4ab300adab7383c29728ad808ce0941",
           "brainf-ck.recipe": "brainf-ck-build-recipe-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
           "brainf-ck.workflow": "source-validation-workflow-v1@sha256:29c48e9cb48c91b164657fd390dbc3c20ddc5e38c05a0237890ada18b01efb0f",
-          "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:18cfa96f865513f35f8e938f5507f7f3dcd9aae301adfe0289ced643f5f15abc",
+          "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:8c705e585590aab28f6d5e33c1248035a5604f495ac4c435e2e8d731ad38f5da",
           "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
           "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
           "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
@@ -148,12 +148,12 @@
           "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
           "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
         },
-        "identity": "rps-language-environment-catalog-v1@sha256:5cf3fc6de60bbf5da3256fd3987440fe098f99dfcff9450787b1683338d29f69",
+        "identity": "rps-language-environment-catalog-v1@sha256:0f6af8f7c31924180c37c4d0cf2c142b171ee3c7786ef86f7aec826a1b6180be",
         "path": "language_environments/catalog-v1/catalog.json",
         "version": "rps-language-environment-catalog-v1"
       },
       "certification_suites": {
-        "brainf-ck": "brainf-ck-artifact-conformance-v1@sha256:4458ace4b58846542152c1eb334ded52ac102f85f57ad3514db4f32913ad3ecb",
+        "brainf-ck": "brainf-ck-artifact-conformance-v1@sha256:5a46b3e6010736ddc36e91d198d40a551c1f593d0408d684bd268155b8aa0074",
         "clojure": "clojure-artifact-conformance-v1@sha256:899765a409381aa679d33b2cfdf154ce4f517aa79b5b70275207f1a0320b06c8",
         "csharp": "csharp-artifact-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
         "go": "go-artifact-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
@@ -172,14 +172,14 @@
             "brainf-ck.base_runtime": "brainf-ck-runtime-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
             "brainf-ck.build_target": "brainf-ck-build-target-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
             "brainf-ck.build_toolchain": "brainf-ck-build-toolchain-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
-            "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:4458ace4b58846542152c1eb334ded52ac102f85f57ad3514db4f32913ad3ecb",
+            "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:5a46b3e6010736ddc36e91d198d40a551c1f593d0408d684bd268155b8aa0074",
             "brainf-ck.dependency_definition": "catalog-brainf-ck-interpreter-v1@sha256:86d8652f905b9836171b74ebd0be063df740b457d5d343f27af35312cb9d0432",
             "brainf-ck.entrypoint": "brainf-ck-entrypoint-v1@sha256:f27199a23c5f64008963fe3edb85e99c80f471ffb3f3020580324fff653bee54",
             "brainf-ck.platform": "brainf-ck-oci-platforms-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
             "brainf-ck.readiness": "wrapper-readiness-v1@sha256:35a0c73a1d3f529f1b6621a526e5fd0de4ab300adab7383c29728ad808ce0941",
             "brainf-ck.recipe": "brainf-ck-build-recipe-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
             "brainf-ck.workflow": "source-validation-workflow-v1@sha256:29c48e9cb48c91b164657fd390dbc3c20ddc5e38c05a0237890ada18b01efb0f",
-            "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:18cfa96f865513f35f8e938f5507f7f3dcd9aae301adfe0289ced643f5f15abc",
+            "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:8c705e585590aab28f6d5e33c1248035a5604f495ac4c435e2e8d731ad38f5da",
             "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
             "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
             "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
@@ -313,15 +313,15 @@
             "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
             "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
           },
-          "identity": "rps-language-environment-catalog-v1@sha256:5cf3fc6de60bbf5da3256fd3987440fe098f99dfcff9450787b1683338d29f69",
+          "identity": "rps-language-environment-catalog-v1@sha256:0f6af8f7c31924180c37c4d0cf2c142b171ee3c7786ef86f7aec826a1b6180be",
           "path": "language_environments/catalog-v1/catalog.json"
         },
         "format_version": "rps-catalog-compatibility-v1",
         "offline_bundle": {
-          "identity": "rps-runner-offline-bundle-v1@sha256:440fe7070f3811449970a23b7c4b581c517effe146987d80f820fb261d9ed7ee"
+          "identity": "rps-runner-offline-bundle-v1@sha256:b13435326549098feb0a3691e2d6f1b38e0f69e34ec16ead61ab930a18c37e69"
         },
         "runner": {
-          "commit": "d1ccc03975c14ca6ac539896587e8fa9402d3307",
+          "commit": "c7d96f969275812b0ec4a13408bd4e4f7ee65579",
           "package_version": "0.1.0"
         }
       },
@@ -330,7 +330,7 @@
         "version": "docker-execution-v1"
       },
       "offline_bundle": {
-        "identity": "rps-runner-offline-bundle-v1@sha256:440fe7070f3811449970a23b7c4b581c517effe146987d80f820fb261d9ed7ee"
+        "identity": "rps-runner-offline-bundle-v1@sha256:b13435326549098feb0a3691e2d6f1b38e0f69e34ec16ead61ab930a18c37e69"
       },
       "platform_runtimes": {
         "brainf-ck": {
@@ -738,10 +738,10 @@
       },
       "release_format_version": "catalog-release-v1",
       "repository": {
-        "tag": "catalog-v19"
+        "tag": "catalog-v20"
       },
       "runner": {
-        "commit": "d1ccc03975c14ca6ac539896587e8fa9402d3307",
+        "commit": "c7d96f969275812b0ec4a13408bd4e4f7ee65579",
         "package_version": "0.1.0"
       }
     },
@@ -757,14 +757,14 @@
         "brainf-ck.base_runtime": "brainf-ck-runtime-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
         "brainf-ck.build_target": "brainf-ck-build-target-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
         "brainf-ck.build_toolchain": "brainf-ck-build-toolchain-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
-        "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:4458ace4b58846542152c1eb334ded52ac102f85f57ad3514db4f32913ad3ecb",
+        "brainf-ck.conformance": "brainf-ck-conformance-v1@sha256:5a46b3e6010736ddc36e91d198d40a551c1f593d0408d684bd268155b8aa0074",
         "brainf-ck.dependency_definition": "catalog-brainf-ck-interpreter-v1@sha256:86d8652f905b9836171b74ebd0be063df740b457d5d343f27af35312cb9d0432",
         "brainf-ck.entrypoint": "brainf-ck-entrypoint-v1@sha256:f27199a23c5f64008963fe3edb85e99c80f471ffb3f3020580324fff653bee54",
         "brainf-ck.platform": "brainf-ck-oci-platforms-v1@sha256:6514ce66b2f4116f2e4205c7cf4bd98b2048d61ce0bcf9b8d836cb9565824074",
         "brainf-ck.readiness": "wrapper-readiness-v1@sha256:35a0c73a1d3f529f1b6621a526e5fd0de4ab300adab7383c29728ad808ce0941",
         "brainf-ck.recipe": "brainf-ck-build-recipe-v1@sha256:2209b28c56aa94142c14d7a6f84a7c47bc05b4d8a51043ea2dbbae176b291224",
         "brainf-ck.workflow": "source-validation-workflow-v1@sha256:29c48e9cb48c91b164657fd390dbc3c20ddc5e38c05a0237890ada18b01efb0f",
-        "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:18cfa96f865513f35f8e938f5507f7f3dcd9aae301adfe0289ced643f5f15abc",
+        "brainf-ck.wrapper": "brainf-ck-wrapper-v1@sha256:8c705e585590aab28f6d5e33c1248035a5604f495ac4c435e2e8d731ad38f5da",
         "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
         "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
         "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
@@ -898,15 +898,15 @@
         "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
         "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
       },
-      "identity": "rps-language-environment-catalog-v1@sha256:5cf3fc6de60bbf5da3256fd3987440fe098f99dfcff9450787b1683338d29f69",
+      "identity": "rps-language-environment-catalog-v1@sha256:0f6af8f7c31924180c37c4d0cf2c142b171ee3c7786ef86f7aec826a1b6180be",
       "path": "language_environments/catalog-v1/catalog.json"
     },
     "format_version": "rps-catalog-compatibility-v1",
     "offline_bundle": {
-      "identity": "rps-runner-offline-bundle-v1@sha256:440fe7070f3811449970a23b7c4b581c517effe146987d80f820fb261d9ed7ee"
+      "identity": "rps-runner-offline-bundle-v1@sha256:b13435326549098feb0a3691e2d6f1b38e0f69e34ec16ead61ab930a18c37e69"
     },
     "runner": {
-      "commit": "d1ccc03975c14ca6ac539896587e8fa9402d3307",
+      "commit": "c7d96f969275812b0ec4a13408bd4e4f7ee65579",
       "package_version": "0.1.0"
     }
   },

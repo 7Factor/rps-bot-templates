@@ -84,7 +84,7 @@ class CatalogConsumerContractTests(unittest.TestCase):
         self.assertEqual(set(runner), {"commit", "package_version"})
         self.assertRegex(runner["commit"], FULL_COMMIT)
         self.assertEqual(
-            runner["commit"], "d1ccc03975c14ca6ac539896587e8fa9402d3307"
+            runner["commit"], "c7d96f969275812b0ec4a13408bd4e4f7ee65579"
         )
         self.assertEqual(runner["package_version"], "0.1.0")
 
@@ -96,7 +96,7 @@ class CatalogConsumerContractTests(unittest.TestCase):
         self.assertEqual(
             catalog_claim["identity"],
             "rps-language-environment-catalog-v1@sha256:"
-            "5cf3fc6de60bbf5da3256fd3987440fe098f99dfcff9450787b1683338d29f69",
+            "0f6af8f7c31924180c37c4d0cf2c142b171ee3c7786ef86f7aec826a1b6180be",
         )
         self.assertTrue(catalog_claim["assets"])
         for identity in catalog_claim["assets"].values():

@@ -17,7 +17,8 @@ non-wrapping tape of 30,000 cells. Each turn permits at most 1,000,000 steps,
 
 Input is a binary Turn record in this order:
 
-1. seeded move byte (`R`, `P`, or `S`, selected by `(seed + turn) modulo 3`)
+1. seeded move byte (`R`, `P`, or `S`) from the Runner-owned deterministic
+   64-bit LCG stream
 2. opponent's last move, or `R` before any history exists
 3. turn-modulo move
 4. seed as an unsigned 8-byte little-endian integer
