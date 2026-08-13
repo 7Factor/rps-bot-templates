@@ -40,8 +40,8 @@ strategy contract and deterministic SplitMix64 behavior. Its Ruby-owned
 `build-and-test` entrypoint runs the same complete suite in native and Docker
 modes under the catalog's standard-library-only dependency policy.
 
-The repository consumes exact `catalog-v13` coordinates at Runner commit
-`9952cf795b3f5ffb26b9d3de9c886c5669eb6464`. The pinned Docker suite and full
+The repository consumes exact `catalog-v14` coordinates at Runner commit
+`0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20`. The pinned Docker suite and full
 participant-local Advisory Validation passed, including the Practice Match.
 The collection and Team guide expose Ruby independently and document Team
 Source ownership, prerequisites, Docker use, and Advisory versus Final
