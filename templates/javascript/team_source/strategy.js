@@ -6,15 +6,17 @@ function chooseMove(turn, myHistory, opponentHistory, rng) {
   const pCount = (opponentHistory.match(/P/g)|| []).length
   const sCount = (opponentHistory.match(/S/g)|| []).length
   const turnCount = turn + 1;
-  const threshold = 40;
+  const threshold = .4;
 
-  if (rCount / turnCount > threshold)
+  if (rCount / turnCount > threshold){
     return "P";
-  else if (pCount / turnCount > threshold)
+  }
+  else if (pCount / turnCount > threshold){
     return "S";
-  else if (sCount / turnCount > threshold)
+  }
+  else if (sCount / turnCount > threshold){
     return "R";
-
+  }
   return moves[rng.nextInt(moves.length)];
 }
 
