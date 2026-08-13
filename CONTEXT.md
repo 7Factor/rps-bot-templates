@@ -26,6 +26,13 @@ for organizer selection under the cutoff policy. It is not an official Bot
 Artifact.
 _Avoid_: Bot Artifact, winning submission
 
+**Team Submission Declaration**:
+The commit-resident `team-submission.json` through which a Team selects one
+stable Team Template language ID. Tooling resolves it against the verified Team
+Template collection; it cannot define a Language Environment or override a
+Template Release.
+_Avoid_: Bot Artifact Manifest, organizer selection record, build configuration
+
 **Language Environment**:
 A versioned organizer-owned adapter package in the Language Environment Catalog
 that defines the Team Source schema, wrapper, Seed Adapter, pinned runtimes,

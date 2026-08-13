@@ -67,8 +67,20 @@ git switch --create team/<team-slug> <release-tag>^{}
 git push --set-upstream origin team/<team-slug>
 ```
 
-Teams then change only the Team Source directory named by the selected
-descriptor and documented in its language-owned participant guide.
+The Team then records the same language ID without organizer communication:
+
+```text
+./select-team-template <language-id>
+git add team-submission.json
+git commit -m "Select Team Template"
+git push
+```
+
+The selection command refuses to replace an existing declaration. After adding
+it once, the Team may change only the Team Source directory named by the
+resolved descriptor and documented in its language-owned participant guide.
+Template maintenance may continue to pass `--template`; Team validation reads
+the committed declaration when that option is omitted.
 
 ## Corrections and replacement versions
 

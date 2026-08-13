@@ -6,6 +6,7 @@ It is compatible with the exact Runner-owned Go Language Environment pinned by
 
 ## Your editing boundary
 
+Except for the fixed root `team-submission.json` declaration,
 `templates/go/team_source/` is the only Team-editable directory. Implement
 `ChooseMove` in `team_source/strategy.go`; optional `.csv`, `.json`, and `.txt`
 resources may live below `team_source/resources/`. Team Source may contain Go
@@ -58,7 +59,7 @@ The organizer-owned conformance suite separately verifies the Seed Adapter.
 Run the complete pinned container contract with:
 
 ```sh
-./validate-team --template go --allow-pull
+./validate-team --allow-pull
 ```
 
 This is Advisory Validation only: it freezes Team Source and checks build,

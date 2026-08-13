@@ -44,6 +44,10 @@ Use the stable language ID at every shared entrypoint:
 ./release-team-template --template <language-id> verify <release-tag>
 ```
 
+Those explicit selectors are for collection maintenance. A Team branch records
+its selector once with `./select-team-template <language-id>` and subsequently
+runs `./validate-team`; validation and CI read `team-submission.json`.
+
 Docker and native checks execute the identical language-owned `build-and-test`
 file. Docker selects its immutable toolchain from the descriptor's matching
 Language Environment in the exact pinned Catalog Release. Advisory Validation

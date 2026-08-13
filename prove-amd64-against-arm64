@@ -14,6 +14,7 @@ from typing import Any, Mapping, Sequence
 
 from catalog_compatibility import read_lock
 from template_collection import CollectionError, load_collection
+from team_submission import TeamSubmissionError, validate_team_submission
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 CORE_LOCK = PROJECT_ROOT / "core-tool.lock.json"
@@ -155,6 +156,8 @@ def build_cross_platform_proof(
     arm64_candidate: Mapping[str, Any],
     bot_artifact_manifest: Mapping[str, Any],
     final_report: Mapping[str, Any],
+    language_id: str,
+    language_environment: str,
 ) -> Mapping[str, Any]:
     """Validate and combine retained native-platform evidence."""
     advisory_identities, advisory_checks = validate_advisory_evidence(
@@ -169,6 +172,23 @@ def build_cross_platform_proof(
         platform=ARM64,
         advisory=False,
     )
+    try:
+        declared_language = validate_team_submission(
+            eligibility.get("team_submission"), "eligibility Team Submission Declaration"
+        )
+    except TeamSubmissionError as error:
+        raise ValueError(str(error)) from error
+    _expect(declared_language, language_id, "declared Team Template language")
+    _expect(
+        source_bundle.get("environment"),
+        language_environment,
+        "source bundle Language Environment",
+    )
+    for label, value in (
+        ("ARM64 candidate language", arm64_candidate.get("language")),
+        ("Bot Artifact language", bot_artifact_manifest.get("language")),
+    ):
+        _expect(value, language_id, label)
 
     source_digest = eligibility.get("source_digest")
     for label, value in (
@@ -469,6 +489,8 @@ def _run(options: argparse.Namespace) -> None:
             final_report=_read_object(
                 certified / "validation-report.json", "Final Validation report"
             ),
+            language_id=template.language_id,
+            language_environment=template.language_environment,
         )
     except ValueError as error:
         run.record_failure("compare-native-platforms", error)

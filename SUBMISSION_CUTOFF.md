@@ -23,7 +23,7 @@ the default.
 For every Team, preserve an immutable selection record containing:
 
 - the declared deadline, Team identity, assigned branch, exact Template Release
-  tag, and Template repository commit;
+  tag, Template repository commit, and committed `team-submission.json`;
 - the selected source commit and whether it was the default or an explicitly
   chosen earlier commit;
 - the GitHub run ID, URL, completion time, conclusion, and downloaded
@@ -56,16 +56,28 @@ git -C selected-team fetch origin <selected-40-character-sha>
 git -C selected-team checkout --detach <selected-40-character-sha>
 git -C selected-team rev-parse HEAD
 
+git -C selected-team show \
+  <selected-40-character-sha>:team-submission.json \
+  > selected-team-submission.json
+
+RPS_CORE_PATH=<pinned-core-checkout> \
+  <verified-template-release-checkout>/select-team-template --show \
+  --declaration selected-team-submission.json \
+  > resolved-team-submission.json
+
 mkdir source-export
-team_source_path=<selected-descriptor-team-source-path>
-language_environment=<selected-descriptor-language-environment>
+team_source_path=<resolved-team-submission-team-source-path>
+language_environment=<resolved-team-submission-language-environment>
 git -C selected-team archive --format=tar \
   --prefix=team-source/ <selected-40-character-sha>:"$team_source_path" \
   | tar -xf - -C source-export
 ```
 
-The reported `HEAD` must equal the selection record's `source_commit`. Export
-only the selected descriptor's `team_source_path`; do not use a catalog,
+The reported `HEAD` must equal the selection record's `source_commit`. The
+resolved language ID, Template Release, Team Template version, Team Source path,
+and Language Environment must equal the verified Advisory Validation evidence
+and annotated Template Release manifest. Export only the resolved descriptor's
+`team_source_path`; do not use a catalog,
 wrapper, workflow, recipe, or core lock taken from a Team branch. The
 organizer's verified Template Release
 checkout supplies `core-tool.lock.json`; the exact materialized Runner checkout
@@ -93,7 +105,9 @@ exported source and source bundle with the selection record.
 This repository intentionally provides no automated branch discovery,
 automated authentication, automated pulling, or automated cutoff enforcement.
 Clone, pull, evidence download, commit selection, checkout, and export remain
-manual transport. The core tool begins at the validated local-directory
+manual transport. Language selection is not manual: it comes from the exact
+commit's declaration and is reconciled with the verified Template Release. The
+core tool begins at the validated local-directory
 boundary and remains responsible for source freezing, building, and validation.
 
 ## No-GitHub delivery

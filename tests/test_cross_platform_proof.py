@@ -87,6 +87,10 @@ class CrossPlatformProofTests(unittest.TestCase):
             "recipe": self.advisory_identities["recipe"],
             "wrapper": self.advisory_identities["wrapper"],
             "execution_profile": self.advisory_identities["profile"],
+            "team_submission": {
+                "format_version": "rps-team-submission-v1",
+                "language_id": "python",
+            },
         }
         self.advisory = {
             "status": "passed",
@@ -103,10 +107,12 @@ class CrossPlatformProofTests(unittest.TestCase):
         }
         self.source_bundle = {
             "source_digest": self.source_digest,
+            "environment": "python",
             "versions": {"catalog": self.advisory_identities["catalog"]},
         }
         self.candidate = {
             "source_digest": self.source_digest,
+            "language": "python",
             "runtime_digest": "sha256:" + "6" * 64,
             "artifact_digest": "sha256:" + "d" * 64,
             "platform": "linux/arm64",
@@ -120,6 +126,7 @@ class CrossPlatformProofTests(unittest.TestCase):
             "status": "validated",
             "authority": "canonical",
             "source_digest": self.source_digest,
+            "language": "python",
             "runtime_digest": self.candidate["runtime_digest"],
             "artifact_digest": self.candidate["artifact_digest"],
             "platform": "linux/arm64",
@@ -151,6 +158,8 @@ class CrossPlatformProofTests(unittest.TestCase):
             arm64_candidate=self.candidate,
             bot_artifact_manifest=self.manifest,
             final_report=self.final,
+            language_id="python",
+            language_environment="python",
         )
 
         self.assertEqual(proof["result"], "passed")
@@ -180,6 +189,25 @@ class CrossPlatformProofTests(unittest.TestCase):
                 arm64_candidate=self.candidate,
                 bot_artifact_manifest=self.manifest,
                 final_report=self.final,
+                language_id="python",
+                language_environment="python",
+            )
+
+    def test_comparison_rejects_declared_language_drift(self) -> None:
+        module = load_command_module()
+        self.eligibility["team_submission"]["language_id"] = "go"
+
+        with self.assertRaisesRegex(ValueError, "declared Team Template language"):
+            module.build_cross_platform_proof(
+                selected_commit=self.commit,
+                eligibility=self.eligibility,
+                advisory_report=self.advisory,
+                source_bundle=self.source_bundle,
+                arm64_candidate=self.candidate,
+                bot_artifact_manifest=self.manifest,
+                final_report=self.final,
+                language_id="python",
+                language_environment="python",
             )
 
     def test_advisory_evidence_is_rejected_before_an_arm64_run(self) -> None:

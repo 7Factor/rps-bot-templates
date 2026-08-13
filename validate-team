@@ -14,6 +14,7 @@ import tempfile
 from typing import Mapping, Sequence
 
 from template_collection import CollectionError, load_collection
+from team_submission import TeamSubmissionError, resolve_team_submission
 
 
 ROOT = Path(__file__).resolve().parent
@@ -215,8 +216,9 @@ def main() -> int:
         return fail("Pinned core tool", materialized.stderr or materialized.stdout)
     catalog = core / str(lock["catalog"]["path"])
     try:
-        selected = load_collection(ROOT, catalog).select(arguments.template)
-    except CollectionError as error:
+        collection = load_collection(ROOT, catalog)
+        selected = resolve_team_submission(ROOT, collection, arguments.template)
+    except (CollectionError, TeamSubmissionError) as error:
         return fail("Team Template selection", str(error))
     template_release = selected.release_tag
     template_version = selected.version

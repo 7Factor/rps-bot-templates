@@ -16,6 +16,7 @@ from typing import Any, Mapping, Sequence
 
 from catalog_compatibility import read_lock, verify_independence_evidence
 from template_collection import CollectionError, load_collection
+from team_submission import TeamSubmissionError, validate_team_submission
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -171,6 +172,18 @@ def build_cutover_proof(
     ):
         _expect(advisory_eligibility.get(field), expected, "Advisory " + field)
     _validate_template_advisory_identity(template_release, advisory_eligibility)
+    try:
+        declared_language = validate_team_submission(
+            advisory_eligibility.get("team_submission"),
+            "Advisory Team Submission Declaration",
+        )
+    except TeamSubmissionError as error:
+        raise ValueError(str(error)) from error
+    _expect(
+        declared_language,
+        template.get("language_id"),
+        "Advisory declared Team Template language",
+    )
     selected_source = advisory_eligibility.get("source_digest")
 
     _expect(

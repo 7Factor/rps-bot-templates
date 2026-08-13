@@ -33,15 +33,17 @@ class GithubAdvisoryWorkflowTests(unittest.TestCase):
         workflow = self.workflow
 
         self.assertIn("from template_collection import load_collection", workflow)
+        self.assertIn("from team_submission import resolve_team_submission", workflow)
         self.assertIn('collection = load_collection(Path("."), catalog_path)', workflow)
-        self.assertIn("for language_id in collection.language_ids", workflow)
-        self.assertIn("if len(candidates) != 1", workflow)
+        self.assertIn('resolve_team_submission(Path("."), collection)', workflow)
+        self.assertNotIn("candidates = []", workflow)
         self.assertIn('git rev-parse "${TEAM_TEMPLATE_RELEASE}^{}"', workflow)
         self.assertIn(
             '--template "$TEAM_TEMPLATE_ID" verify "$TEAM_TEMPLATE_RELEASE"',
             workflow,
         )
         self.assertIn('\":(exclude)${TEAM_SOURCE_PATH}/**\"', workflow)
+        self.assertIn('\":(exclude)team-submission.json\"', workflow)
         self.assertIn('"template_release"', workflow)
         for field in (
             '"team_template_version"',
@@ -114,6 +116,7 @@ class GithubAdvisoryWorkflowTests(unittest.TestCase):
 
         for field in (
             '"source_commit"',
+            '"team_submission"',
             '"template_release"',
             '"source_digest"',
             '"catalog"',
@@ -136,6 +139,7 @@ class GithubAdvisoryWorkflowTests(unittest.TestCase):
             r"uses: actions/upload-artifact@[0-9a-f]{40}",
         )
         self.assertIn("retention-days: 90", workflow)
+        self.assertIn('destination / "team-submission.json"', workflow)
         self.assertIn("practice_match_result_gate", workflow)
         self.assertIn("id: evidence", workflow)
         self.assertIn("steps.evidence.outputs.result != 'passed'", workflow)

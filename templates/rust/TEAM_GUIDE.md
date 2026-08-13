@@ -2,6 +2,7 @@
 
 ## Your editing boundary
 
+Except for the fixed root `team-submission.json` declaration,
 `templates/rust/team_source/` is the only Team-editable directory. Keep
 `strategy.rs` and its four-argument `choose_move` function. Additional `.rs`
 files may live in Team Source, and optional `.csv`, `.json`, and `.txt` data may
@@ -49,7 +50,7 @@ Release toolchain with networking disabled:
 ./check-team-template --template rust --mode docker
 ```
 
-`./validate-team --template rust --allow-pull` performs participant-local
+`./validate-team --allow-pull` performs participant-local
 **Advisory Validation**
 against the exact pinned Rust Language Environment. It gives
 compatibility feedback, including a Practice Match, but cannot accept a Bot

@@ -6,6 +6,7 @@ Environment pinned by `core-tool.lock.json`.
 
 ## Your editing boundary
 
+Except for the fixed root `team-submission.json` declaration,
 `templates/python/team_source/` is the only Team-editable directory for this
 template. Start with
 [`team_source/strategy.py`](team_source/strategy.py). Keep all Python modules
@@ -66,7 +67,7 @@ After the starter check passes, run the complete container contract against the
 matching Python Language Environment from the exact pinned Catalog Release:
 
 ```sh
-./validate-team --template python --allow-pull
+./validate-team --allow-pull
 ```
 
 This freezes Team Source, builds a disposable confidence image, and exercises

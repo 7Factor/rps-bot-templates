@@ -2,6 +2,7 @@
 
 ## Your editing boundary
 
+Except for the fixed root `team-submission.json` declaration,
 `templates/csharp/team_source/` is the only Team-editable directory. Keep
 `Strategy.cs` and its four-argument `ChooseMove` method. Additional `.cs` files
 may live in Team Source, and optional `.csv`, `.json`, and `.txt` data may live
@@ -47,7 +48,7 @@ Release toolchain with networking disabled:
 ./check-team-template --template csharp --mode docker
 ```
 
-`./validate-team --template csharp --allow-pull` performs participant-local
+`./validate-team --allow-pull` performs participant-local
 **Advisory Validation**
 against the exact pinned C# Language Environment. It gives
 compatibility feedback, including a Practice Match, but cannot accept a Bot

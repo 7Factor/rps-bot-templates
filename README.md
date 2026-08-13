@@ -15,14 +15,26 @@ exact Catalog Release; it does not redefine those assets.
 ## Team branches
 
 A fresh Team branch starts from one exact annotated Template Release of a
-selected Team Template. The collection includes independently released
+selected Team Template. The branch records that selection in the committed
+`team-submission.json`; Advisory Validation and organizer handoff resolve the
+language from that declaration rather than asking the Team or inferring it from
+file names. Create the declaration once with:
+
+```sh
+./select-team-template <language-id>
+git add team-submission.json
+git commit -m "Select Team Template"
+```
+
+The collection includes independently released
 [Python](templates/python/team_source/strategy.py) and
 [Go](templates/go/team_source/strategy.go), and
 [Java](templates/java/team_source/Strategy.java),
 [TypeScript](templates/typescript/team_source/strategy.ts), and
 [C#](templates/csharp/team_source/Strategy.cs), and
 [Rust](templates/rust/team_source/strategy.rs) starters.
-Teams must change only the Team Source path named by their selected descriptor;
+Teams may add `team-submission.json` and change only the Team Source path named
+by its resolved descriptor;
 the catalog and its build, wrapper, workflow, and protocol assets remain
 organizer-owned. See the [Python Team guide](templates/python/TEAM_GUIDE.md),
 [Go Team guide](templates/go/TEAM_GUIDE.md), or
@@ -37,7 +49,7 @@ Teams with a running Docker engine can exercise the entire Advisory Validation
 path with one command:
 
 ```sh
-./validate-team --template python --allow-pull
+./validate-team --allow-pull
 ```
 
 `--allow-pull` lets Docker acquire only missing toolchain and runtime images
@@ -108,9 +120,9 @@ The ownership boundary is deliberate:
   Team instructions, Advisory Validation entrypoints, and Template Releases.
 - `rps-tournament` owns every Language Environment and Catalog Release, including
   all organizer-controlled execution assets.
-- Teams edit only the `team_source/` directory bound by their selected
-  descriptor. Organizer-owned paths are never Team Source, and no catalog source
-  tree is maintained in this repository.
+- Teams add the fixed `team-submission.json` declaration and edit only the
+  `team_source/` directory bound by its resolved descriptor. Organizer-owned
+  paths are never Team Source, and no catalog source tree is maintained here.
 
 [`team-templates.json`](team-templates.json) is the collection-aware discovery
 index. Its Python, Go, Java, TypeScript, C#, and Rust descriptors independently bind

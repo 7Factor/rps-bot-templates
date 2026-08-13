@@ -34,40 +34,14 @@ jobs:
           import json
           import os
           from pathlib import Path
-          import subprocess
           from template_collection import load_collection
+          from team_submission import resolve_team_submission
 
           with open("core-tool.lock.json") as stream:
               lock = json.load(stream)
           catalog_path = Path(".core/rps-tournament") / lock["catalog"]["path"]
           collection = load_collection(Path("."), catalog_path)
-          candidates = []
-          for language_id in collection.language_ids:
-              template = collection.select(language_id)
-              release = subprocess.run(
-                  ["git", "rev-parse", template.release_tag + "^{}"],
-                  capture_output=True,
-                  text=True,
-              )
-              if release.returncode != 0:
-                  continue
-              release_commit = release.stdout.strip()
-              unchanged = subprocess.run(
-                  [
-                      "git", "diff", "--quiet", release_commit,
-                      os.environ["GITHUB_SHA"], "--", ".",
-                      ":(exclude)" + template.team_source_path.as_posix() + "/**",
-                  ]
-              )
-              if unchanged.returncode == 0:
-                  candidates.append(template)
-          if len(candidates) != 1:
-              available = ", ".join(collection.language_ids)
-              raise SystemExit(
-                  "Team Template selection is not unique for this branch; available: "
-                  + available
-              )
-          template = collection.select(candidates[0].language_id)
+          template = resolve_team_submission(Path("."), collection)
           github_output = Path(os.environ["GITHUB_OUTPUT"])
           github_environment = Path(os.environ["GITHUB_ENV"])
           with github_output.open("a") as output:
@@ -97,8 +71,9 @@ jobs:
             --template "$TEAM_TEMPLATE_ID" verify "$TEAM_TEMPLATE_RELEASE" \
             > .advisory/template-release.json
           git diff --quiet "${release_commit}" "${GITHUB_SHA}" \
-            -- . ":(exclude)${TEAM_SOURCE_PATH}/**" || {
-              echo "Team branch changed files outside the released Team Source boundary" >&2
+            -- . ":(exclude)${TEAM_SOURCE_PATH}/**" \
+            ":(exclude)team-submission.json" || {
+              echo "Team branch changed files outside Team Source or its declaration" >&2
               exit 1
             }
       - name: Verify native Linux/AMD64 Docker
@@ -214,6 +189,9 @@ jobs:
           template_release = read_json_object_or_empty(
               root / "template-release.json"
           )
+          team_submission = read_json_object_or_empty(
+              Path("team-submission.json")
+          )
           unavailable = "not-produced"
           fallback_validation_identities = {
               "catalog": "unavailable",
@@ -274,6 +252,7 @@ jobs:
               "evidence_format_version": "team-advisory-evidence-v1",
               "result": "passed" if passed else "failed",
               "authority": "github-advisory",
+              "team_submission": team_submission,
               "template_release": {
                   "tag": get_nested_value(
                       template_release, "template_repository", "tag"
@@ -340,6 +319,9 @@ jobs:
               shutil.copyfile(
                   template_release_path, destination / "template-release.json"
               )
+          shutil.copyfile(
+              "team-submission.json", destination / "team-submission.json"
+          )
 
           lines = [
               "## GitHub Advisory Validation",

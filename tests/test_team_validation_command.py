@@ -200,6 +200,48 @@ class TeamValidationCommandTests(unittest.TestCase):
             timeout=10,
         )
 
+    def run_command_without_template(
+        self, **environment: str
+    ) -> subprocess.CompletedProcess[str]:
+        process_environment = os.environ.copy()
+        process_environment.update(
+            {
+                "PATH": str(self.bin) + os.pathsep + process_environment["PATH"],
+                "RPS_CORE_PATH": str(self.core),
+                "RPS_TEST_CORE_COMMIT": LOCK["runner"]["commit"],
+                "RPS_TEST_LOG": str(self.log),
+                "RPS_TEST_DOCKER_LOG": str(self.docker_log),
+                "RPS_TEST_PULLED_IMAGES": str(self.pulled_images),
+            }
+        )
+        process_environment.update(environment)
+        return subprocess.run(
+            [str(COMMAND)],
+            cwd=PROJECT_ROOT,
+            env=process_environment,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+    def run_declared_command(
+        self, language_id: str, **environment: str
+    ) -> subprocess.CompletedProcess[str]:
+        declaration = PROJECT_ROOT / "team-submission.json"
+        declaration.write_text(
+            json.dumps(
+                {
+                    "format_version": "rps-team-submission-v1",
+                    "language_id": language_id,
+                }
+            )
+            + "\n"
+        )
+        try:
+            return self.run_command_without_template(**environment)
+        finally:
+            declaration.unlink()
+
     def calls(self) -> list[dict[str, object]]:
         return [json.loads(line) for line in self.log.read_text().splitlines()]
 
@@ -259,7 +301,7 @@ class TeamValidationCommandTests(unittest.TestCase):
         )
 
     def test_selected_template_derives_source_and_environment_from_descriptor(self) -> None:
-        completed = self.run_command("--template", "python")
+        completed = self.run_declared_command("python")
 
         self.assertEqual(completed.returncode, 0, completed.stderr)
         source_call = self.calls()[0]["arguments"]
@@ -270,6 +312,12 @@ class TeamValidationCommandTests(unittest.TestCase):
         self.assertEqual(
             source_call[source_call.index("--environment") + 1], "python"
         )
+
+    def test_missing_team_submission_requires_an_explicit_maintenance_selection(self) -> None:
+        completed = self.run_command_without_template()
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("team-submission.json", completed.stderr)
 
     def test_allow_pull_acquires_both_pinned_images_before_java_validation(self) -> None:
         completed = self.run_command(

@@ -100,6 +100,10 @@ def advisory_eligibility() -> dict[str, object]:
     return {
         "result": "passed",
         "authority": "github-advisory",
+        "team_submission": {
+            "format_version": "rps-team-submission-v1",
+            "language_id": "python",
+        },
         "source_digest": EXPECTED_SOURCE,
         "catalog": CATALOG,
         "core_tool_commit": "1" * 40,
@@ -245,6 +249,30 @@ class CrossRepositoryCutoverTests(unittest.TestCase):
                     "versions": {"catalog": CATALOG},
                 },
                 advisory_eligibility=advisory_eligibility(),
+                cross_platform=cross_platform_proof(),
+                batch_report={
+                    "batch_report_format_version": "artifact-batch-report-v1",
+                    "status": "passed",
+                    "teams": [],
+                },
+                tournament_plan=plan(),
+                competition_record=competition_record(),
+                )
+
+    def test_rejects_team_submission_language_drift(self) -> None:
+        module = load_command_module()
+        eligibility = advisory_eligibility()
+        eligibility["team_submission"]["language_id"] = "go"
+
+        with self.assertRaisesRegex(ValueError, "declared Team Template language"):
+            module.build_cutover_proof(
+                template_release=template_release(),
+                runner_evidence=runner_evidence(),
+                starter_source_bundle={
+                    "source_digest": EXPECTED_SOURCE,
+                    "versions": {"catalog": CATALOG},
+                },
+                advisory_eligibility=eligibility,
                 cross_platform=cross_platform_proof(),
                 batch_report={
                     "batch_report_format_version": "artifact-batch-report-v1",
