@@ -41,9 +41,9 @@ compatibility behavior.
 
 ## Answer
 
-Added `brainf-ck-team-template-v1` as an independently selectable Team Template
-and published the annotated `brainf-ck-template-v1` release at commit
-`99a64426402dca4ab5f406c6632348544a2a1987`. Its only Team Source file is
+Added `brainf-ck-team-template-v2` as an independently selectable Team Template
+and published the review-corrected annotated `brainf-ck-template-v2` release at
+commit `2b4df83b868bf58994d420648a3a9bc2c4af3b52`. Its only Team Source file is
 `strategy.bf`; the `,.` starter returns the Runner-provided deterministic seeded
 move and does not copy the wrapper, Seed Adapter, or interpreter.
 
@@ -53,11 +53,11 @@ Linux/ARM64 Docker toolchain with networking disabled. Participant-local
 Advisory Validation passed the complete Brainf-ck conformance suite and Practice
 Match, including the Catalog-owned source and execution bounds.
 
-The repository consumes `catalog-v19` at Runner commit
-`d1ccc03975c14ca6ac539896587e8fa9402d3307`, Catalog identity
-`rps-language-environment-catalog-v1@sha256:5cf3fc6de60bbf5da3256fd3987440fe098f99dfcff9450787b1683338d29f69`,
+The repository consumes `catalog-v20` at Runner commit
+`c7d96f969275812b0ec4a13408bd4e4f7ee65579`, Catalog identity
+`rps-language-environment-catalog-v1@sha256:0f6af8f7c31924180c37c4d0cf2c142b171ee3c7786ef86f7aec826a1b6180be`,
 and offline bundle identity
-`rps-runner-offline-bundle-v1@sha256:440fe7070f3811449970a23b7c4b581c517effe146987d80f820fb261d9ed7ee`.
+`rps-runner-offline-bundle-v1@sha256:b13435326549098feb0a3691e2d6f1b38e0f69e34ec16ead61ab930a18c37e69`.
 The Template Release records Team Source digest
 `sha256:bb421af61619384243b38c070cb688c4a7342c7f3ae6f135893e70dbef3a865a`
 and Team Template digest
