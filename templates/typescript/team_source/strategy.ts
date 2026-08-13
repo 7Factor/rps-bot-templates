@@ -9,6 +9,10 @@ export function chooseMove(
   var myLastMove = getLastMove(myHistory);
   var oppLastMove = getLastMove(opponentHistory);
 
+  if(myHistory == ""){ 
+    return moves[1];
+  }
+
   var didTie3Times = lastFiveMatch(opponentHistory, myHistory);
 
   if(didTie3Times) {
