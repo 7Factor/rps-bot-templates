@@ -13,16 +13,16 @@ export function chooseMove(
   let rPerc = rCount/turn
   let pPerc = pCount/turn
   let sPerc = sCount/turn
-  if(rPerc > .5){
+  if(rPerc > .45){
     return "P"
   }
-  else if(pPerc > .5) {
+  else if(pPerc > .45) {
     return "S"
   }
-  else if(sPerc > .5) {
+  else if(sPerc > .45) {
     return "R"
   }
-  if (opponentHistory.slice(turn-4).match("/(.)\\1\\1/")) {
+  if (/(.)\1\1/.test(opponentHistory.slice(-3))) {
     return opposite(opponentHistory.charAt(turn-1))
   }
   return returnValue;
