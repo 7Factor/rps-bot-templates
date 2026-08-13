@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""Pre-pull the pinned Docker images a Team's laptop needs for validation.
+
+``check-team-template`` and ``validate-team`` build and run containers with
+``--pull=never`` and ``--network=none`` so every Team builds against the
+exact digest-pinned image, never a moving ``latest``. That means each image
+must already be present in the local Docker cache before those commands run.
+This script is the one deliberate exception: it pulls, while the laptop still
+has network access, exactly the pinned build-toolchain and execution-runtime
+images the local Docker platform needs for one or more languages. It builds,
+tests, and validates nothing itself.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from pathlib import Path, PurePosixPath
+import subprocess
+import sys
+from typing import Iterable, Mapping, Optional, Sequence
+
+from catalog_compatibility import (
+    CompatibilityError,
+    read_lock,
+    verify_bundle,
+    verify_checkout,
+)
+from template_collection import CollectionError, load_collection
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+class PrepareError(ValueError):
+    """The pinned images cannot be resolved or pulled safely."""
+
+
+def run(arguments: Sequence[str], *, timeout: Optional[float] = None) -> subprocess.CompletedProcess[str]:
+    try:
+        return subprocess.run(
+            list(arguments), cwd=ROOT, capture_output=True, text=True, timeout=timeout
+        )
+    except (OSError, subprocess.TimeoutExpired) as error:
+        raise PrepareError(str(error)) from error
+
+
+def read_object(path: Path, label: str) -> Mapping[str, object]:
+    try:
+        value = json.loads(path.read_text())
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise PrepareError(label + " is missing or unreadable: " + str(error)) from error
+    if not isinstance(value, dict):
+        raise PrepareError(label + " must be a JSON object")
+    return value
+
+
+def docker_platform() -> str:
+    completed = run(("docker", "version", "--format", "{{.Server.Os}}/{{.Server.Arch}}"), timeout=30)
+    platform = completed.stdout.strip()
+    if completed.returncode != 0 or not platform:
+        detail = completed.stderr.strip() or "the Docker server did not report its platform"
+        raise PrepareError(detail)
+    if platform not in ("linux/amd64", "linux/arm64"):
+        raise PrepareError(
+            "unsupported Docker server platform " + repr(platform) + "; use native linux/amd64 or linux/arm64"
+        )
+    return platform
+
+
+def materialized_catalog() -> Path:
+    lock = read_object(ROOT / "core-tool.lock.json", "Catalog compatibility lock")
+    configured = os.environ.get("RPS_CORE_PATH")
+    core = Path(configured).resolve() if configured else ROOT / ".core/rps-tournament"
+    if configured:
+        try:
+            verified_lock = read_lock(ROOT / "core-tool.lock.json")
+            verify_bundle(ROOT / "core-tool.bundle", verified_lock)
+            verify_checkout(core, verified_lock)
+        except (CompatibilityError, OSError, KeyError, TypeError) as error:
+            raise PrepareError(str(error)) from error
+    else:
+        completed = run((str(ROOT / "materialize-core-tool"), str(core)), timeout=120)
+        if completed.returncode != 0:
+            raise PrepareError(completed.stderr or completed.stdout)
+    try:
+        catalog_relative = lock["catalog"]["path"]  # type: ignore[index]
+    except (KeyError, TypeError) as error:
+        raise PrepareError("Catalog compatibility lock omitted the catalog path") from error
+    if not isinstance(catalog_relative, str):
+        raise PrepareError("Catalog compatibility lock has an invalid catalog path")
+    return core / catalog_relative
+
+
+def safe_catalog_asset(catalog_path: Path, raw_path: object) -> Path:
+    if not isinstance(raw_path, str):
+        raise PrepareError("build toolchain asset path is invalid")
+    relative = PurePosixPath(raw_path)
+    if relative.is_absolute() or any(part in ("", ".", "..") for part in relative.parts):
+        raise PrepareError("build toolchain asset path is unsafe")
+    path = catalog_path.parent.joinpath(*relative.parts)
+    try:
+        path.resolve().relative_to(catalog_path.parent.resolve())
+    except (OSError, ValueError) as error:
+        raise PrepareError("build toolchain asset path escapes the catalog") from error
+    return path
+
+
+def pinned_images(catalog_path: Path, language_environment: str, platform: str) -> Sequence[str]:
+    catalog = read_object(catalog_path, "pinned Catalog Release")
+    try:
+        environment = catalog["environments"][language_environment]  # type: ignore[index]
+        asset = environment["assets"]["build_toolchain"]  # type: ignore[index]
+        runtimes_path = safe_catalog_asset(catalog_path, asset["path"])  # type: ignore[index]
+        runtimes = read_object(runtimes_path, "runtime definition for " + language_environment)
+        platform_runtimes = runtimes["platforms"][platform]  # type: ignore[index]
+        build_image = platform_runtimes["build_toolchain"]["image"]  # type: ignore[index]
+        execution_image = platform_runtimes["execution_runtime"]["image"]  # type: ignore[index]
+    except (KeyError, TypeError) as error:
+        raise PrepareError(
+            "the pinned Language Environment " + repr(language_environment) + " has no runtime for " + platform
+        ) from error
+    if not isinstance(build_image, str) or not isinstance(execution_image, str):
+        raise PrepareError("the pinned runtime images are not strings")
+    images = [build_image]
+    if execution_image != build_image:
+        images.append(execution_image)
+    return images
+
+
+def pull_image(image: str) -> bool:
+    print("Pulling " + image + " ...")
+    completed = subprocess.run(("docker", "pull", image))
+    return completed.returncode == 0
+
+
+def main(arguments: Optional[Sequence[str]] = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Pre-pull the pinned Docker images this laptop needs for one or more Team Templates"
+    )
+    parser.add_argument(
+        "--language",
+        metavar="LANGUAGE_ID",
+        action="append",
+        help="repeat to select more than one language; omit to prepare every language",
+    )
+    options = parser.parse_args(arguments)
+
+    try:
+        platform = docker_platform()
+        catalog_path = materialized_catalog()
+        collection = load_collection(ROOT, catalog_path)
+        selected = options.language or list(collection.language_ids)
+        images: list[str] = []
+        seen = set()
+        for language_id in selected:
+            template = collection.select(language_id)
+            for image in pinned_images(catalog_path, template.language_environment, platform):
+                if image not in seen:
+                    seen.add(image)
+                    images.append(image)
+    except (PrepareError, CollectionError) as error:
+        print("Laptop preparation failure: " + str(error), file=sys.stderr)
+        return 2
+
+    print("Detected platform: " + platform)
+    print("Languages: " + ", ".join(selected))
+    print(str(len(images)) + " pinned image(s) to pull.")
+
+    failures = [image for image in images if not pull_image(image)]
+    if failures:
+        print("Failed to pull:", file=sys.stderr)
+        for image in failures:
+            print("  " + image, file=sys.stderr)
+        return 1
+
+    print("All pinned images are cached. check-team-template and validate-team can now run offline.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
