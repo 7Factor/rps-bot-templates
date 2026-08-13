@@ -1,0 +1,12 @@
+{
+  "format_version":"rps-team-template-descriptor-v1",
+  "language_id":"clojure",
+  "language_environment":"clojure",
+  "team_source_path":"templates/clojure/team_source",
+  "participant_guidance_path":"templates/clojure/TEAM_GUIDE.md",
+  "build_and_test_entrypoint":"templates/clojure/build-and-test",
+  "version":"clojure-team-template-v1",
+  "expected_source_digest":"sha256:6dc3bca02a19da0bbfae669c870c9f4abf9726f77d68636228a658f94162a944",
+  "release_tag":"clojure-template-v1",
+  "advisory_validation_workflow":".github/workflows/team-advisory-validation.yml"
+}

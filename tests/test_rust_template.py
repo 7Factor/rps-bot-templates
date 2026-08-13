@@ -145,7 +145,7 @@ class RustTeamTemplateTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, guidance)
 
-    def test_template_release_manifest_binds_catalog_v12(self) -> None:
+    def test_template_release_manifest_binds_current_catalog(self) -> None:
         environment = os.environ.copy()
         environment["RPS_CORE_PATH"] = str(self.core)
         completed = subprocess.run(
@@ -169,7 +169,7 @@ class RustTeamTemplateTests(unittest.TestCase):
         )
         self.assertEqual(
             manifest["catalog_compatibility"]["runner"]["commit"],
-            "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
+            "e31d9b88a43a0c58934b306b96015bd300b1685d",
         )
 
     def test_shared_checker_has_no_rust_language_switch(self) -> None:

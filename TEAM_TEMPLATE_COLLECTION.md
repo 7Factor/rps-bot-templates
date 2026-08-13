@@ -22,7 +22,8 @@ The [Python descriptor](templates/python/team-template.json) and
 [TypeScript descriptor](templates/typescript/team-template.json), and
 [C# descriptor](templates/csharp/team-template.json), and
 [Rust descriptor](templates/rust/team-template.json), and
-[Ruby descriptor](templates/ruby/team-template.json) are independent instances
+[Ruby descriptor](templates/ruby/team-template.json), and
+[Clojure descriptor](templates/clojure/team-template.json) are independent instances
 of this layout.
 
 Collection loading rejects duplicate language IDs, missing descriptors or bound
@@ -72,6 +73,7 @@ C# uses `--template csharp` and the independent `csharp-template-v2` release
 tag.
 Rust uses `--template rust` and the independent `rust-template-v1` release tag.
 Ruby uses `--template ruby` and the independent `ruby-template-v1` release tag.
+Clojure uses `--template clojure` and the independent `clojure-template-v1` release tag.
 
 ## Checklist for adding a Team Template
 

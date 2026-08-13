@@ -1,9 +1,20 @@
 {
   "catalog_release": {
-    "declared_catalog_path_count": 66,
+    "declared_catalog_path_count": 74,
     "manifest": {
       "catalog": {
         "assets": {
+          "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+          "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+          "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+          "clojure.conformance": "clojure-conformance-v1@sha256:899765a409381aa679d33b2cfdf154ce4f517aa79b5b70275207f1a0320b06c8",
+          "clojure.dependency_definition": "clojure-dependencies-v1@sha256:c132850546737edb466b1117f10c901ca2fe5aa5629055be3cc924fd96fe331e",
+          "clojure.entrypoint": "clojure-entrypoint-v1@sha256:52047945a662b8454206327b2e5ac0dea0059a550c8221924c1562c88676d4d7",
+          "clojure.platform": "clojure-oci-platforms-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+          "clojure.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+          "clojure.recipe": "clojure-build-recipe-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+          "clojure.workflow": "source-validation-workflow-v1@sha256:e457e7e227774cc409eb55f88e1f26b6544539c502b31c52de76bb74656f84c8",
+          "clojure.wrapper": "clojure-wrapper-v1@sha256:4d56c8b77e22059abd3cf008db55a9917e100242c03593e182f14e8caa218d2b",
           "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
           "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
           "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
@@ -104,11 +115,12 @@
           "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
           "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
         },
-        "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
+        "identity": "rps-language-environment-catalog-v1@sha256:c1b2961447993653df86b8a58c4cb4662aa0bc6bfc8e2fe7ed388273968a9f53",
         "path": "language_environments/catalog-v1/catalog.json",
         "version": "rps-language-environment-catalog-v1"
       },
       "certification_suites": {
+        "clojure": "clojure-artifact-conformance-v1@sha256:899765a409381aa679d33b2cfdf154ce4f517aa79b5b70275207f1a0320b06c8",
         "csharp": "csharp-artifact-conformance-v1@sha256:a1715ef34a2bfef92976a30ac490d498e913cbf2ae0ad4f1a8b4ae8235b98c6f",
         "go": "go-artifact-conformance-v1@sha256:d791f1719d0becbcb1b36bf4f94a006484637d8762685d9b7471ca1f8f39c1e8",
         "internal-shell": "internal-shell-artifact-conformance-v1@sha256:664168210a06c8e77b15e9166e2ee394ad1f0bff05e7d31e8014361110c94f9e",
@@ -121,6 +133,17 @@
       "compatibility_coordinates": {
         "catalog": {
           "assets": {
+            "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+            "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+            "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+            "clojure.conformance": "clojure-conformance-v1@sha256:899765a409381aa679d33b2cfdf154ce4f517aa79b5b70275207f1a0320b06c8",
+            "clojure.dependency_definition": "clojure-dependencies-v1@sha256:c132850546737edb466b1117f10c901ca2fe5aa5629055be3cc924fd96fe331e",
+            "clojure.entrypoint": "clojure-entrypoint-v1@sha256:52047945a662b8454206327b2e5ac0dea0059a550c8221924c1562c88676d4d7",
+            "clojure.platform": "clojure-oci-platforms-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+            "clojure.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+            "clojure.recipe": "clojure-build-recipe-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+            "clojure.workflow": "source-validation-workflow-v1@sha256:e457e7e227774cc409eb55f88e1f26b6544539c502b31c52de76bb74656f84c8",
+            "clojure.wrapper": "clojure-wrapper-v1@sha256:4d56c8b77e22059abd3cf008db55a9917e100242c03593e182f14e8caa218d2b",
             "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
             "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
             "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
@@ -221,15 +244,15 @@
             "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
             "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
           },
-          "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
+          "identity": "rps-language-environment-catalog-v1@sha256:c1b2961447993653df86b8a58c4cb4662aa0bc6bfc8e2fe7ed388273968a9f53",
           "path": "language_environments/catalog-v1/catalog.json"
         },
         "format_version": "rps-catalog-compatibility-v1",
         "offline_bundle": {
-          "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
+          "identity": "rps-runner-offline-bundle-v1@sha256:7449be32e529d29d7387c5a8c537a3708fec1a481a4344557d033b358c6d0656"
         },
         "runner": {
-          "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
+          "commit": "e31d9b88a43a0c58934b306b96015bd300b1685d",
           "package_version": "0.1.0"
         }
       },
@@ -238,9 +261,48 @@
         "version": "docker-execution-v1"
       },
       "offline_bundle": {
-        "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
+        "identity": "rps-runner-offline-bundle-v1@sha256:7449be32e529d29d7387c5a8c537a3708fec1a481a4344557d033b358c6d0656"
       },
       "platform_runtimes": {
+        "clojure": {
+          "platforms": {
+            "linux/amd64": {
+              "build_toolchain": {
+                "digest": "sha256:c50576e2fcb26300d09dae1f3b5d3a7a1482334c5113ea7bcd3f6a17b0141aca",
+                "reference": "docker.io/library/clojure@sha256:c50576e2fcb26300d09dae1f3b5d3a7a1482334c5113ea7bcd3f6a17b0141aca",
+                "version": "linux-amd64-clojure-1.12.5-cli-1.12.5.1664-java-25.0.3+9-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "reference": "docker.io/library/eclipse-temurin@sha256:c650e8097620a27a61f476d2a269e02078dc9f316136ecd9821dedd98b89e719",
+                "version": "linux-amd64-clojure-1.12.5-java-25.0.3+9-execution-runtime-v1"
+              }
+            },
+            "linux/arm64": {
+              "build_toolchain": {
+                "digest": "sha256:394388e78b78fc48d385ca92d42df15501d48996a157f663c5c788a7d3bb86fc",
+                "reference": "docker.io/library/clojure@sha256:394388e78b78fc48d385ca92d42df15501d48996a157f663c5c788a7d3bb86fc",
+                "version": "linux-arm64-clojure-1.12.5-cli-1.12.5.1664-java-25.0.3+9-build-toolchain-v1"
+              },
+              "execution_runtime": {
+                "digest": "sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "reference": "docker.io/library/eclipse-temurin@sha256:57f9a2046d0ff628c24c0c127bd9d37a57e372064b30fdade9c00683382c1ab3",
+                "version": "linux-arm64-clojure-1.12.5-java-25.0.3+9-execution-runtime-v1"
+              }
+            }
+          },
+          "selection": {
+            "clojure_cli_version": "1.12.5.1664",
+            "clojure_version": "1.12.5",
+            "java_lts_release": "25",
+            "java_support": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html",
+            "java_version": "25.0.3+9",
+            "policy": "latest-upstream-supported-stable-with-latest-compatible-java-lts",
+            "rationale": "Clojure 1.12.5 is the latest stable upstream release and recommends Java 25, the latest upstream-designated Java LTS; the official Clojure image embeds Temurin 25.0.3+9 and all approved runtime jars.",
+            "selected_on": "2026-08-13",
+            "upstream_release": "https://clojure.org/releases/downloads"
+          }
+        },
         "csharp": {
           "platforms": {
             "linux/amd64": {
@@ -496,14 +558,14 @@
       },
       "release_format_version": "catalog-release-v1",
       "repository": {
-        "tag": "catalog-v14"
+        "tag": "catalog-v15"
       },
       "runner": {
-        "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
+        "commit": "e31d9b88a43a0c58934b306b96015bd300b1685d",
         "package_version": "0.1.0"
       }
     },
-    "offline_bundle_current_path_count": 255,
+    "offline_bundle_current_path_count": 264,
     "participant_template_asset_paths": [],
     "participant_template_digest_fields": [],
     "participant_template_paths": [],
@@ -512,6 +574,17 @@
   "compatibility_coordinates": {
     "catalog": {
       "assets": {
+        "clojure.base_runtime": "clojure-runtime-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+        "clojure.build_target": "clojure-build-target-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+        "clojure.build_toolchain": "clojure-build-toolchain-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+        "clojure.conformance": "clojure-conformance-v1@sha256:899765a409381aa679d33b2cfdf154ce4f517aa79b5b70275207f1a0320b06c8",
+        "clojure.dependency_definition": "clojure-dependencies-v1@sha256:c132850546737edb466b1117f10c901ca2fe5aa5629055be3cc924fd96fe331e",
+        "clojure.entrypoint": "clojure-entrypoint-v1@sha256:52047945a662b8454206327b2e5ac0dea0059a550c8221924c1562c88676d4d7",
+        "clojure.platform": "clojure-oci-platforms-v1@sha256:8ae7d50bff8abbd118b613eaded52d861b9c34e6637cd97270ac7fc8ca14bc92",
+        "clojure.readiness": "wrapper-readiness-v1@sha256:55fc90a02fc24c2723a779126a3ee0060eda92dec2a68adde4e47156dfce79c4",
+        "clojure.recipe": "clojure-build-recipe-v1@sha256:8a619fb9b5639781493a1c2319e96a4d272ca047ef923ad773f1a1589e12e4a8",
+        "clojure.workflow": "source-validation-workflow-v1@sha256:e457e7e227774cc409eb55f88e1f26b6544539c502b31c52de76bb74656f84c8",
+        "clojure.wrapper": "clojure-wrapper-v1@sha256:4d56c8b77e22059abd3cf008db55a9917e100242c03593e182f14e8caa218d2b",
         "contract-fixture.base_runtime": "contract-runtime-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
         "contract-fixture.build_target": "contract-build-target-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
         "contract-fixture.build_toolchain": "contract-build-toolchain-v1@sha256:2c01a7c87b1ab97368b809454b91b5051c80a40a4eb63bd3dd35ab321397c001",
@@ -612,15 +685,15 @@
         "typescript.workflow": "source-validation-workflow-v1@sha256:27b6b945599f6ab930a2f5bd7116d6e78d0e2097b52dc0e00210a7b7e7257dfd",
         "typescript.wrapper": "typescript-wrapper-v1@sha256:7c44b23c148b39cf7a53e8c1802fa0f05bbcf29d13ae740a06f8a31cfda2791d"
       },
-      "identity": "rps-language-environment-catalog-v1@sha256:035d1b59199897d0e852d88847b59e61d6fd14f74b84131b7f18541c8d9740ea",
+      "identity": "rps-language-environment-catalog-v1@sha256:c1b2961447993653df86b8a58c4cb4662aa0bc6bfc8e2fe7ed388273968a9f53",
       "path": "language_environments/catalog-v1/catalog.json"
     },
     "format_version": "rps-catalog-compatibility-v1",
     "offline_bundle": {
-      "identity": "rps-runner-offline-bundle-v1@sha256:4ac566c60f7dbdbba162809a4a411eda97031192f668d508ea76edee722009cb"
+      "identity": "rps-runner-offline-bundle-v1@sha256:7449be32e529d29d7387c5a8c537a3708fec1a481a4344557d033b358c6d0656"
     },
     "runner": {
-      "commit": "0b7f84a1aa3bf60efa5a5e0026d68b7b7337cb20",
+      "commit": "e31d9b88a43a0c58934b306b96015bd300b1685d",
       "package_version": "0.1.0"
     }
   },
@@ -642,9 +715,11 @@
       "tests/test_artifact_builder_cli.py",
       "tests/test_artifact_certification_cli.py",
       "tests/test_multi_language_environment.py",
+      "tests/test_clojure_language_environment.py",
       "tests/test_csharp_language_environment.py",
       "tests/test_java_language_environment.py",
       "tests/test_rust_language_environment.py",
+      "tests/test_ruby_language_environment.py",
       "tests/test_typescript_language_environment.py",
       "tests/test_batch_plan_cli.py",
       "tests/test_tournament_plan_cli.py",
@@ -663,13 +738,19 @@
       "network"
     ],
     "dependency_matches": [],
-    "dependency_surface_count": 170,
+    "dependency_surface_count": 177,
     "dependency_surfaces": [
       ".github/workflows/catalog-release-contract.yml",
       ".github/workflows/native-amd64-portability.yml",
       ".github/workflows/python-39-compatibility.yml",
       "freeze-tournament-catalog",
       "language_environments/catalog-v1/catalog.json",
+      "language_environments/catalog-v1/clojure/Dockerfile",
+      "language_environments/catalog-v1/clojure/conformance.json",
+      "language_environments/catalog-v1/clojure/entrypoint.json",
+      "language_environments/catalog-v1/clojure/readiness.json",
+      "language_environments/catalog-v1/clojure/runtimes.json",
+      "language_environments/catalog-v1/clojure/workflow.yml",
       "language_environments/catalog-v1/contract-fixture/assets.json",
       "language_environments/catalog-v1/csharp/Dockerfile",
       "language_environments/catalog-v1/csharp/RpsBot.runtimeconfig.json",
@@ -805,6 +886,7 @@
       "tests/test_batch_plan_cli.py",
       "tests/test_catalog_release.py",
       "tests/test_cli.py",
+      "tests/test_clojure_language_environment.py",
       "tests/test_container_match_executor.py",
       "tests/test_csharp_language_environment.py",
       "tests/test_doctor_cli.py",
@@ -837,7 +919,7 @@
       "tests/test_typescript_language_environment.py"
     ],
     "participant_template_paths": [],
-    "tracked_path_count": 255
+    "tracked_path_count": 264
   },
   "status": "passed"
 }

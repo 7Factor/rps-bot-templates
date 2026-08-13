@@ -1,0 +1,30 @@
+#!/bin/sh
+set -eu
+
+if ! command -v clojure >/dev/null 2>&1 || ! command -v java >/dev/null 2>&1; then
+  printf '%s\n' 'Native toolchain failure: Clojure 1.12.5 and Java 25 are required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+clojure_version=$(clojure -Srepro -M -e '(print (clojure-version))' 2>/dev/null || true)
+java_version=$(java -version 2>&1 | sed -n '1s/.*version "\([0-9]*\).*/\1/p')
+if [ "$clojure_version" != "1.12.5" ] || [ "$java_version" != "25" ]; then
+  printf '%s\n' 'Native toolchain failure: Clojure 1.12.5 and Java 25 are required; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+
+if [ -n "${RPS_DEPENDENCY_DEFINITION:-}" ]; then
+  if [ ! -f "$RPS_DEPENDENCY_DEFINITION" ]; then
+    printf '%s\n' 'Clojure dependency policy failure: the Catalog dependency definition is unavailable.' >&2
+    exit 2
+  fi
+  if ! sha256sum -c "$RPS_DEPENDENCY_DEFINITION" >/dev/null; then
+    printf '%s\n' 'Clojure dependency policy failure: approved runtime jars do not match the Catalog lock.' >&2
+    exit 2
+  fi
+fi
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+paths="{:paths [\"$template_root/team_source\" \"$template_root/tests\"]}"
+clojure -Srepro -Sdeps "$paths" -M -e "(require 'strategy) (require 'strategy-test)"
+printf '%s\n' 'Clojure starter tests passed'

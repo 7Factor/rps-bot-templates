@@ -1,6 +1,6 @@
 # Add the Clojure Team Template
 
-Status: ready-for-agent
+Status: resolved
 
 Blocked by: 04; rps-tournament multi-language-environments 09
 
@@ -16,21 +16,36 @@ compatibility behavior.
 
 ## Acceptance criteria
 
-- [ ] Clojure uses the latest upstream-supported stable release and a compatible
+- [x] Clojure uses the latest upstream-supported stable release and a compatible
   upstream-supported Java LTS at preparation time, pinned immutably in the
   matching Catalog and Template Releases.
-- [ ] The Clojure starter implements the common strategy contract and includes
+- [x] The Clojure starter implements the common strategy contract and includes
   deterministic unit tests for legal moves and seeded behavior.
-- [ ] One Clojure-owned script builds and tests the starter with a compatible
+- [x] One Clojure-owned script builds and tests the starter with a compatible
   local Clojure and Java toolchain.
-- [ ] Docker invokes that identical Clojure-owned script and passes the complete
+- [x] Docker invokes that identical Clojure-owned script and passes the complete
   build and unit-test suite without Clojure or Java installed on the host.
-- [ ] Dependency resolution is deterministic and complies with the matching
+- [x] Dependency resolution is deterministic and complies with the matching
   Language Environment's networkless build policy.
-- [ ] Advisory Validation consumes the matching Clojure Language Environment
+- [x] Advisory Validation consumes the matching Clojure Language Environment
   from the exact pinned Catalog Release and passes its complete conformance
   contract.
-- [ ] Clojure guidance documents Team Source boundaries, native prerequisites,
+- [x] Clojure guidance documents Team Source boundaries, native prerequisites,
   Docker usage, and the distinction between Advisory and Final Validation.
-- [ ] Clojure can be selected, checked, and released without changing another
+- [x] Clojure can be selected, checked, and released without changing another
   Team Template's descriptor or release identity.
+
+## Answer
+
+The independently releasable `clojure-template-v1` starter implements the
+shared four-argument strategy contract and deterministic seeded behavior. Its
+Clojure-owned `build-and-test` entrypoint runs the same three-test, 201-assertion
+suite natively or inside the catalog-pinned Clojure 1.12.5 / Java 25 Docker
+toolchain with networking disabled and the approved runtime jars hash-verified.
+
+The repository consumes exact `catalog-v15` coordinates at Runner commit
+`e31d9b88a43a0c58934b306b96015bd300b1685d`. The pinned Docker suite and full
+participant-local Advisory Validation passed, including the Practice Match.
+Collection and Team guidance expose Clojure independently and document Team
+Source ownership, exact native prerequisites, Docker usage, and Advisory versus
+Final Validation authority without changing another Template Release identity.
