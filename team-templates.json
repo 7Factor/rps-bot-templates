@@ -40,6 +40,10 @@
     {
       "language_id": "kotlin",
       "descriptor": "templates/kotlin/team-template.json"
+    },
+    {
+      "language_id": "brainf-ck",
+      "descriptor": "templates/brainf-ck/team-template.json"
     }
   ]
 }

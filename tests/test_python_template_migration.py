@@ -79,7 +79,7 @@ class PythonTemplateMigrationTests(unittest.TestCase):
         self.assertEqual(completed.returncode, 2)
         self.assertIn("unknown Team Template 'swift'", completed.stderr)
         self.assertIn(
-            "available: clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
+            "available: brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
             completed.stderr,
         )
 

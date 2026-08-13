@@ -23,7 +23,7 @@ script so that the two paths do not acquire different behavior.
 
 Reorganize the repository around a collection of independently identified Team
 Templates. Migrate Python through an expand-and-contract sequence before adding
-Go, Java, TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainfuck, and
+Go, Java, TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainf-ck, and
 optionally Rust. Give every template one language-owned build-and-test
 entrypoint. A root command selects a Team Template and either invokes that
 entrypoint on the host or invokes the exact same file inside a development
@@ -78,7 +78,7 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
 ## Implementation Decisions
 
 - The initial required Team Templates are Python, Go, Java, TypeScript, C#,
-  Ruby, Clojure, JavaScript, Kotlin, and Brainfuck. Rust is an optional follow-on
+  Ruby, Clojure, JavaScript, Kotlin, and Brainf-ck. Rust is an optional follow-on
   template and must meet the same acceptance bar before being advertised as
   supported.
 - The repository will expose a stable collection layout keyed by language ID.
@@ -113,7 +113,7 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
   latest supported Node.js LTS with an exactly pinned compatible TypeScript
   compiler, while JavaScript uses the latest supported Node.js LTS. Kotlin uses
   the stable compiler and compatible Java LTS selected by its Language
-  Environment. Brainfuck uses the exact dialect and implementation contract
+  Environment. Brainf-ck uses the exact dialect and implementation contract
   selected by its Language Environment. Updating a pin requires a new Catalog
   Release compatibility claim and Template Release.
 - Template unit tests will cover the language-facing strategy contract,
@@ -166,20 +166,20 @@ Bot Artifact construction and Final Validation remain in `rps-tournament`.
   contracts, entrypoints, conformance fixtures, or Final Validation into this
   repository.
 - Requiring maintainers or CI hosts to install Go, Java, Node.js/TypeScript,
-  .NET, Ruby, Clojure, Kotlin, a Brainfuck implementation, or Rust locally.
+  .NET, Ruby, Clojure, Kotlin, a Brainf-ck implementation, or Rust locally.
 - Claiming that an unexecuted host/toolchain combination has been independently
   certified. Native mode is supported through the Docker-exercised shared script
   but remains environment-dependent.
 - Automatically tracking mutable upstream `latest` tags.
 - Supporting languages beyond Python, Go, Java, TypeScript, C#, Ruby, Clojure,
-  JavaScript, Kotlin, Brainfuck, and optional Rust in this effort.
+  JavaScript, Kotlin, Brainf-ck, and optional Rust in this effort.
 
 ## Further Notes
 
 The first new language after the Python migration should be Go. It is the
 tracer bullet that proves the collection, release, local/Docker parity, and
 Runner compatibility seams work for more than the migrated template. Java,
-TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainfuck, and Rust remain
+TypeScript, C#, Ruby, Clojure, JavaScript, Kotlin, Brainf-ck, and Rust remain
 blocked on that proof so discoveries are folded into the shared contract once
 rather than independently.
 

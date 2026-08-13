@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+if ! command -v python3 >/dev/null 2>&1; then
+  printf '%s\n' 'Native toolchain failure: Python 3 is required to run the Catalog-owned interpreter; rerun check-team-template with --mode docker.' >&2
+  exit 2
+fi
+if [ -z "${RPS_DEPENDENCY_DEFINITION:-}" ] || [ ! -f "$RPS_DEPENDENCY_DEFINITION" ]; then
+  printf '%s\n' 'Brainf-ck dependency policy failure: the Catalog-owned interpreter is unavailable.' >&2
+  exit 2
+fi
+
+template_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+python3 "$template_root/tests/test_starter.py" \
+  "$RPS_DEPENDENCY_DEFINITION" \
+  "$template_root/team_source/strategy.bf"

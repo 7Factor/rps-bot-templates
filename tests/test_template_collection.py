@@ -54,6 +54,10 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/kotlin/team_source/Strategy.kt",
             "templates/kotlin/TEAM_GUIDE.md",
             "templates/kotlin/build-and-test",
+            "templates/brainf-ck/team-template.json",
+            "templates/brainf-ck/team_source/strategy.bf",
+            "templates/brainf-ck/TEAM_GUIDE.md",
+            "templates/brainf-ck/build-and-test",
             "templates/python/team-template.json",
             "templates/python/team_source/strategy.py",
             "templates/python/TEAM_GUIDE.md",
@@ -88,6 +92,10 @@ class TemplateCollectionTests(unittest.TestCase):
                         "contract_only": False,
                     },
                     "kotlin": {"language": "kotlin", "contract_only": False},
+                    "brainf-ck": {
+                        "language": "brainf-ck",
+                        "contract_only": False,
+                    },
                 }
             },
         )
@@ -111,8 +119,8 @@ class TemplateCollectionTests(unittest.TestCase):
         self.assertEqual(
             collection.language_ids,
             (
-                "clojure", "csharp", "go", "java", "javascript", "kotlin", "python",
-                "ruby", "rust", "typescript",
+                "brainf-ck", "clojure", "csharp", "go", "java", "javascript",
+                "kotlin", "python", "ruby", "rust", "typescript",
             ),
         )
         self.assertEqual(template.language_id, "python")
@@ -197,11 +205,11 @@ class TemplateCollectionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             CollectionError,
-            "selection is ambiguous.*clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
+            "selection is ambiguous.*brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript",
         ):
             collection.select()
         with self.assertRaisesRegex(
-            CollectionError, "available: clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript"
+            CollectionError, "available: brainf-ck, clojure, csharp, go, java, javascript, kotlin, python, ruby, rust, typescript"
         ):
             collection.select("swift")
 
@@ -220,6 +228,7 @@ class TemplateCollectionTests(unittest.TestCase):
             "templates/ruby/team-template.json",
             "templates/clojure/team-template.json",
             "templates/javascript/team-template.json",
+            "templates/brainf-ck/team-template.json",
             "./validate-team --template go",
             "./release-team-template --template go manifest go-template-v1",
             "--template java",
@@ -229,6 +238,7 @@ class TemplateCollectionTests(unittest.TestCase):
             "--template ruby",
             "--template clojure",
             "--template javascript",
+            "--template brainf-ck",
             "Team Templates",
             "Runner-owned Language Environments",
             "exact pinned Catalog Release",

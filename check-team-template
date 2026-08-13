@@ -10,7 +10,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
-from typing import Mapping, Sequence
+from typing import Mapping, Optional, Sequence
 
 from catalog_compatibility import (
     CompatibilityError,
@@ -39,10 +39,17 @@ def read_object(path: Path, label: str) -> Mapping[str, object]:
     return value
 
 
-def run(arguments: Sequence[str]) -> subprocess.CompletedProcess[str]:
+def run(
+    arguments: Sequence[str], environment: Optional[Mapping[str, str]] = None
+) -> subprocess.CompletedProcess[str]:
     try:
         return subprocess.run(
-            list(arguments), cwd=ROOT, capture_output=True, text=True, timeout=120
+            list(arguments),
+            cwd=ROOT,
+            env=environment,
+            capture_output=True,
+            text=True,
+            timeout=120,
         )
     except (OSError, subprocess.TimeoutExpired) as error:
         raise CheckError(str(error)) from error
@@ -105,8 +112,27 @@ def build_toolchain_image(
     return image
 
 
-def native_check(template: TeamTemplate) -> int:
-    completed = run((str(ROOT / template.build_and_test_entrypoint),))
+def dependency_definition(catalog_path: Path, template: TeamTemplate) -> Path:
+    catalog = read_object(catalog_path, "pinned Catalog Release")
+    try:
+        raw_path = catalog["environments"][template.language_environment]["assets"][
+            "dependency_definition"
+        ]["path"]  # type: ignore[index]
+    except (KeyError, TypeError) as error:
+        raise CheckError(
+            "the pinned Language Environment dependency definition is unavailable"
+        ) from error
+    return safe_catalog_asset(catalog_path, raw_path)
+
+
+def native_check(catalog_path: Path, template: TeamTemplate) -> int:
+    environment = os.environ.copy()
+    environment["RPS_DEPENDENCY_DEFINITION"] = str(
+        dependency_definition(catalog_path, template)
+    )
+    completed = run(
+        (str(ROOT / template.build_and_test_entrypoint),), environment
+    )
     sys.stdout.write(completed.stdout)
     sys.stderr.write(completed.stderr)
     return completed.returncode
@@ -134,16 +160,7 @@ def docker_check(
 ) -> int:
     image = build_toolchain_image(catalog_path, template, platform)
     entrypoint = "./" + template.build_and_test_entrypoint.as_posix()
-    catalog = read_object(catalog_path, "pinned Catalog Release")
-    try:
-        raw_path = catalog["environments"][template.language_environment]["assets"][
-            "dependency_definition"
-        ]["path"]  # type: ignore[index]
-    except (KeyError, TypeError) as error:
-        raise CheckError(
-            "the pinned Language Environment dependency definition is unavailable"
-        ) from error
-    dependency_definition = safe_catalog_asset(catalog_path, raw_path)
+    definition = dependency_definition(catalog_path, template)
     dependency_destination = "/catalog-build-input/dependency-definition"
     completed = run(
         (
@@ -162,7 +179,7 @@ def docker_check(
             "/tmp:rw,exec,nosuid,size=512m",
             "--mount",
             "type=bind,src="
-            + str(dependency_definition)
+            + str(definition)
             + ",dst="
             + dependency_destination
             + ",readonly",
@@ -196,7 +213,7 @@ def main(arguments: Sequence[str] | None = None) -> int:
         catalog = materialized_catalog()
         template = load_collection(ROOT, catalog).select(options.template)
         if options.mode == "native":
-            result = native_check(template)
+            result = native_check(catalog, template)
         else:
             try:
                 platform = docker_platform()

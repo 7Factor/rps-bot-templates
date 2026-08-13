@@ -25,7 +25,8 @@ The [Python descriptor](templates/python/team-template.json) and
 [Ruby descriptor](templates/ruby/team-template.json), and
 [Clojure descriptor](templates/clojure/team-template.json), and
 [JavaScript descriptor](templates/javascript/team-template.json), and
-[Kotlin descriptor](templates/kotlin/team-template.json) are independent instances
+[Kotlin descriptor](templates/kotlin/team-template.json), and
+[Brainf-ck descriptor](templates/brainf-ck/team-template.json) are independent instances
 of this layout.
 
 Collection loading rejects duplicate language IDs, missing descriptors or bound
@@ -80,6 +81,8 @@ JavaScript uses `--template javascript` and the independent
 `javascript-template-v1` release tag.
 Kotlin uses `--template kotlin` and the independent `kotlin-template-v1`
 release tag.
+Brainf-ck uses `--template brainf-ck` and the independent
+`brainf-ck-template-v1` release tag.
 
 ## Checklist for adding a Team Template
 
