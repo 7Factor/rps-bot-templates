@@ -25,6 +25,7 @@ import {fileURLToPath, pathToFileURL} from "node:url";
 
 import {chooseMove as chooseMoveOriginal} from "../templates/typescript/team_source/tominator_t1.ts";
 import {chooseMove as chooseMoveModes} from "../templates/typescript/team_source/tominator_t2.ts";
+import {chooseMove as chooseMoveT3} from "../templates/typescript/team_source/tominator_t3.ts";
 import {chooseMove as chooseMoveOnlyPaper} from "./strategy_only_paper.ts";
 import {chooseMove as chooseMoveTeamWml} from "./strategy_team_wml.ts";
 import {chooseMove as chooseMoveChicagoDawgs} from "./strategy_chicago_dawgs.js";
@@ -221,6 +222,11 @@ const opponents: Opponent[] = [
         choose: (turn, ownHistory, botHistory, rng) => chooseMoveModes(turn, ownHistory, botHistory, rng) as Move,
     },
     {
+        // tominator_t3.ts as an opponent, same reasoning as T1/T2 above.
+        name: "tominator_t3.ts",
+        choose: (turn, ownHistory, botHistory, rng) => chooseMoveT3(turn, ownHistory, botHistory, rng) as Move,
+    },
+    {
         // The official entrypoint itself (templates/typescript/team_source/strategy.ts), which
         // is just a re-export of tominator_t2.ts's chooseMove -- included as its own opponent
         // to sanity-check that the shim really does forward correctly end-to-end. Should always
@@ -275,6 +281,8 @@ function playAgainstOpponent(bot: ChooseMove, opponent: Opponent, rounds: number
     let botWins = 0;
     let oppWins = 0;
     let ties = 0;
+    let firstHalfBotWins = 0;
+    let firstHalfTotal = 0;
     let secondHalfBotWins = 0;
     let secondHalfTotal = 0;
 
@@ -287,7 +295,10 @@ function playAgainstOpponent(bot: ChooseMove, opponent: Opponent, rounds: number
         else if (outcome === "loss") oppWins += 1;
         else ties += 1;
 
-        if (turn >= Math.floor(rounds / 2)) {
+        if (turn < Math.floor(rounds / 2)) {
+            firstHalfTotal += 1;
+            if (outcome === "win") firstHalfBotWins += 1;
+        } else {
             secondHalfTotal += 1;
             if (outcome === "win") secondHalfBotWins += 1;
         }
@@ -296,7 +307,7 @@ function playAgainstOpponent(bot: ChooseMove, opponent: Opponent, rounds: number
         oppHistory += oppMove;
     }
 
-    return {botWins, oppWins, ties, secondHalfBotWins, secondHalfTotal};
+    return {botWins, oppWins, ties, firstHalfBotWins, firstHalfTotal, secondHalfBotWins, secondHalfTotal};
 }
 
 function runRoster(
@@ -307,7 +318,7 @@ function runRoster(
     baseSeed: bigint,
 ): (string | number)[] {
     console.log(`\n=== ${label} vs opponent roster: ${matchesPerOpponent} matches x ${rounds} rounds ===`);
-    const header = ["Opponent", "MatchesWon", "MatchesLost", "MatchesTied", "RoundWin%", "2ndHalfWin%"];
+    const header = ["Opponent", "MatchesWon", "MatchesLost", "MatchesTied", "1stHalfWin%", "2ndHalfWin%", "RoundWin%", "MatchWin%"];
     const rows: (string | number)[][] = [];
 
     let totalMatchesWon = 0;
@@ -315,6 +326,8 @@ function runRoster(
     let totalMatchesTied = 0;
     let grandTotalBotWins = 0;
     let grandTotalRounds = 0;
+    let grandFirstHalfBotWins = 0;
+    let grandFirstHalfTotal = 0;
     let grandSecondHalfBotWins = 0;
     let grandSecondHalfTotal = 0;
 
@@ -324,6 +337,8 @@ function runRoster(
         let matchesTied = 0;
         let totalBotWins = 0;
         let totalRounds = 0;
+        let firstHalfBotWins = 0;
+        let firstHalfTotal = 0;
         let secondHalfBotWins = 0;
         let secondHalfTotal = 0;
 
@@ -338,37 +353,48 @@ function runRoster(
 
             totalBotWins += result.botWins;
             totalRounds += result.botWins + result.oppWins + result.ties;
+            firstHalfBotWins += result.firstHalfBotWins;
+            firstHalfTotal += result.firstHalfTotal;
             secondHalfBotWins += result.secondHalfBotWins;
             secondHalfTotal += result.secondHalfTotal;
         }
 
         const roundWinPct = ((totalBotWins / totalRounds) * 100).toFixed(1);
+        const firstHalfPct = ((firstHalfBotWins / firstHalfTotal) * 100).toFixed(1);
         const secondHalfPct = ((secondHalfBotWins / secondHalfTotal) * 100).toFixed(1);
-        rows.push([opponent.name, matchesWon, matchesLost, matchesTied, `${roundWinPct}%`, `${secondHalfPct}%`]);
+        const matchWinPct = ((matchesWon / matchesPerOpponent) * 100).toFixed(1);
+        rows.push([opponent.name, matchesWon, matchesLost, matchesTied, `${firstHalfPct}%`, `${secondHalfPct}%`, `${roundWinPct}%`, `${matchWinPct}%`]);
 
         totalMatchesWon += matchesWon;
         totalMatchesLost += matchesLost;
         totalMatchesTied += matchesTied;
         grandTotalBotWins += totalBotWins;
         grandTotalRounds += totalRounds;
+        grandFirstHalfBotWins += firstHalfBotWins;
+        grandFirstHalfTotal += firstHalfTotal;
         grandSecondHalfBotWins += secondHalfBotWins;
         grandSecondHalfTotal += secondHalfTotal;
     }
 
     const totalRoundWinPct = ((grandTotalBotWins / grandTotalRounds) * 100).toFixed(1);
+    const totalFirstHalfPct = ((grandFirstHalfBotWins / grandFirstHalfTotal) * 100).toFixed(1);
     const totalSecondHalfPct = ((grandSecondHalfBotWins / grandSecondHalfTotal) * 100).toFixed(1);
+    const totalMatches = totalMatchesWon + totalMatchesLost + totalMatchesTied;
+    const totalMatchWinPct = ((totalMatchesWon / totalMatches) * 100).toFixed(1);
     const footerRow = [
         "TOTAL",
         totalMatchesWon,
         totalMatchesLost,
         totalMatchesTied,
-        `${totalRoundWinPct}%`,
+        `${totalFirstHalfPct}%`,
         `${totalSecondHalfPct}%`,
+        `${totalRoundWinPct}%`,
+        `${totalMatchWinPct}%`,
     ];
 
     printTable(header, rows, footerRow);
 
-    return [label, totalMatchesWon, totalMatchesLost, totalMatchesTied, `${totalRoundWinPct}%`, `${totalSecondHalfPct}%`];
+    return [label, totalMatchesWon, totalMatchesLost, totalMatchesTied, `${totalFirstHalfPct}%`, `${totalSecondHalfPct}%`, `${totalRoundWinPct}%`, `${totalMatchWinPct}%`];
 }
 
 async function main() {
@@ -385,6 +411,7 @@ async function main() {
         summaryRows.push(runRoster(label, bot, rounds, matchesPerOpponent, baseSeed));
 
     run("strategy.ts", chooseMoveStrategy);
+    run("tominator_t3.ts", chooseMoveT3);
     run("tominator_t2.ts", chooseMoveModes);
     run("tominator_t1.ts", chooseMoveOriginal);
     run("only-paper", chooseMoveOnlyPaper);
@@ -398,7 +425,7 @@ async function main() {
     run("back-we-will-rock", chooseMoveBackWeWillRock);
 
     console.log(`\n=== Summary: totals across all opponents (${matchesPerOpponent} matches x ${rounds} rounds each) ===`);
-    const summaryHeader = ["Bot", "MatchesWon", "MatchesLost", "MatchesTied", "RoundWin%", "2ndHalfWin%"];
+    const summaryHeader = ["Bot", "MatchesWon", "MatchesLost", "MatchesTied", "1stHalfWin%", "2ndHalfWin%", "RoundWin%", "MatchWin%"];
     printTable(summaryHeader, summaryRows);
 }
 

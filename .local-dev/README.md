@@ -20,29 +20,43 @@ cover it.
 
 ## The Units
 
-Skynet has fielded two generations of hunter-killer:
+Skynet has fielded three generations of hunter-killer, each carrying the
+designation of its namesake model from the corresponding film:
 
-- **The T-1 (`tominator_t1.ts`)** — the earlier fixed-phase model. Reliable,
-  battle-tested, now kept around purely as the control group the newer unit
-  has to prove it can outclass.
-- **The T-2 (`tominator_t2.ts`)** — the current model of unit. More adaptive, harder to read,
-  built to survive contact with an enemy that changes tactics mid-fight.
+- **The T-1, model designation "T-800" (`tominator_t1.ts`)** — the earlier
+  fixed-phase model. Reliable, battle-tested, now kept around purely as the
+  control group the newer units have to prove they can outclass. Old
+  hardware, but it gets the job done.
+- **The T-2, model designation "T-1000" (`tominator_t2.ts`)** — more
+  adaptive, harder to read, built to survive contact with an enemy that
+  changes tactics mid-fight (RED_HERRING/RESEARCH/EXPLOIT/REEVALUATE/DEFENSE
+  modes, switched on live performance rather than fixed turn thresholds).
+  Fitting company for the shapeshifter it's named after — this unit
+  reshapes its own tactics constantly, and you won't see the change coming
+  until it's already countering you.
+- **The T-3, model designation "T-X" (`tominator_t3.ts`)** — the current
+  model of unit, and a deliberate change of doctrine, not just an upgrade.
+  T-1 and T-2 default to exploiting and only retreat to safety under
+  specific conditions; T-3 defaults to a randomized, self-correcting
+  "shuffleable deck" for the large majority of the match (research/defense),
+  and only carves out a narrow exploit window when the evidence clears a
+  strict, tuned bar (`EXPLOIT_Z_THRESHOLD`). Built for consistently winning
+  Series/Matches under the tournament's actual scoring rules, not for
+  maximizing round-win margin — the most advanced model fielded, and
+  patient enough to wait for the kill shot instead of rushing it.
 
 `templates/typescript/team_source/strategy.ts` is the required official
 designation every unit must answer to (`TEAM_GUIDE.md`, `tests/strategy.test.ts`)
 — think of it as the endoskeleton's ID chip. Under the hood it can be wearing
-either a T-1 or a T-2 chassis (a thin re-export shim pointing at one of the
-`tominator_*.ts` files), or it can be running fully autonomous, self-contained
-code with no shim at all. Both are legitimate configurations. `scrimmage.ts`
-doesn't assume which one it'll find in the field — `loadStrategyEntrypoint()`
-scans the wreckage and adapts to whichever chassis is currently active.
+any `tominator_*.ts` chassis (a thin re-export shim pointing at one of them),
+or it can be running fully autonomous, self-contained code with no shim at
+all. All are legitimate configurations. `scrimmage.ts` doesn't assume which
+one it'll find in the field — `loadStrategyEntrypoint()` scans the wreckage
+and adapts to whichever chassis is currently active.
 
 ## Deployment
 
-Send a unit through the simulation chamber from the repo root. `team-wml`'s
-scouted intel uses a real TS `enum`, which needs full type transformation —
-not just stripping — so the flag below stays on for the whole run (harmless
-for everyone else in the line-up):
+Send a unit through the simulation chamber from the repo root. 
 
 ```sh
 node --experimental-transform-types .local-dev/scrimmage.ts [rounds] [matchesPerOpponent] [baseSeed]
@@ -52,13 +66,40 @@ All three args are optional. `scrimmage.ts` resolves everything through
 relative paths, so it comes online correctly no matter where you launch it
 from.
 
+`tournament.ts` takes the same treatment, with its own two optional args
+(a tournament seed and rounds-per-Match):
+
+```sh
+node --experimental-transform-types .local-dev/tournament.ts [tournamentSeed] [roundsPerMatch]
+```
+
+One tournament is one draw from a random process — every Series still runs
+on seeded RNGs, so a single run can flatter or shortchange a team by luck.
+`tournament-sweep.ts` runs the same simulation many times under different
+seeds and tallies how often each team actually wins it all, makes the
+playoffs, and where it lands in qualifying on average:
+
+```sh
+node --experimental-transform-types .local-dev/tournament-sweep.ts [tournaments] [roundsPerMatch] [baseSeed]
+```
+
 ## What happens in there
 
-`strategy.ts`, `tominator_t1.ts`, and `tominator_t2.ts` each get run through
-the full target roster below. Every unit gets its own results table (with a
-`TOTAL` row for the body count), and the whole thing wraps up with one final
-side-by-side summary — because Skynet doesn't guess which model wins, it
-measures.
+`strategy.ts`, `tominator_t3.ts` ("T-X"), `tominator_t2.ts` ("T-1000"), and
+`tominator_t1.ts` ("T-800") each get run through the full target roster
+below. Every unit gets its own results table — matches won/lost/tied,
+1st/2nd-half round-win%, overall round-win%, and match-win% (rightmost
+column: the % of matches actually
+*won*, the number that maps directly to Series/Standing Points in a real
+tournament) — with a `TOTAL` row for the body count. The whole thing wraps up
+with one final side-by-side summary across every unit, because Skynet
+doesn't guess which model wins, it measures.
+
+For a closer look at how a unit would actually place across a full event —
+qualifying round robin, best-of-three Series, Standing Points, tie-breaks,
+and a 4-team playoff bracket, per `docs/TOURNAMENT.md` — see
+`tournament.ts` instead of `scrimmage.ts`; same roster, real tournament
+structure rather than flat pairwise sampling.
 
 ## The Resistance
 
@@ -87,7 +128,8 @@ updates:
 | `back-we-will-rock` | `strategy_back_we_will_rock.ts` | No `team-submission.json` filed on that branch yet — off the books, but the doctrine is real: sticky counter-the-counter early, then a recency-windowed frequency counter, with every 3rd round fired randomly to stay unpredictable. |
 
 Skynet's own units stand in the roster too, so everything above also has to
-face `tominator_t1.ts`, `tominator_t2.ts`, and `strategy.ts` directly.
+face `tominator_t1.ts` ("T-800"), `tominator_t2.ts` ("T-1000"),
+`tominator_t3.ts` ("T-X"), and `strategy.ts` directly.
 
 ## Classified
 
